@@ -1,0 +1,94 @@
+*{margin:0 auto; padding:0;}
+li{list-style: none;}
+a{text-decoration: none;}
+
+header{position: fixed; width:100%; height:100px; border-bottom: 1px solid #ccc; background:#fff; z-index: 999999;}
+header .header_wrap{position: relative; margin:0 auto; width:1000px; height:100px;}
+header .header_wrap .top_logo{position: relative; float:left; width:200px; height:100px; }
+
+header .header_wrap .member_menu{position: relative; float:left; width:800px; height:49px; border-bottom: 1px solid #ccc;}
+header .header_wrap .member_menu ul{position: relative; float:right; width:200px; height:50px;}
+header .header_wrap .member_menu li{position: relative; float:left; width:100px; height:50px;}
+header .header_wrap .member_menu li a{position: relative; display: block; float:left; width:100px; height:50px; color:#666; font-size: 10pt; font-weight: bold; text-align: center; line-height: 49px;}
+header .header_wrap .member_menu li a:hover{transition:0.3s; font-weight: normal;}
+
+header .header_wrap .content_menu{position: relative;  float:left; width:800px; height:50px;}
+header .header_wrap .content_menu ul{position: relative; float:right; width:800px; height:50px;}
+header .header_wrap .content_menu li{position: relative; float:left; width:200px; height:50px;}
+header .header_wrap .content_menu li a{position: relative; display: block; float:left; width:200px; height:50px; color:#666; font-size: 10pt; font-weight: bold; text-align: center; line-height: 50px;}
+header .header_wrap .content_menu li a:hover{transition:0.3s; font-weight: normal;}
+
+.header_gab{position: relative; width:100%; height:101px;}
+
+.wrap{position: relative; width:100%; height:2600px;}
+.wrap .contents{ position: relative;  margin: 0 auto; width:1000px; height:2600px; }
+.wrap .contents h1{position:relative; float:left; width:998px; height:50px; font-size: 18pt; line-height: 50px; color:#666;}
+
+.wrap .contents .section1{position: relative; float:left; width:1000px; height:400px; margin-top:50px; }
+.wrap .contents .section1 .content_img{position:relative; float:left; width:400px; height:300px;}
+.wrap .contents .section1 .content_img img{position:relative; float:left; width:400px; height:300px;}
+.wrap .contents .section1 .content_info{position: relative; float:right; width:550px; height:300px;} 
+.wrap .contents .section1 .content_info ul{position: relative; float:left; width:550px; height:300px;}
+.wrap .contents .section1 .content_info li{position: relative; margin:0 75px 0; width:400px; height:40px; line-height: 40px; font-size: 10pt;}
+.wrap .contents .section1 .content_info li:first-child{font-size: 12pt; font-weight: bold;}
+.wrap .contents .section1 .content_info li span{display: block; float:left; font-weight: bold; width:100px; height:30px;}
+.wrap .contents .section1 .content_info li input{float:left;  width:250px; height:30px; border:none; border-bottom:1px solid #ccc;}
+.wrap .contents .section1 .content_info li a {display: block; position: relative; float:left; margin-left:50px; width:150px; height:30px; border-radius: 10px; line-height: 30px; text-align: center; background:#666; color:#fff;}
+.wrap .contents .section1 .content_info li a:hover{transition: 0.3s;  background:#fff; color:#666; }
+
+.wrap .contents .section2{position: relative; margin-top:50px;  float:left; width:1000px; height:1200px; }
+.wrap .contents .section2 img{position: relative; float:left; width:1000px; height:600px; }
+
+.wrap .contents .section3{position: relative; margin-top:50px;  float:left; width:1000px; height:800px; }
+.wrap .contents .section3 .write{float: left; width:800px; height:350px;}
+.wrap .contents .section3 .write li:first-child{float:left; width:800px; height:50px;}
+.wrap .contents .section3 .write li:last-child{float:left; width:800px; height:50px;}
+.wrap .contents .section3 .write li a{display: block; float:right; width:100px; height:40px; margin-top:10px; background: #666; color:#fff; line-height: 40px; text-align: center; }
+.wrap .contents .section3 .write_list_wrap {position: relative; float:right; width:1000px; height:300px;}
+.wrap .contents .section3 .write_list_wrap ul{position: relative; float:left; width:1000px; height:300px;}
+.wrap .contents .section3 .write_list_wrap  .write_list_title{position: relative; width:998px; height:48px; border:1px solid #ccc;} 
+.wrap .contents .section3 .write_list_wrap  .write_list_title ul {position: relative; width:998px; height:48px} 
+.wrap .contents .section3 .write_list_wrap  .write_list_title ul li{position: relative; float:left; height:48px; line-height: 48px; text-align:center;}
+.wrap .contents .section3 .write_list_wrap  .write_list_title ul li:nth-child(1){ width:10%; }
+.wrap .contents .section3 .write_list_wrap  .write_list_title ul li:nth-child(2){ width:30%; }
+.wrap .contents .section3 .write_list_wrap  .write_list_title ul li:nth-child(3){ width:20%; }
+.wrap .contents .section3 .write_list_wrap  .write_list_title ul li:nth-child(4){ width:20%; }
+.wrap .contents .section3 .write_list_wrap  .write_list_title ul li:nth-child(5){ width:20%; }
+.wrap .contents .section3 .write_list_wrap  .write_list{position: relative; width:1000px; height:auto;} 
+.wrap .contents .section3 .write_list_wrap  .write_list ul {position: relative; width:1000px; height:auto;} 
+.wrap .contents .section3 .write_list_wrap  .write_list ul li{position: relative; float:left; height:50px; line-height: 50px; text-align:center;}
+.wrap .contents .section3 .write_list_wrap  .write_list ul li:nth-child(1){ width:10%; }
+.wrap .contents .section3 .write_list_wrap  .write_list ul li:nth-child(2){ width:30%; }
+.wrap .contents .section3 .write_list_wrap  .write_list ul li:nth-child(3){ width:20%; }
+.wrap .contents .section3 .write_list_wrap  .write_list ul li:nth-child(4){ width:20%; }
+.wrap .contents .section3 .write_list_wrap  .write_list ul li:nth-child(5){ width:20%; }
+
+.wrap .contents .section4{position: relative; margin-top:50px;  float:left; width:1000px; height:800px; }
+.wrap .contents .section4 .write{float:right; width:800px; height:350px;}
+.wrap .contents .section4 .write li:first-child{float:right; width:800px; height:50px;}
+.wrap .contents .section4 .write li:last-child{float:right; width:800px; height:50px;}
+.wrap .contents .section4 .write li a{display: block; float:right; width:100px; height:40px; margin-top:10px; background: #666; color:#fff; line-height: 40px; text-align: center; }
+.wrap .contents .section4 .write_list_wrap {float:right; width:1000px; height:300px;}
+.wrap .contents .section4 .write_list_wrap  .write_list_title{position: relative; width:998px; height:48px; border:1px solid #ccc;} 
+.wrap .contents .section4 .write_list_wrap  .write_list_title ul {position: relative; width:998px; height:48px} 
+.wrap .contents .section4 .write_list_wrap  .write_list_title ul li{position: relative; float:left; height:48px; line-height: 48px; text-align:center;}
+.wrap .contents .section4 .write_list_wrap  .write_list_title ul li:nth-child(1){ width:10%; }
+.wrap .contents .section4 .write_list_wrap  .write_list_title ul li:nth-child(2){ width:30%; }
+.wrap .contents .section4 .write_list_wrap  .write_list_title ul li:nth-child(3){ width:20%; }
+.wrap .contents .section4 .write_list_wrap  .write_list_title ul li:nth-child(4){ width:20%; }
+.wrap .contents .section4 .write_list_wrap  .write_list_title ul li:nth-child(5){ width:20%; }
+
+.wrap .contents .section4 .write_list_wrap  .write_list{position: relative; width:1000px; height:auto;} 
+.wrap .contents .section4 .write_list_wrap  .write_list ul {position: relative; width:1000px; height:auto;} 
+.wrap .contents .section4 .write_list_wrap  .write_list ul li{position: relative; float:left; height:50px; line-height: 50px; text-align:center;}
+.wrap .contents .section4 .write_list_wrap  .write_list ul li:nth-child(1){ width:10%; }
+.wrap .contents .section4 .write_list_wrap  .write_list ul li:nth-child(2){ width:30%; }
+.wrap .contents .section4 .write_list_wrap  .write_list ul li:nth-child(3){ width:20%; }
+.wrap .contents .section4 .write_list_wrap  .write_list ul li:nth-child(4){ width:20%; }
+.wrap .contents .section4 .write_list_wrap  .write_list ul li:nth-child(5){ width:20%; }
+
+footer{position: relative; float:left; width:100%; height:200px; border-top:1px solid #ccc;}
+
+
+
+

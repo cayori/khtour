@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN'
+'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+<sqlMap>
+
+	<typeAlias alias="item" type="item.ItemVO" />
+
+	<!-- 장바구니 넣을 때 여행 상품에서 꺼내오기위해 -->
+	<typeAlias alias="basket" type="basket.BasketVO" />
+
+	<resultMap id="itemRes" class="item">
+		<result property="no" column="no" />
+		<result property="name" column="name" />
+		<result property="price" column="price" />
+		<result property="content" column="content" />
+		<result property="country" column="country" />
+		<result property="region" column="region" />
+		<result property="readcount" column="readcount" />
+		<result property="image1" column="image1" />
+		<result property="image2" column="image2" />
+		<result property="image3" column="image3" />
+		<result property="reg_date" column="reg_date" />
+		<result property="amount" column="amount" />
+		<result property="tel" column="tel" />
+		<result property="id" column="id" />
+		<result property="day" column="day" />
+		<result property="hai" column="hai" />
+		<result property="grade" column="grade" />
+		<result property="cocount" column="cocount" /><!-- 이건 구매횟수로 사용하자 -->
+	</resultMap>
+
+	<!-- 장바구니로 가져갈 때 resultMap -->
+	<resultMap id="itemResBasket" class="item">
+		<result property="no" column="no" />
+		<result property="name" column="name" />
+		<result property="price" column="price" />
+		<result property="content" column="content" />
+		<result property="country" column="country" />
+		<result property="region" column="region" />
+		<result property="readcount" column="readcount" />
+		<result property="image1" column="image1" />
+		<result property="image2" column="image2" />
+		<result property="image3" column="image3" />
+		<result property="reg_date" column="reg_date" />
+		<result property="amount" column="amount" />
+		<result property="tel" column="tel" />
+		<result property="day" column="day" />
+		<result property="hai" column="hai" />
+		<result property="grade" column="grade" />
+	</resultMap>
+
+
+	<!-- 여행 목록 가져오기 and 카테고리별 상품 정렬 -->
+<!-- 	<select id="listitem" resultClass="item.ItemVO" parameterClass="item">
+		SELECT * FROM (SELECT * FROM itemvo WHERE region like '%'||#area#||'%') ORDER BY
+		<isEqual property="searchn" compareValue="ltprice"> price ASC,
+		</isEqual>
+		<isEqual property="searchn" compareValue="price"> price DESC,
+		</isEqual>
+		<isEqual property="searchn" compareValue="grade"> grade DESC,
+		</isEqual>
+		reg_date DESC
+	</select> -->
+
+	<!-- 전체 불러오기 및 상세 검색했을 때, 여행 상품 테이블에서 제목과 내용, 2개의 칼럼에서 다중 검색(지역별 정렬 후 정렬 유지한 채로 검색 가능) -->
+	<select id="searchitem" resultMap="itemRes" parameterClass="item">
+		SELECT * FROM (SELECT * FROM itemvo WHERE region like '%'||#area#||'%')
+		<isNotEmpty property="search"> WHERE name like '%'||#search#||'%' or
+			content like '%'||#search#||'%'
+		</isNotEmpty>
+		ORDER BY
+		<isEqual property="searchn" compareValue="ltprice"> price ASC,
+			reg_date DESC
+		</isEqual>
+		<isEqual property="searchn" compareValue="price"> price DESC,
+			reg_date DESC
+		</isEqual>
+		<isEqual property="searchn" compareValue="grade"> grade DESC,
+			reg_date DESC
+		</isEqual>
+		<isEqual property="searchn" compareValue="cocount"> cocount
+			DESC, reg_date DESC
+		</isEqual>
+		<isEqual property="searchn" compareValue="reg_date"> reg_date
+			DESC
+		</isEqual>
+	</select>
+
+	<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 상품 등록 및 수정 및 삭제 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+	<insert id="insertitem" parameterClass="item">
+		INSERT INTO itemvo (no, name, country, region, price, content, hai, image1,
+		image2, image3, reg_date, readcount, amount, grade, cocount)
+		VALUES (seq_postnum.NEXTVAL, #name#, #country#, #region#, #price#,
+		#content#, #hai#, #image1#, #image2#, #image3#, SYSDATE, #readcount#,
+		#amount#, #grade#, #cocount#)
+	</insert>
+
+	<!-- 수정 시 해당 상품의 정보 꺼내오기 -->
+	<select id="modifyitem" resultMap="itemRes" parameterClass="item">
+		SELECT * FROM itemvo WHERE no = #no#
+	</select>
+
+	<!-- 해당 상품 정보 수정 -->
+	<update id="updateitem" parameterClass="item">
+		UPDATE itemvo SET price = #price#, name = #name#, content = #content#,
+		country = #country#, region = #region#,
+		hai = #hai#, readcount = #readcount#, amount = #amount#, grade = #grade#,
+		COCOUNT = #cocount#
+		<isNotNull property="image1">
+			, image1 = #image1#
+		</isNotNull>
+		<isNotNull property="image2">
+			, image2 = #image2#
+		</isNotNull>
+		<isNotNull property="image3">
+			, image3 = #image3#
+		</isNotNull>
+		WHERE no = #no#
+	</update>
+
+	<!-- 여행 상품 삭제 -->
+	<delete id="deleteitem" parameterClass="item">
+		DELETE FROM itemvo WHERE no = #no#
+	</delete>
+
+
+	<!-- 여행 상품 삭제할 때 관련 코멘트까지 삭제 -->
+	<delete id="deletecoi" parameterClass="item">
+		DELETE FROM contentcoi WHERE seq_no = #no#
+	</delete>
+	
+	
+	<!-- 장바구니 -->
+	<select id="selectitem" resultMap="itemRes" parameterClass="item">
+		SELECT * FROM itemvo WHERE no = #no#
+	</select>
+
+
+
+	<!-- 최신 상품 3개의 이미지 불러오기 -->
+	<select id="latelyitem" resultClass="java.lang.String">
+	<![CDATA[ select image1 from (select image1 from itemvo order by cocount DESC) where ROWNUM >= 1 and ROWNUM <= 3 ]]>
+	</select>
+	
+	<!-- 최신 상품 3개의 이름 불러오기 -->
+	<select id="latelyname" resultClass="java.lang.String">
+	<![CDATA[ select name from (select name from itemvo order by cocount DESC) where ROWNUM >= 1 and ROWNUM <= 3 ]]>
+	</select>
+	
+	<!-- 최신 상품 3개의 번호 불러오기 -->
+	<select id="latelyno" resultClass="int">
+	<![CDATA[ select no from (select no from itemvo order by cocount DESC) where ROWNUM >= 1 and ROWNUM <= 3 ]]>
+	</select>
+
+
+	<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ여행 코멘트ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+
+	<sql id="select-allI"> <!--공통사용 -->
+		SELECT * FROM ITEMVO
+	</sql>
+
+	<sql id="where-noI">
+		where no = #no#
+	</sql>
+
+
+	<select id="selectAllI" resultMap="itemRes">
+		<include refid="select-allI" />
+		ORDER BY NO DESC
+	</select>
+
+	<select id="selectOneI" resultMap="itemRes">
+	<![CDATA[ select * from (select * from itemvo order by grade DESC) WHERE ROWNUM = 1 ]]>
+	</select>
+
+	<select id="selectNoI" resultMap="itemRes" parameterClass="int">
+		<include refid="select-allI" />
+		<include refid="where-noI" />
+	</select>
+
+	<!--여행상품 코멘트 -->
+	<typeAlias alias="contentcoi" type="item.ContentCOI" /><!--여행상품 
+		코멘트 -->
+	<resultMap id="contentcoiRes" class="contentcoi">
+		<result property="seq_no" column="seq_no" />
+		<result property="c_no" column="c_no" />
+		<result property="c_id" column="c_id" />
+		<result property="c_reg_date" column="c_reg_date" />
+		<result property="c_content" column="c_content" />
+		<result property="c_grade" column="c_grade" />
+	</resultMap>
+
+	<sql id="select-allCCI"> <!--공통사용 -->
+		SELECT * FROM CONTENTCOI
+	</sql>
+
+	<sql id="select-noCCI"> <!--공통사용 -->
+		where seq_no = #no#
+	</sql>
+
+	<select id="selectOneCCI" resultMap="contentcoiRes"
+		parameterClass="int">
+		<include refid="select-allCCI" />
+		<include refid="select-noCCI" />
+		ORDER BY c_no DESC
+	</select>
+
+	<insert id="insertCommentI" parameterClass="contentcoi">
+		INSERT INTO CONTENTCOI(SEQ_NO, C_NO, C_ID, C_REG_DATE, C_CONTENT, C_GRADE)
+		VALUES
+		(#seq_no#, seq_contentco.NEXTVAL, #c_id#, SYSDATE, #c_content#, #c_grade#)
+	</insert>
+
+
+	<!-- 별점계산하기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+	<update id="updateGrade_item" parameterClass="contentcoi">
+		UPDATE ITEMVO SET
+		grade = (SELECT AVG(c_grade) FROM contentcoi where seq_no = #seq_no#)
+		WHERE no = #seq_no#
+	</update>
+
+	<delete id="deleteOneCI" parameterClass="int">
+		DELETE FROM CONTENTCOI
+		where c_no = #c_no#
+	</delete>
+
+</sqlMap>

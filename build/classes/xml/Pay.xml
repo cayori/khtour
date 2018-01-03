@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+
+	<package name="PAY" extends="struts-default, tiles-default">
+	
+	
+		<interceptors>
+			<interceptor name="logincheck" class="member.LoginCheck" />
+		</interceptors>
+
+		<global-results>
+			<result name="error" type="chain">LoginForm</result>
+		</global-results>
+
+
+		<!-- 구매하기 -->
+		<action name="Pay" class="order.Pay">
+		<interceptor-ref name="logincheck" />
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="params" />
+			<result type="chain">PayResult</result>
+		</action>
+		
+		<!--구매결과값 -->
+		<action name="PayResult" class="order.Pay" method="payResult">
+			<result type="tiles">Pay</result>
+		</action>
+
+		<action name="PayUpdate" class="order.Pay" method="payUpdate">
+			<result type="tiles">PayResult</result>
+		</action>
+
+		<action name="PayDelete" class="order.Pay" method="payDelete">
+			<result type="chain">Main</result>
+		</action>
+
+		<!--구매내역으로 이동 -->
+		<action name="OrderListPage" class="order.OrderList">
+			<result type="tiles">OrderList</result>
+		</action>
+		
+		<!--구매내역에서 목록삭제 -->
+		<action name="OrderDelete" class="order.OrderList" method="deleteOrder">
+			<result type="chain">OrderListPage</result>
+		</action>
+
+
+	</package>
+
+
+</struts>

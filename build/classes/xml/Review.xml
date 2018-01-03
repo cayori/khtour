@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+
+		<package name="REVIEW" extends="struts-default, tiles-default">
+		
+		<interceptors>
+			<interceptor name="logincheck" class="member.LoginCheck" />
+		</interceptors>
+
+		<global-results>
+			<result name="error" type="chain">LoginForm</result>
+		</global-results>
+
+
+			<action name="ListReview" class="review.ListReview">
+				<result type="tiles">ListReview</result>
+			</action>
+
+			<!-- 후기게시판 글쓰기 폼으로 이동 -->
+			<action name="WriteReviewForm" class="review.WriteReview"
+				method="reviewWriteForm">
+				<result type="tiles">WriteReview</result>
+			</action>
+			<!-- 후기게시판 글쓰기 -->
+			<action name="WriteReview" class="review.WriteReview">
+				<result type="chain">ListReview</result>
+			</action>
+			<!-- 후기게시판 상세보기 -->
+			<action name="SelectReview" class="review.SelectReview">
+				<result type="tiles">ReviewContent</result>
+			</action>
+
+			<action name="DeleteReview" class="review.WriteReview" method="delete">
+				<result type="chain">ListReview</result>
+			</action>
+			<!-- 후기게시판 코멘트 쓰기 -->
+			<action name="WriteReviewCO" class="review.WriteReviewCO">
+				<result type="chain">SelectReview</result>
+			</action>
+
+			<!-- 후기게시판 코멘트 삭제 -->
+			<action name="DeleteReviewCO" class="review.WriteReviewCO"
+				method="DeleteReviewCO">
+				<result type="chain">SelectReview</result>
+			</action>
+
+			<action name="ModifyReviewForm" class="review.WriteReview"
+				method="reviewModifyForm">
+				<result type="tiles">ModifyReview</result>
+			</action>
+
+
+			<action name="ModifyReview" class="review.WriteReview" method="reviewModify">
+				<result type="chain">ListReview</result>
+			</action>
+		</package>
+
+
+
+	
+	</struts>

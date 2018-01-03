@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="khtour">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <property name="context-root" value="khtour"/>
+        <property name="java-output-path" value="/khtour/build/classes"/>
+    </wb-module>
+</project-modules>

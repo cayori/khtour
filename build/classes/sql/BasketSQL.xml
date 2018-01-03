@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN'
+'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+<sqlMap>
+
+	<typeAlias alias="basket" type="basket.BasketVO" />
+
+	<resultMap id="basketRes" class="basket">
+		<result property="no" column="no" />
+		<result property="seq_no" column="seq_no" />
+		<result property="name" column="name" />
+		<result property="price" column="price" />
+		<result property="content" column="content" />
+		<result property="country" column="country" />
+		<result property="region" column="region" />
+		<result property="readcount" column="readcount" />
+		<result property="image1" column="image1" />
+		<result property="image2" column="image2" />
+		<result property="image3" column="image3" />
+		<result property="reg_date" column="reg_date" />
+		<result property="amount" column="amount" />
+		<result property="id" column="id" />
+		<result property="tel" column="tel" />
+		<result property="day" column="day" />
+		<result property="kinds" column="kinds" />
+		<result property="checkin" column="checkin" />
+		<result property="checkout" column="checkout" />
+		<result property="ad" column="ad" />
+		<result property="dd" column="dd" />
+		<result property="hai" column="hai" />
+		<result property="grade" column="grade" />
+		<result property="seat" column="seat" />
+		<result property="room" column="room" />
+		<result property="people" column="people" />
+		<result property="air" column="air" />
+	</resultMap>
+
+
+	<!-- 가져온 상품의 정보를 장바구니 테이블에 저장 -->
+	<insert id="putbasket" parameterClass="basket">
+		INSERT INTO basketvo
+		(no, seq_no, name, price, content, country, region, id,
+		readcount, image1,
+		image2, image3, reg_date, amount, tel, day, kinds,
+		checkin, checkout,
+		ad, dd, hai, seat, grade, room, people, air)
+		VALUES (seq_basketvo.NEXTVAL, #seq_no#, #name#, #price#, #content#, #country#,
+		#region#, #id#,
+		#readcount#, #image1#, #image2#, #image3#, #reg_date#,
+		#amount#,
+		#tel#, #day#, #kinds#, #checkin#, #checkout#, #ad#, #dd#,
+		#hai#, #seat#, #grade#, #room#, #people#, #air#)
+	</insert>
+
+
+	<!-- 세션 id값에 해당하는 장바구니 테이블의 정보를 가져온다. -->
+	<select id="selectbasket" resultMap="basketRes" parameterClass="basket">
+		SELECT * FROM basketvo WHERE id = #id#
+	</select>
+	
+	
+		<!-- 장바구니 체크박사 선택 삭제 -->
+	<delete id="deletebasket" parameterClass="basket">
+		DELETE FROM basketvo WHERE no = #no# and id = #id#
+	</delete>
+	
+	
+
+</sqlMap>
+

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN'
+'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+
+<sqlMap>
+
+	<typeAlias alias="member" type="member.MemberVO" />
+
+	<resultMap id="memberRes" class="member">
+		<result property="no" column="no" />
+		<result property="id" column="id" />
+		<result property="password" column="password" />
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<result property="tel" column="tel" />
+		<result property="admin" column="admin" />
+		<result property="regdate" column="regdate" />
+		<result property="ch" column="ch"/>
+	</resultMap>
+
+
+	<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ관리자ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+
+	<!-- (관리자) 회원목록 -->
+	<select id="searchorallmember" resultMap="memberRes"
+		parameterClass="member">
+		select * from (SELECT * FROM member WHERE $searchn$ like '%'||#search#||'%') WHERE
+		<isEqual property="ch" compareValue="1">
+		 ch = 1 and 
+		</isEqual>
+		<isEqual property="ch" compareValue="0">
+		 ch = 0 and 
+		</isEqual>
+		 admin = 0 or admin = 1 ORDER BY regdate DESC
+	</select>
+
+	<!-- 접속할 때 갱신 -->
+	<update id="updatechon" parameterClass="java.lang.String">
+		UPDATE member SET ch = 1 WHERE id = #id#
+	</update>
+
+	<!-- 접속할 때 갱신 -->
+	<update id="updatechoff" parameterClass="java.lang.String">
+		UPDATE member SET ch = 2 WHERE id = #id#
+	</update>
+	
+	<!-- ch칼럼 값이 2인 아이디들을 불러온다. -->
+	<select id="outid" resultClass="String">
+	    SELECT id FROM member WHERE ch = 2
+	</select>
+	
+	<!-- 세션 만료시 로그아웃처리와 함께 칼럼값 비로그인상태로 갱신 -->
+	<update id="chout" parameterClass="java.lang.String">
+    	UPDATE member SET ch = 0 WHERE id = #id#
+	</update>
+
+
+	<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+
+
+	<!-- 회원가입 -->
+	<insert id="insertmember" parameterClass="member">
+		INSERT INTO member(
+		no,
+		id,
+		password,
+		name,
+		email,
+		tel,
+		admin,
+		regdate,
+		ch) VALUES (
+		seq_memno.NEXTVAL,
+		#id#,
+		#password#,
+		#name#,
+		#email#,
+		#tel#,
+		#admin#,
+		#regdate#,
+		#ch#)
+	</insert>
+
+
+	<!-- 아이디 중복 확인 -->
+	<select id="confirmid" resultClass="java.lang.String"
+		parameterClass="member">
+		SELECT id FROM member WHERE id = #id#
+	</select>
+
+	<!-- 이메일 인증 -->
+	<select id="confirmemail" resultClass="java.lang.String"
+		parameterClass="member">
+		SELECT email FROM member WHERE email = #email#
+	</select>
+
+
+	<!-- 회원정보 수정폼에 해당 회원정보 불러오기 -->
+	<select id="selectmember" resultMap="memberRes" parameterClass="member">
+		SELECT * FROM member WHERE id = #id#
+	</select>
+
+
+	<!-- 회원정보 탈퇴 -->
+	<delete id="deletemember" parameterClass="member">
+		DELETE FROM member
+		WHERE id = #id#
+	</delete>
+
+
+	<!-- 회원정보 수정 및 삭제시 해당 아이디의 비밀번호와 입력한 비밀번호 비교할때 필요한 SQL -->
+	<select id="membercheck" resultClass="java.lang.String"
+		parameterClass="member">
+		SELECT password FROM member WHERE id = #id#
+	</select>
+
+
+	<!-- 헤더에 관리자 조건문을 위한 admin칼럼의 값을 세션에 올려주기 위해 가져옴 -->
+	<select id="admincheck" resultClass="java.lang.String"
+		parameterClass="member">
+		SELECT admin FROM member WHERE id = #id#
+	</select>
+
+
+	<!-- 아이디찾기 (입력된 이름과 이메일이 일치하는 아이디 가져오기) -->
+	<select id="findId" resultClass="java.lang.String"
+		parameterClass="member">
+		SELECT id FROM member WHERE name = #name# and email =
+		#email#
+	</select>
+
+
+	<!-- 비밀번호 찾기 -->
+	<select id="findPw" resultClass="java.lang.String"
+		parameterClass="member">
+		SELECT password FROM member WHERE id = #id# and email =
+		#email#
+	</select>
+
+
+	<!-- 비밀번호 찾기를 한 회원의 비밀번호를 생성한 임시비밀번호로 수정 -->
+	<update id="updatePw" parameterClass="member">
+		UPDATE member SET password
+		= #password# WHERE id = #id#
+	</update>
+
+
+	<!-- 수정 폼에 나타낼 회원의 이름, 이메일, 연락처 -->
+	<select id="selectname" resultClass="java.lang.String"
+		parameterClass="member">
+		SELECT name FROM member WHERE id = #id#
+	</select>
+
+	<select id="selectemail" resultClass="java.lang.String"
+		parameterClass="member">
+		SELECT email FROM member WHERE id = #id#
+	</select>
+
+	<select id="selecttel" resultClass="int" parameterClass="member">
+		SELECT
+		tel FROM member WHERE id = #id#
+	</select>
+
+
+	<!-- 회원정보 수정(새비밀번호를 입력했다면 비밀번호까지 수정) -->
+	<update id="updateMember" parameterClass="member">
+		UPDATE member SET id = #id#
+		<isNotNull property="email">
+			, email = #email#
+		</isNotNull>
+		<isNotNull property="tel">
+			, tel = #tel#
+		</isNotNull>
+		<isNotNull property="admin">
+			, admin = #admin#
+		</isNotNull>
+		<isNotEmpty property="newpassword">
+			, password = #newpassword#
+		</isNotEmpty>
+		WHERE id = #id#
+	</update>
+
+	<!-- 커밋 -->
+	<update id="commit">
+		commit
+	</update>
+
+</sqlMap>

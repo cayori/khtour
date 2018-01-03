@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN'
+	'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap>
+
+	<!-- 리절트 맵 정의 -->
+	<typeAlias alias="hotel" type="hotel.HotelVO" />
+	<typeAlias alias="contentco" type="item.ContentCO" />
+
+	<resultMap id="boardhotel" class="hotel">
+		<result property="no" column="no" />
+		<result property="name" column="name" />
+		<result property="price" column="price" />
+		<result property="content" column="content" />
+		<result property="country" column="country" />
+		<result property="region" column="region" />
+		<result property="image1" column="image1" />
+		<result property="image2" column="image2" />
+		<result property="image3" column="image3" />
+		<result property="image2" column="image2" />
+		<result property="reg_date" column="reg_date" />
+		<result property="readcount" column="readcount" />
+		<result property="amount" column="amount" />
+		<result property="tel" column="tel" />
+		<result property="day" column="day" />
+		<result property="kinds" column="kinds" />
+		<result property="checkin" column="checkin" />
+		<result property="checkout" column="checkout" />
+		<result property="grade" column="grade" />
+		<result property="id" column="id" />
+		<result property="people" column="people" />
+		<result property="room" column="room" />
+	</resultMap>
+
+
+	<resultMap id="contentcoRes" class="contentco">
+		<result property="seq_no" column="seq_no" />
+		<result property="c_no" column="c_no" />
+		<result property="c_id" column="c_id" />
+		<result property="c_reg_date" column="c_reg_date" />
+		<result property="c_content" column="c_content" />
+		<result property="c_grade" column="c_grade" />
+	</resultMap>
+
+
+	<!-- 검색어 없을 때 (정렬만 헀을 때도 포함) -->
+	<select id="listhotel" resultMap="boardhotel" parameterClass="hotel">
+		SELECT * from hotelvo WHERE region like '%'||#searchn#||'%' ORDER BY
+		region DESC, reg_date DESC
+	</select>
+
+
+	<!-- 정렬 후에 검색할 때 -->
+	<select id="searchhotel" resultMap="boardhotel" parameterClass="hotel">
+		SELECT * FROM (SELECT * FROM hotelvo where region like
+		'%'||#searchn#||'%' and people > #people# and room > #room#) where name like '%'||#search#||'%' or content
+		like '%'||#search#||'%'
+		or region like '%'||#search#||'%' ORDER BY
+		reg_date DESC
+	</select>
+
+
+	<!-- -->
+	<select id="searchroom" resultMap="boardhotel" parameterClass="hotel">
+		SELECT * FROM (SELECT * FROM hotelvo) 
+		<isNotNull property="search">
+			WHERE name like '%'||#search#||'%' or content like '%'||#search#||'%' or
+			region like '%'||#search#||'%' 
+		</isNotNull>
+		ORDER BY reg_date DESC
+	</select>
+
+
+
+
+	<select id="HotelNo" resultMap="boardhotel" parameterClass="int">
+		SELECT * FROM HOTELVO WHERE no = #no#
+	</select>
+
+	<select id="HotelLastNo" resultClass="hotel" parameterClass="int">
+		SELECT max(no) as no FROM HOTELVO
+	</select>
+
+	<!-- insert 쿼리문 정리 -->
+		<insert id="inserthotel" parameterClass="hotel">
+		INSERT INTO hotelvo (no,
+		name, price, content, country, region, readcount,
+		image1, image2,
+		image3, reg_date, amount, tel, people, room, cocount,
+		grade)
+		VALUES
+		(seq_postnum.NEXTVAL, #name#, #price#, #content#, #country#,
+		#region#,
+		#readcount#, #image1#, #image2#, #image3#, SYSDATE,
+		#amount#, #tel#,
+		#people#, #room#, #cocount#, #grade#)
+	</insert>
+	
+	<!-- 수정 시 해당 상품의 정보 꺼내오기 -->
+	<select id="modifyhotel" resultMap="boardhotel" parameterClass="hotel">
+		SELECT * FROM hotelvo WHERE no = #no#
+	</select>
+	
+		<!-- 호텔 상품 삭제할 때 관련 코멘트까지 삭제 -->
+	<delete id="deletecoh" parameterClass="hotel">
+	DELETE FROM contentco WHERE seq_no = #no#
+	</delete>
+
+	<!-- update 쿼리문 정의 -->
+		<update id="updatehotel" parameterClass="hotel">
+		UPDATE hotelvo SET price = #price#, name = #name#, content = #content#,
+		country = #country#, region = #region#,
+		amount = #amount#, grade = #grade#, tel = #tel#, people = #people#, room = #room#,
+		COCOUNT = #cocount#
+		<isNotNull property="image1">
+			, image1 = #image1#
+		</isNotNull>
+		<isNotNull property="image2">
+			, image2 = #image2#
+		</isNotNull>
+		<isNotNull property="image3">
+			, image3 = #image3#
+		</isNotNull>
+		WHERE no = #no#
+	</update>
+	
+	
+		<!--장바구니-->
+	<select id="selecthotel" resultMap="boardhotel" parameterClass="hotel">
+		SELECT * FROM hotelvo WHERE no = #no#
+	</select>
+	
+
+	<delete id="deletehotel" parameterClass="hotel">
+		DELETE FROM hotelvo WHERE no = #no#
+	</delete>
+
+	<typeAlias alias="hotel" type="hotel.HotelVO" />
+
+	<resultMap id="hotelRes" class="hotel">
+		<result property="no" column="no" />
+		<result property="name" column="name" />
+		<result property="price" column="price" />
+		<result property="content" column="content" />
+		<result property="country" column="country" />
+		<result property="region" column="region" />
+		<result property="readcount" column="readcount" />
+		<result property="image1" column="image1" />
+		<result property="image2" column="image2" />
+		<result property="image3" column="image3" />
+		<result property="reg_date" column="reg_date" />
+		<result property="amount" column="amount" />
+		<result property="tel" column="tel" />
+		<result property="id" column="id" />
+		<result property="day" column="day" />
+		<result property="kinds" column="kinds" />
+		<result property="checkin" column="checkin" />
+		<result property="checkout" column="checkout" />
+		<result property="grade" column="grade" />
+	</resultMap>
+
+	<sql id="select-allH">
+		SELECT * FROM HOTELVO
+	</sql>
+
+	<sql id="where-noH">
+		where no = #no#
+	</sql>
+
+	<select id="selectAllH" resultMap="hotelRes" parameterClass="int">
+		<include refid="select-allH" />
+		ORDER BY NO DESC
+	</select>
+
+	<select id="selectOneH" resultMap="boardhotel">
+		<![CDATA[ select * from (select * from hotelvo order by grade DESC) WHERE ROWNUM = 1 ]]>
+	</select>
+
+	<select id="selectNoH" resultMap="hotelRes" parameterClass="int">
+	SELECT * FROM hotelvo WHERE no = #no#
+	</select>
+	<!--호텔 코멘트 -->
+
+	<sql id="select-allCC"> <!--공통사용 -->
+		SELECT * FROM CONTENTCO
+	</sql>
+
+	<sql id="select-noCC"> <!--공통사용 -->
+		where seq_no = #no#
+	</sql>
+
+	<select id="selectOneCC" resultMap="contentcoRes"
+		parameterClass="int">
+		<include refid="select-allCC" />
+		<include refid="select-noCC" />
+		ORDER BY c_no DESC
+	</select>
+
+	<insert id="insertCommentH" parameterClass="contentco">
+		INSERT INTO
+		CONTENTCO(SEQ_NO, C_NO, C_ID, C_REG_DATE, C_CONTENT, C_GRADE)
+		VALUES
+		(#seq_no#,
+		seq_contentco.NEXTVAL, #c_id#, SYSDATE, #c_content#,
+		#c_grade#)
+	</insert>
+
+	<update id="updateGrade_hotel" parameterClass="contentco">
+		UPDATE hotelvo SET
+		grade = (SELECT AVG(c_grade) FROM contentco where seq_no = #seq_no#)
+		WHERE no = #seq_no#
+	</update>
+
+
+	<delete id="deleteOneCH" parameterClass="int">
+		DELETE FROM CONTENTCO
+		where c_no = #c_no#
+	</delete>
+
+</sqlMap>

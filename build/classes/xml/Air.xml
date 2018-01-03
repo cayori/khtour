@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+
+
+	<package name="AIR" extends="struts-default,tiles-default">
+
+
+		<interceptors>
+			<interceptor name="logincheck" class="member.LoginCheck" />
+		</interceptors>
+
+		<global-results>
+			<result name="error" type="chain">LoginForm</result>
+		</global-results>
+
+
+		<!-- 항공 상품 목록 -->
+		<action name="ListAir" class="air.ListAir">
+			<result type="tiles">ListAir</result>
+		</action>
+
+		<!-- 항공권상세보기 -->
+		<action name="SelectAir" class="item.SelectOne" method="executeA">
+			<result type="tiles">AirContent</result>
+		</action>
+
+		<!--항공권상세보기 코멘트 쓰기 -->
+		<action name="WriteAirC" class="item.WriteItemComment" method="executeA">
+			<interceptor-ref name="logincheck" />
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="params" />
+			<result type="chain">SelectAir</result>
+		</action>
+
+		<!--항공권상세보기 코멘트 삭제 -->
+		<action name="DeleteAirCD" class="item.WriteItemComment"
+			method="deleteA">
+			<result type="chain">SelectAir</result>
+		</action>
+
+		<!-- 좌석 -->
+		<action name="AirSeat" class="air.ListAir" method="seatForm">
+			<result>/air(1)/index.jsp</result>
+		</action>
+
+
+
+
+	</package>
+</struts>
+ 
+ 
+ 
+ 
+ 

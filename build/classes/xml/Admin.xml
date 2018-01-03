@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+
+	<package name="ADMIN" extends="struts-default, tiles-default">
+
+		<interceptors>
+			<interceptor name="logincheck" class="member.LoginCheck" />
+		</interceptors>
+
+		<global-results>
+			<result name="error" type="chain">LoginForm</result>
+		</global-results>
+
+
+		<!-- 관리자 폼 이동 -->
+		<action name="AdminForm" class="admin.AdminMemberList" method="adminForm">
+			<result type="tiles">AdminForm</result>
+		</action>
+
+		<!-- 회원목록 이동 -->
+		<action name="AdminMemberList" class="admin.AdminMemberList">
+			<result>/admin/adminmember/AdminMemberList.jsp</result>
+		</action>
+
+		<!-- 회원정보 수정 (관리자) -->
+		<action name="AdminMemberModifyForm" class="admin.AdminMemberService">
+			<result type="tiles">AdminMemberModifyForm</result>
+		</action>
+
+		<!-- 회원정보 수정 -->
+		<action name="AdminModifyMember" class="member.MemberService"
+			method="modifyMember">
+			<result type="chain">AdminMemberList</result>
+		</action>
+
+
+		<!-- 회원 탈퇴 (관리자) -->
+		<action name="AdminMemberDelete" class="admin.AdminMemberService"
+			method="delete">
+			<result type="chain">AdminMemberList</result>
+		</action>
+
+
+		<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 상품 등록 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+		<!-- 여행 상품 등록 폼 이동 -->
+		<action name="AdminItemWriteForm" class="admin.AdminItemWrite"
+			method="itemwriteform">
+			<result type="tiles">AdminItemWriteForm</result>
+		</action>
+
+		<!-- 상품 등록 후 여행 목록으로 이동 -->
+		<action name="AdminItemWrite" class="admin.AdminItemWrite">
+			<result type="chain">ListItem</result>
+		</action>
+
+		<!-- 항공 상품 등록 폼으로 이동 -->
+		<action name="AdminAirWriteForm" class="admin.AdminItemWrite"
+			method="airwriteform">
+			<result type="tiles">AdminAirWriteForm</result>
+		</action>
+
+		<!-- 상품 등록 후 항공목록으로 이동 -->
+		<action name="AdminAirWrite" class="admin.AdminItemWrite"
+			method="writeAir">
+			<result type="redirect-action">
+				<param name="actionName">ListAir</param>
+			</result>
+		</action>
+
+		<!-- 호텔 상품 등록 폼으로 이동 -->
+		<action name="AdminHotelWriteForm" class="admin.AdminItemWrite"
+			method="hotelwriteform">
+			<result type="tiles">AdminHotelWriteForm</result>
+		</action>
+
+		<!-- 상품 등록 후 호텔 목록으로 이동 -->
+		<action name="AdminHotelWrite" class="admin.AdminItemWrite"
+			method="writeHotel">
+			<result type="chain">ListHotel</result>
+		</action>
+
+
+		<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 상품 수정 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+		<!-- 여행 상품 수정 폼으로 이동 -->
+		<action name="ModifyItemForm" class="admin.AdminItemModify"
+			method="itemform">
+			<result type="tiles">ModifyItemForm</result>
+		</action>
+
+		<!-- 여행 상품 수정 -->
+		<action name="ModifyItem" class="admin.AdminItemModify">
+			<result type="chain">SelectItem</result>
+		</action>
+
+		<!-- 호텔 상품 수정 폼으로 이동 -->
+		<action name="ModifyHotelForm" class="admin.AdminItemModify"
+			method="hotelform">
+			<result type="tiles">ModifyHotelForm</result>
+		</action>
+
+		<!-- 호텔 상품 수정 -->
+		<action name="ModifyHotel" class="admin.AdminItemModify"
+			method="hotelmodify">
+			<result type="chain">SelectHotel</result>
+		</action>
+
+		<!-- 항공 상품 수정 폼으로 이동 -->
+		<action name="ModifyAirForm" class="admin.AdminItemModify"
+			method="airform">
+			<result type="tiles">ModifyAirForm</result>
+		</action>
+
+		<!-- 항공 상품 수정 -->
+		<action name="ModifyAir" class="admin.AdminItemModify" method="airmodify">
+			<result type="chain">SelectAir</result>
+		</action>
+
+
+		<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ상품 삭제 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+		<!-- 여행 상품 삭제 -->
+		<action name="DeleteItem" class="admin.AdminItemDelete">
+			<result type="chain">ListItem</result>
+		</action>
+
+		<!-- 호텔 상품 삭제 -->
+		<action name="DeleteHotel" class="admin.AdminItemDelete"
+			method="deletehotel">
+			<result type="chain">ListHotel</result>
+		</action>
+
+		<!-- 항공 상품 삭제 -->
+		<action name="DeleteAir" class="admin.AdminItemDelete" method="deleteair">
+			<result type="chain">ListAir</result>
+		</action>
+
+
+	</package>
+
+
+</struts>

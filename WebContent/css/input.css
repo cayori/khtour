@@ -1,0 +1,703 @@
+@charset "utf-8";
+
+/* Lnb */
+.lnb {
+	float: left;
+	width: 220px
+}
+
+<!--
+이거 필요-->.vNav li.active {
+	border: 0;
+	z-index: 2
+}
+
+.vNav li li.active {
+	border: 0;
+	background: #fff;
+	border-bottom: 1px solid #e5e5e5
+}
+
+.vNav li.active li a {
+	border: 0;
+	background: #fff;
+	border-left: 1px solid #e5e5e5;
+	border-right: 1px solid #e5e5e5
+}
+
+.vNav li.active a {
+	color: #fff;
+	border: 0;
+	background: #ff6610
+}
+
+.vNav li.active .i {
+	background-position: 0 -47px
+}
+
+.vNav li.active span.urlcopy {
+	background-position: 0 -23px
+}
+
+.vNav li.active ul {
+	display: block;
+	border-top: 0
+}
+
+.vNav li.active li.active a span {
+	color: #ff6610;
+	font-weight: 600;
+	text-decoration: underline;
+	letter-spacing: -1px
+}
+
+.vNav li.active li ul {
+	display: block;
+	border: 0
+}
+
+.vNav li.active li.active ul li {
+	border: 0
+}
+/*.vNav li.active li.active ul li a{ padding:2px 23px}*/
+.vNav li.active li.active ul li a.last {
+	padding-bottom: 12px
+}
+
+.vNav li.active li.active ul li a span {
+	color: #666;
+	letter-spacing: -1px;
+	text-decoration: none
+}
+
+.vNav li.active li.active ul li.active a span {
+	color: #ff6610;
+	letter-spacing: -1px;
+}
+
+/* Tabbable(only left-right tabs) */
+.tabbable {
+	*zoom: 1
+}
+
+.tabbable:before, .tabbable:after {
+	display: table;
+	line-height: 0;
+	content: ""
+}
+
+.tabbable:after {
+	clear: both
+}
+
+.tabbable {
+	position: relative;
+	border-bottom: 1px solid #ababab
+}
+
+.tabbable a.more {
+	position: absolute;
+	top: 8px;
+	right: 0
+}
+
+.tabbable .descrip_joineditor {
+	position: absolute;
+	top: 9px;
+	left: 135px;
+	font-weight: 600
+}
+
+.tabbable .descrip_joineditor span {
+	color: #ff6610
+}
+
+.tab-content {
+	overflow: auto
+}
+
+.tab-content>.tab-pane {
+	display: none;
+	border: 1px solid #e5e5e5;
+	border-top: 0;
+	padding: 10px 30px 15px 30px;
+	background: #fff;
+	overflow: hidden;
+	letter-spacing: 0;
+	line-height: 22px;
+	color: #333
+}
+
+.tab-content>.active {
+	display: block
+}
+
+.tab-content .spot_list {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.tab-content .spot_list li {
+	margin-left: 9px;
+	float: left;
+	text-align: center;
+	width: 140px
+}
+
+.tab-content .spot_list li a {
+	text-decoration: none
+}
+
+.tab-content .spot_list li:first-child {
+	margin-left: 0
+}
+
+.tab-content .spot_list li p.title {
+	color: black;
+	margin-top: 15px
+}
+
+.tab-content .spot_list li p.title:hover {
+	text-decoration: underline
+}
+
+.tab-content .spot_list li p.comment {
+	color: #999999;
+	margin-top: 4px
+}
+
+.tab-content .spot_list li p.comment:hover {
+	text-decoration: underline
+}
+
+.navigation {
+	margin: 0;
+	list-style: none;
+	border-bottom: 2px solid #373737
+}
+
+.navigation>li>a {
+	display: block
+}
+
+.navigation>li>a:hover {
+	text-decoration: none
+}
+
+.nav-tabs {
+	*zoom: 1
+}
+
+.nav-tabs:before, .nav-tabs:after {
+	display: table;
+	line-height: 1.5em;
+	content: ""
+}
+
+.nav-tabs:after {
+	clear: both
+}
+
+.nav-tabs>li {
+	float: left
+}
+
+.nav-tabs>li>a:hover {
+	background: #373737
+}
+
+.nav-tabs>li>a {
+	font-size: 16px;
+	font-weight: 600;
+	color: #fff;
+	text-align: center;
+	background: #8b8b8b;
+	padding: 8px 20px 6px 20px
+}
+
+.nav-tabs>li>a {
+	-webkit-border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	border-radius: 4px 4px 0 0
+}
+
+.nav-tabs>.active>a, .nav-tabs>.active>a:hover {
+	font-size: 16px;
+	font-weight: 600;
+	color: #fff;
+	cursor: default;
+	background-color: #373737
+}
+
+@charset "utf-8";
+
+.tourtips_user .end {
+	background-position: 0 -24px
+}
+/* 로그인 */
+.login_box {
+	position: relative;
+	margin-top: 30px;
+}
+
+.login_box h3 {
+	margin: 0 0 30px 0;
+	padding: 0 0 10px 0;
+	font-size: 16px;
+	font-weight: 600;
+	color: #000;
+	border-bottom: 2px solid #000
+}
+
+.login_box label.title {
+	display: block;
+	float: left;
+	font-size: 16px;
+	font-weight: 600;
+	color: #000;
+	margin-top: 2px;
+	padding: 3px 0 3px 11px;
+	background: url(//img.tourtips.com/images/common/bullet_black.gif) 0 45%
+		no-repeat
+}
+
+.login_box label.fb_login {
+	padding-top: 7px;
+	margin-right: 15px
+}
+
+.login_box input[type="text"] {
+	margin: 1px 0;
+	font-size: 13px;
+	color: #666;
+	width: 250px;
+	border: 1px solid #ddd;
+	background: #f5f5f5
+}
+
+.login_box input[type="password"] {
+	margin: 1px 0;
+	_font-size: 13px;
+	color: #666;
+	width: 250px;
+	height: 16px;
+	border: 1px solid #ddd;
+	background: #f5f5f5;
+}
+
+.login_box input[type="radio"] {
+	margin: 7px 2px 0 0;
+	*margin: 4px 0 0 0;
+	vertical-align: bottom;
+	*vertical-align: middle
+}
+
+.login_box .input_id {
+	margin: 0 0 5px 195px
+}
+
+.login_box .input_pw {
+	position: relative;
+	margin-left: 95px
+}
+
+.login_box .input_pw label {
+	display: inline-block;
+	*display: inline;
+	font-size: 13px;
+	color: #666;
+	margin-right: 20px;
+	cursor: pointer
+}
+
+.login_box .input_pw2 {
+	height: 30px
+}
+
+.login_box .selectbox {
+	position: absolute;
+	z-index: 50;
+	top: 95px;
+	left: 95px
+}
+
+.login_box .login {
+	position: absolute;
+	top: 0;
+	left: 470px
+}
+
+.dot_line {
+	display: block;
+	clear: both;
+	margin: 30px 0;
+	height: 1px;
+	background: url(//img.tourtips.com/images/join/dot_line.gif) repeat-x
+}
+
+.gray_line {
+	display: block;
+	margin: 10px 0;
+	height: 1px;
+	background: #ddd
+}
+
+/*S:네이버,페북 버튼*/
+.sns_btn {
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	margin: 0;
+	padding: 0;
+	padding-left: 39px;
+	border: none;
+	background: url(//img.tourtips.com/images/common/sns_btn.png) no-repeat
+		left top;
+	height: 38px;
+	vertical-align: top
+}
+
+.sns_btn span {
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	margin: 0;
+	padding: 0 20px 0px 10px;
+	background: url(//img.tourtips.com/images/common/sns_btn.png) no-repeat
+		right top;
+	height: 38px;
+	line-height: 38px;
+	color: #fff;
+	font-size: 15px;
+	font-weight: bold;
+	vertical-align: top
+}
+
+.nv_btn {
+	background-position: left bottom
+}
+
+.nv_btn span {
+	background-position: right bottom
+}
+
+.fbs_btn {
+	background-position: left top
+}
+
+.fbs_btn span {
+	background-position: right top
+}
+/*E:네이버,페북 버튼*/
+
+/* 회원정보수정-로그인 */
+.user_info_edit {
+	
+}
+
+.user_info_edit .info_edit_title {
+	display: inline-block;
+	padding: 10px 20px;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 600;
+	background: #373737;
+	-webkit-border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	border-radius: 4px 4px 0 0
+}
+
+.user_info_edit .login_box {
+	margin-top: 0px;
+	text-align: center;
+}
+
+.user_info_edit .login_box div {
+	padding: 30px 0 30px 80px;
+	overflow: hidden;
+	border-top: 2px solid #373737;
+	border-bottom: 1px dotted #999
+}
+
+.user_info_edit .login_box label.title {
+	background: none;
+}
+
+.user_info_edit .login_box .input_id {
+	float: left;
+	margin: 2px 20px 0 10px;
+	color: #f47721;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.user_info_edit .login_box .login {
+	top: 185px;
+	left: 50%;
+	margin-left: -35px;
+}
+
+.user_info_edit .login_box .coment {
+	clear: both;
+	margin: 30px 0;
+	color: #666;
+	font-size: 13px;
+}
+
+.user_info_edit .login_box .coment span {
+	color: #f47721
+}
+
+.user_info_edit .login_box .input_id {
+	margin-top: 4px;
+}
+
+.login_box .input_id {
+	margin: 0 0 5px 195px
+}
+/* Lnb */
+.lnb {
+	float: left;
+	width: 220px
+}
+
+.join_table input[type="text"], .join_table input[type="file"],
+	.join_table textarea {
+	color: #666;
+	padding: 5px;
+	background-color: #f5f5f5;
+	border: 1px solid #ddd;
+	-webkit-box-shadow: inset 1px 1px 1px 0 rgba(0, 0, 0, 0.35);
+	-moz-box-shadow: inset 1px 1px 1px 0 rgba(0, 0, 0, 0.35);
+	box-shadow: inset 1px 1px 1px 0 rgba(0, 0, 0, 0.35)
+}
+
+.join_table input[type="password"], .join_table input[type="file"],
+	.join_table textarea {
+	color: #666;
+	background-color: #f5f5f5;
+	-webkit-box-shadow: inset 1px 1px 1px 0 rgba(0, 0, 0, 0.35);
+	-moz-box-shadow: inset 1px 1px 1px 0 rgba(0, 0, 0, 0.35);
+	box-shadow: inset 1px 1px 1px 0 rgba(0, 0, 0, 0.35)
+}
+
+.join_table table {
+	width: 100%;
+	border: 0
+}
+
+.join_table th, .join_table td {
+	position: relative;
+	padding: 8px 0;
+	border: 0;
+	vertical-align: top
+}
+
+.inline_area {
+	position: relative;
+	margin: 0 auto;
+	width: 1091px;
+	padding: 0 0px
+}
+/* Content */
+.body {
+	position: relative;
+	z-index: 50;
+	margin: 0 auto;
+	width: 1091px;
+	padding: 42px 20px 100px 20px
+}
+
+.body_wide {
+	position: relative;
+	z-index: 50;
+	margin: 0 auto;
+	width: 1460px;
+	padding: 42px 20px 100px 20px
+}
+
+.sbody {
+	position: relative;
+	float: left;
+	margin-left: 70px;
+	width: 800px
+}
+
+.sbody_wide {
+	position: relative;
+	float: left;
+	margin-left: 70px;
+	width: 1170px
+}
+
+.snavi {
+	color: #666;
+	border-bottom: 1px solid #dfdfdf;
+	letter-spacing: -0.15em;
+	padding: 12px 0 11px 0
+}
+
+h2.sub_title {
+	position: relative;
+	font-size: 18px;
+	color: #000;
+	letter-spacing: 0em;
+	line-height: 22px;
+	padding: 30px 0 20px 0;
+	font-weight: 600
+}
+
+h2.sub_title span {
+	top: 37px;
+	left: 0;
+	font-size: 13px;
+	color: #666;
+	text-align: left;
+	letter-spacing: -0.05em;
+	line-height: 13px
+}
+
+h2.sub_title img {
+	margin-right: 6px;
+	vertical-align: middle
+}
+
+h2.sub_title2 {
+	font-size: 25px;
+	color: #000;
+	letter-spacing: -0.15em;
+	line-height: 22px;
+	padding: 30px 0 20px 0
+}
+
+h2.sub_title2 span {
+	font-size: 20px;
+	font-weight: 600;
+	letter-spacing: -0.05em;
+	margin-left: 7px;
+	line-height: 28px
+}
+
+h2.sub_title2 strong {
+	font-size: 13px;
+	font-weight: normal;
+	color: #999;
+	letter-spacing: -0.05em;
+	margin-left: 10px
+}
+
+h2.cs_title {
+	display: block;
+	position: relative;
+	width: 100%;
+	font-size: 18px;
+	color: #000;
+	letter-spacing: -0.15em;
+	line-height: 22px;
+	padding: 6px 0 10px 0;
+	border-bottom: 2px solid #373737
+}
+
+.hgroup {
+	margin: 0;
+	padding: 0
+}
+
+.hgroup p {
+	font-size: 16px;
+	color: #000;
+	font-weight: 600;
+	margin-top: -16px
+}
+
+.select_cate {
+	position: relative;
+	font-size: 13px;
+	color: #666;
+	border-bottom: 1px solid #dfdfdf;
+	letter-spacing: -0.15em;
+	padding: 12px 0 11px 0
+}
+
+.icongroup {
+	position: absolute;
+	top: 2px;
+	right: 0;
+	width: 405px;
+}
+
+.icongroup:after {
+	clear: both;
+	content: " ";
+	display: block;
+	zoom: 1
+}
+
+.icongroup p {
+	float: right;
+	margin-left: 4px;
+	cursor: pointer
+}
+/*.icongroup p.edit		{ margin-left:4px}*/
+/*.icongroup p a,*/
+/*.icongroup p p 		    { margin:0;display:inline-block;width:auto;cursor:pointer;float:left;margin-left: 5px}*/
+/*.icongroup p p.longSpace {width:80px;}*/
+.print_tip {
+	position: absolute;
+	top: 36px;
+	right: 0;
+	display: none;
+	*display: inline;
+	zoom: 1;
+	padding: 15px 25px;
+	width: 231px;
+	border: 1px solid #999;
+	background: #fff;
+	z-index: 100
+}
+
+.print_tip p {
+	font-size: 11px;
+	letter-spacing: 0
+}
+
+.print_tip span {
+	color: #ff0101
+}
+
+.print_tip .tip_arrow {
+	position: absolute;
+	top: -7px;
+	left: 25px;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	width: 11px;
+	height: 7px;
+	background: url("//img.tourtips.com/images/common/help_tip.gif")
+		no-repeat left top
+}
+
+.sns_group {
+	position: relative;
+	margin-top: 9px;
+	height: 30px;
+}
+
+<!--
+----------
+-->
+.join_btn.xLarge button {
+	height: 63px;
+	padding: 0 20px 0 18px;
+	font-size: 18px;
+	line-height: 63px;
+	background-position: right -47px
+}
+
+.add_info {
+	position: relative;
+	padding: 18px;
+	border: 1px solid #e9df74;
+	background: #fbf5b7
+}

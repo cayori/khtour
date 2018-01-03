@@ -1,0 +1,180 @@
+@FONT-FACE{
+	FONT-FAMILY: 'NanumGothic';
+	src: url('../fonts/NanumGothic.eot');
+}
+BODY {FONT-SIZE: 9pt; COLOR: #1E2026; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic}
+TD {FONT-SIZE: 9pt; COLOR: #1E2026; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic}+
+.header {FONT-SIZE: 13pt; COLOR: #1E2026; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic}
+.body {FONT-SIZE: 10pt; COLOR: white; BACKGROUND-COLOR:#1E2026; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic; font-weight:bold}
+.body_indigo13 {FONT-SIZE: 13pt; COLOR: white; BACKGROUND-COLOR:#1d2a63; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic; font-weight:bold}
+.body_white_b4 {FONT-SIZE: 10pt; COLOR: #1E2026; BACKGROUND-COLOR:#FFFFFF; BORDER: 2px solid #BDBDBD; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic; font-weight:bold}
+.body_grey_b2 {FONT-SIZE: 10pt; COLOR: #FFC846; BACKGROUND-COLOR:#F2F2F2; BORDER-RIGHT: 1px solid #B6B6B6; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic; font-weight:bold}
+.body_grey_b {FONT-SIZE: 10pt; COLOR: #FFFFFF; BACKGROUND-COLOR:#3CA0FF; BORDER-RIGHT: 1px solid #B6B6B6; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic; font-weight:bold}
+.body_grey_b4 {FONT-SIZE: 9pt; COLOR: #1E2026; BACKGROUND-COLOR:#F2F2F2; BORDER: 1px solid #B6B6B6; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic; }
+.body_grey {FONT-SIZE: 10pt; COLOR:#FFFFFF; BACKGROUND-COLOR:#3CA0FF; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic; font-weight:bold}
+.body_loran_b {FONT-SIZE: 10pt; COLOR: #1E2026; BACKGROUND-COLOR:#FFF5EC; BORDER-RIGHT: 1px solid #FFE2C9; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic; font-weight:bold}
+.body_loran {FONT-SIZE: 10pt; COLOR: #1E2026; BACKGROUND-COLOR:#FFF5EC; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic; font-weight:bold}
+.body2 {FONT-SIZE: 10pt; COLOR: white; BACKGROUND-COLOR:#00709e; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic}
+.body_orange15 {FONT-SIZE: 15pt; COLOR: white; BACKGROUND-COLOR:#00709e; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic; font-weight:bold}
+.grey {FONT-SIZE: 10pt; COLOR: #1E2026; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic; BACKGROUND-COLOR: #F2F2F2}
+.h_grey {FONT-SIZE: 9pt; COLOR: #898A8D; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic}
+.white {FONT-SIZE: 9pt; COLOR: #1E2026; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic; BACKGROUND-COLOR: #FFFFFF}
+.indigo {FONT-SIZE: 9pt; COLOR: #1E2026; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic; BACKGROUND-COLOR: #FFFFFF}
+.carlist {FONT-SIZE: 10pt; COLOR: #FFFFFF; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic; BACKGROUND-COLOR: #000000; font-weight:bold}
+.carlist2 {FONT-SIZE: 9pt; COLOR: #FFFFFF; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic; BACKGROUND-COLOR: #000000}
+.f_grey {FONT-SIZE: 9pt; COLOR: #898A8D; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic; font-weight:bold}
+.f_white {FONT-SIZE: 11pt; COLOR: #FFFFFF; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic; font-weight:bold}
+.f9_white {FONT-SIZE: 9pt; COLOR: #FFFFFF; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic}
+.f_indigo {FONT-SIZE: 11pt; COLOR: #1E2026; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic; font-weight:bold}
+.f13_indigo {FONT-SIZE: 13pt; COLOR: #1E2026; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic; font-weight:bold}
+.f15_indigo {FONT-SIZE: 15pt; COLOR: #1E2026; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic; font-weight:bold}
+.f_orange {FONT-SIZE: 11pt; COLOR: #00709e; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic; font-weight:bold}
+.f13_orange {FONT-SIZE: 13pt; COLOR: #00709e; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic; font-weight:bold}
+.f15_orange {FONT-SIZE: 15pt; COLOR: #00709e; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic; font-weight:bold}
+.f13_black {FONT-SIZE: 11pt; COLOR: #1E2026; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic}
+.inputb {BORDER-BOTTOM: #999999 1px solid; BORDER-LEFT: #cecece 1px solid;BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #cecece 1px solid; COLOR: #000000; FONT-SIZE: 9pt;background-color: #EDEDED;}
+.body1 {background-image: url('icon/body1_background.png')}
+SELECT {FONT-SIZE: 9pt; COLOR: #1E2026; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic}
+DIV {FONT-SIZE: 9pt; COLOR: #1E2026; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic}
+FORM {FONT-SIZE: 9pt; COLOR: #1E2026; LINE-HEIGHT: 160%; FONT-FAMILY: NanumGothic}
+TEXTAREA {
+BORDER-RIGHT: 1px solid #bdbdbd; BORDER-TOP: 1px solid #bdbdbd; FONT-SIZE: 9pt;
+BORDER-LEFT: 1px solid #bdbdbd; COLOR: #1E2026; BORDER-BOTTOM: 1px solid #bdbdbd;
+FONT-FAMILY: NanumGothic; BACKGROUND-COLOR: white
+}
+.text_b{
+BORDER: 0px; FONT-SIZE: 9pt; COLOR: #1E2026; FONT-FAMILY: NanumGothic; BACKGROUND-COLOR: white
+}
+INPUT {
+BORDER-RIGHT: 1px solid #bdbdbd; BORDER-TOP: 1px solid #bdbdbd; FONT-SIZE: 9pt;
+BORDER-LEFT: 1px solid #bdbdbd; COLOR: #1E2026; BORDER-BOTTOM: 1px solid #bdbdbd;
+FONT-FAMILY: NanumGothic; HEIGHT: 19px; BACKGROUND-COLOR: white
+}
+.none {BORDER: 0px; FONT-FAMILY: NanumGothic; HEIGHT: 19px}
+
+
+#btn_box { clear:both; float:left; width:100%; text-align:center; }
+
+/* btn Á¦¾î */
+a.mypage1 { display:inline-block; width:180px; height:39px; margin:5 0px; background:url(../icon/mypage_1.gif) no-repeat 0px top; }
+a:hover.mypage1 { display:inline-block; width:180px; height:39px; margin:5 0px; background:url(../icon/mypage_1.gif) no-repeat 0px bottom; }
+a.mypage2 { display:inline-block; width:180px; height:39px; margin:5 0px; background:url(../icon/mypage_2.gif) no-repeat 0px top; }
+a:hover.mypage2 { display:inline-block; width:180px; height:39px; margin:5 0px; background:url(../icon/mypage_2.gif) no-repeat 0px bottom; }
+a.mypage3 { display:inline-block; width:180px; height:39px; margin:5 0px; background:url(../icon/mypage_3.gif) no-repeat 0px top; }
+a:hover.mypage3 { display:inline-block; width:180px; height:39px; margin:5 0px; background:url(../icon/mypage_3.gif) no-repeat 0px bottom; } 
+
+a.board1 { display:inline-block; width:180px; height:39px; margin:5 0px; background:url(../icon/board_1.gif) no-repeat 0px top; }
+a:hover.board1 { display:inline-block; width:180px; height:39px; margin:5 0px; background:url(../icon/board_1.gif) no-repeat 0px bottom; }
+a.board2 { display:inline-block; width:180px; height:39px; margin:5 0px; background:url(../icon/board_2.gif) no-repeat 0px top; }
+a:hover.board2 { display:inline-block; width:180px; height:39px; margin:5 0px; background:url(../icon/board_2.gif) no-repeat 0px bottom; }
+a.board3 { display:inline-block; width:180px; height:39px; margin:5 0px; background:url(../icon/board_3.gif) no-repeat 0px top; }
+a:hover.board3 { display:inline-block; width:180px; height:39px; margin:5 0px; background:url(../icon/board_3.gif) no-repeat 0px bottom; } 
+a.board4 { display:inline-block; width:180px; height:39px; margin:5 0px; background:url(../icon/board_4.gif) no-repeat 0px top; }
+a:hover.board4 { display:inline-block; width:180px; height:39px; margin:5 0px; background:url(../icon/board_4.gif) no-repeat 0px bottom; } 
+
+a.admin1 { display:inline-block; width:180px; height:39px; margin:5 0px; background:url(../icon/admin_1.gif) no-repeat 0px top; }
+a:hover.admin1 { display:inline-block; width:180px; height:39px; margin:5 0px; background:url(../icon/admin_1.gif) no-repeat 0px bottom; }
+a.admin2 { display:inline-block; width:180px; height:39px; margin:5 0px; background:url(../icon/admin_2.gif) no-repeat 0px top; }
+a:hover.admin2 { display:inline-block; width:180px; height:39px; margin:5 0px; background:url(../icon/admin_2.gif) no-repeat 0px bottom; }
+a.admin3 { display:inline-block; width:180px; height:39px; margin:5 0px; background:url(../icon/admin_3.gif) no-repeat 0px top; }
+a:hover.admin3 { display:inline-block; width:180px; height:39px; margin:5 0px; background:url(../icon/admin_3.gif) no-repeat 0px bottom; } 
+a.admin4 { display:inline-block; width:180px; height:39px; margin:5 0px; background:url(../icon/admin_4.gif) no-repeat 0px top; }
+a:hover.admin4 { display:inline-block; width:180px; height:39px; margin:5 0px; background:url(../icon/admin_4.gif) no-repeat 0px bottom; } 
+a.admin5 { display:inline-block; width:180px; height:39px; margin:5 0px; background:url(../icon/admin_5.gif) no-repeat 0px top; }
+a:hover.admin5 { display:inline-block; width:180px; height:39px; margin:5 0px; background:url(../icon/admin_5.gif) no-repeat 0px bottom; } 
+a.admin6 { display:inline-block; width:180px; height:39px; margin:5 0px; background:url(../icon/admin_6.gif) no-repeat 0px top; }
+a:hover.admin6 { display:inline-block; width:180px; height:39px; margin:5 0px; background:url(../icon/admin_6.gif) no-repeat 0px bottom; } 
+
+
+/* tab menu */
+#tab_menus {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+#tab_menus li {
+	/* margin-bottom: 16px; */
+	float: left;
+	font-size: 13px;
+	padding: 0px;
+	background-color: #00709e;
+}
+#tab_menus li a {
+	padding: 8px 10px;
+	color: #505050;
+	/* border-width: 1px 0 1px 1px;
+	border-style: solid;
+	border-color: #ae9f96; */
+	background-color: #F2F2F2;
+	background-image: none;
+	font-weight: bold;
+	font-size: 0.9em;
+	display: block;
+}
+#tab_menus li a:hover {
+	color: black;
+	background-color: #00709e;
+}
+#tab_menus li.selected a {
+	/* border-bottom: 0 solid white; */
+	background: #1E2026 url("blt_arrowdown.gif") no-repeat center bottom;
+	color: #00709e;
+}
+.tab_right {
+	/* margin-bottom: 16px; */
+	/* border-width: 0 0 1px 1px;
+	border-style: solid;
+	border-color: #ae9f96; */
+	width: 80px;
+	height: 31px;
+	float: left;
+}
+
+/* content */
+.content {
+	clear: both;
+	/* padding-left: 10px; */
+	/* background-color: #FFFFFF; */
+}
+.content h3 {
+	margin: 0;
+	padding: 0;
+	font-size: 1.2em;
+	background-color: #FFFFFF;
+}
+.content P {
+	margin: 0;
+	padding: 0;
+	font-size: 1.2em;
+	background-color: #FFFFFF;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+.content h3 a {
+	color: #00709e;
+}
+
+
+
+
+
+
+a:link {text-decoration:none;color:#1E2026}
+a.t1:link {text-decoration:none;color:#1E2026}
+a.h2_grey:link {text-decoration:none;color:#898A8D}
+a.h2_white:link {text-decoration:none;color:#FFFFFF}
+
+a:visited {text-decoration:none;color:#1E2026}
+a.t1:visited {text-decoration:none;color:#1E2026}
+a.h2_grey:visited {text-decoration:none;color:#898A8D}
+a.h2_white:visited {text-decoration:none;color:#FFFFFF}
+
+a:hover {text-decoration:none;color:#00709e}
+a.t1:hover {text-decoration:none;color:#00709e}
+a.h2_grey:hover {text-decoration:none;color:#898A8D}
+a.h2_white:hover {text-decoration:none;color:#FFFFFF}
+
+a:active {text-decoration:none;color:#1E2026}
+a.t1:active {text-decoration:none;color:#00709e}
+a.h2_grey:hover {text-decoration:none;color:#898A8D}
+a.h2_white:hover {text-decoration:none;color:#FFFFFF}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>  <!-- 필수 -->
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"  
+	"http://ibatis.apache.org/dtd/sql-map-config-2.dtd">  <!-- 필수 -->
+<sqlMapConfig>  <!-- 필수 -->
+	<properties resource="/dbconnect.properties" /> <!-- 명시된 프로퍼티 에서 변수 값을 가져온다. -->
+	<settings cacheModelsEnabled="true" enhancementEnabled="true"
+		lazyLoadingEnabled="true" maxRequests="32" maxSessions="10"
+		maxTransactions="5" useStatementNamespaces="false" /> <!-- 트랜잭션 관리 및 sqlMapClient 상세 제어 -->
+
+	<transactionManager type="JDBC" commitRequired="false">  <!-- DataSource를 이용해 SQL Map을 사용하기 위한 데이터소스 설정 -->
+		<dataSource type="SIMPLE">
+			<property name="JDBC.Driver" value="${driver}" />  <!-- properties에 정해놓은 key이름 -->
+			<property name="JDBC.ConnectionURL" value="${url}" />
+			<property name="JDBC.Username" value="${username}" />
+			<property name="JDBC.Password" value="${password}" />
+		</dataSource>
+	</transactionManager>
+
+    <!-- 회원정보 xml -->
+	<sqlMap resource="/sql/MemberSQL.xml" /> <!-- sqlMapConfig에 의해 로드되는 모든 SQL Map 파일을 가져온다. -->
+	
+	<!-- 장바구니 xml -->
+	<sqlMap resource="/sql/BasketSQL.xml" />
+
+    <!-- 여행 상품 -->
+    <sqlMap resource="/sql/ItemSQL.xml" />
+    
+    <!-- 호텔 상품 -->
+    <sqlMap resource="/sql/HotelSQL.xml" />
+    
+    <!-- 고객센터-->
+    <sqlMap resource="/sql/ServiceSQL.xml" />
+    
+    <!-- 항공 상품 -->
+    <sqlMap resource="/sql/AirSQL.xml" />
+    
+    <!-- 결제 -->
+    <sqlMap resource="/sql/PaySQL.xml" />
+    
+    <!-- 후기 -->
+    <sqlMap resource="/sql/ReviewSQL.xml" />
+    
+</sqlMapConfig>

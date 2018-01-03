@@ -1,0 +1,737 @@
+@charset "utf-8";
+
+/** 검색 페이지 공통 및 레이아웃 **/
+/** Layout - 검색 **/
+
+.box2 {
+  display: inline;
+  width: 200px;
+  height: 100px;
+  margin: 1em;
+}
+
+.container .content-main {
+	padding-top: 30px;
+}
+
+.compare .aside {
+	padding-top: 200px;
+}
+
+.compare .not-has-relation .aside {
+	padding-top: 138px;
+}
+
+/* 검색페이지 공통 이미지 */
+.ico-search {
+	background:
+		url(//image.wemakeprice.com/images/resources/wmp/pages/search/ico-search.png)
+		no-repeat;
+}
+
+.btn-search-comm {
+	display: block;
+	overflow: hidden;
+	background:
+		url(//image.wemakeprice.com/images/resources/wmp/pages/search/btn-search.png)
+		no-repeat;
+	text-indent: -9999px;
+}
+
+/* 검색페이지 */
+.search_result_head {
+	position: relative;
+	z-index: 1;
+	*zoom: 1;
+}
+
+.search_result_head:before, .search_result_head:after {
+	display: table;
+	content: '';
+}
+
+.search_result_head:after {
+	clear: both;
+}
+
+/* 검색페이지 - 검색결과 타이틀 */
+.search__result_title {
+	overflow: hidden;
+	margin-bottom: -1px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #ddd;
+	font-weight: bold;
+	font-size: 18px;
+	color: #333;
+	line-height: 20px;
+}
+
+.search__result_title .txt_inline {
+	white-space: nowrap;
+}
+
+.search__result_title .count {
+	display: inline-block;
+	position: relative;
+	top: -1px;
+	margin-left: 3px;
+	font-family: tahoma;
+	font-size: 18px;
+	line-height: 18px;
+	letter-spacing: 0;
+	vertical-align: baseline;
+}
+
+.search__result_title a.txt_depth {
+	margin-right: 5px;
+	padding-right: 9px;
+	background:
+		url(//image.wemakeprice.com/images/resources/wmp/pages/search/ico-search-result-arr.png)
+		no-repeat 100% 4px;
+	color: #333;
+}
+
+.search__result_title a.txt_depth:hover {
+	text-decoration: underline;
+}
+
+.search__result_title span.txt_depth {
+	color: #ce1710;
+}
+
+.search__result_title span.txt_depth .count {
+	top: -1px;
+	font-size: 14px;
+}
+
+.search__result_title span.txt_depth .txt_num {
+	font-family: '돋움', dotum;
+	font-size: 12px;
+}
+
+.search__result_title .reduce {
+	display: inline-block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	vertical-align: top;
+	*vertical-align: baseline;
+	*zoom: 1;
+}
+
+.search__result_title .ellipsis {
+	max-width: 250px;
+}
+
+.search_result_empty .search__result_title {
+	padding-left: 50px;
+	background:
+		url(//image.wemakeprice.com/images/2014/search/ico_search.png)
+		no-repeat 10px 0;
+}
+
+/* 검색페이지 - 연관검색어 */
+.search__relation_word {
+	overflow: hidden;
+	position: relative;
+	height: 39px;
+	margin: -3px 0 30px;
+	padding: 2px 0 0 14px;
+	background-color: #f3f3f3;
+	color: #333;
+	line-height: 39px;
+}
+/*.search__relation_word {margin-top:-25px;}*/
+.search__relation_word .tit_relation {
+	float: left;
+	margin-right: 19px;
+	padding-right: 13px;
+	background:
+		url(//image.wemakeprice.com/images/2014/search/ico_relation_arr.png)
+		no-repeat 100% 16px;
+	font-weight: bold;
+	color: #333;
+	line-height: 39px
+}
+
+.search__relation_word .list_relation {
+	overflow: hidden;
+}
+
+.search__relation_word .list_relation>li {
+	float: left;
+	margin-right: 18px;
+}
+
+.search__relation_word .list_relation>li>a {
+	color: #333;
+	white-space: nowrap;
+}
+
+.search__relation_word .list_relation>li>a:hover {
+	text-decoration: underline;
+}
+
+/* 검색페이지 - 관련검색어 */
+.search__related-searches {
+	margin: 20px 0 17px;
+	*zoom: 1;
+}
+
+.search__related-searches:before, .search__related-searches:after {
+	display: table;
+	content: '';
+}
+
+.search__related-searches:after {
+	clear: both;
+}
+
+.search__related-searches .ico-related {
+	float: left;
+	width: 15px;
+	height: 16px;
+	margin-right: 4px;
+	background-position: 0 -75px;
+}
+
+.search__related-searches .txt {
+	overflow: hidden;
+	font-weight: bold;
+	line-height: 16px;
+	color: #333;
+}
+
+.search__related-searches .txt strong {
+	color: #198292;
+}
+
+/* 검색페이지 - 카테고리 및 가격대 검색 */
+.search_result_cate {
+	margin-bottom: 13px;
+}
+
+/* 검색페이지 - 카테고리 */
+.search__list_category {
+	position: relative;
+	min-height: 49px;
+	border-top: 1px solid #ddd;
+	background:
+		url(//image.wemakeprice.com/images/2014/search/bg_sarch_tab.png)
+		repeat-x;
+	*zoom: 1;
+}
+
+.search__list_category:after {
+	display: block;
+	clear: both;
+	content: '';
+}
+
+.search__list_category .list_cate {
+	float: left;
+	width: 936px;
+	min-height: 49px;
+	border-right: 1px solid #ddd;
+}
+
+.search__list_category .list_cate>li {
+	float: left;
+	width: 100%;
+}
+
+.search__list_category .list_cate .wrap_link_cate {
+	height: 0;
+}
+
+.search__list_category .list_cate .link_cate {
+	position: absolute;
+	top: 0;
+	font-weight: bold;
+	font-size: 12px;
+	color: #333;
+	text-align: center;
+	background-color: #f9f9f9;
+}
+
+.search__list_category .list_cate .cate01 .link_cate {
+	left: 0px;
+	border-left: 1px solid #ddd;
+}
+
+.search__list_category .list_cate .cate02 .link_cate {
+	left: 96px;
+}
+
+.search__list_category .list_cate .cate03 .link_cate {
+	left: 216px;
+}
+
+.search__list_category .list_cate .cate04 .link_cate {
+	left: 336px;
+}
+
+.search__list_category .list_cate .cate05 .link_cate {
+	left: 456px;
+}
+
+.search__list_category .list_cate .cate06 .link_cate {
+	left: 576px;
+}
+
+.search__list_category .list_cate .cate07 .link_cate {
+	left: 696px;
+}
+
+.search__list_category .list_cate .cate08 .link_cate {
+	left: 816px;
+}
+
+.search__list_category .list_cate>.on .link_cate {
+	top: -1px;
+	z-index: 1;
+	border-top: 2px solid #ce1710;
+}
+
+.search__list_category .list_cate>.empty .link_cate,
+	.search__list_category .list_cate>.empty .link_cate:hover,
+	.search__list_category .list_cate>.empty .link_cate:focus {
+	color: #bebebe;
+}
+
+.search__list_category .list_cate .link_cate .inner {
+	display: block;
+	height: 47px;
+	padding-top: 1px;
+	border-width: 0 1px 0 1px;
+	border-style: solid;
+	border-color: #eee;
+	line-height: 36px;
+}
+
+.search__list_category .list_cate .cate01 .link_cate .inner {
+	width: 95px;
+	border-left: 0px;
+}
+
+.search__list_category .list_cate .cate02 .link_cate .inner,
+	.search__list_category .list_cate .cate03 .link_cate .inner,
+	.search__list_category .list_cate .cate04 .link_cate .inner,
+	.search__list_category .list_cate .cate05 .link_cate .inner,
+	.search__list_category .list_cate .cate06 .link_cate .inner,
+	.search__list_category .list_cate .cate07 .link_cate .inner {
+	width: 119px;
+}
+
+.search__list_category .list_cate .cate08 .link_cate .inner {
+	width: 119px;
+	border-right: 0px;
+}
+
+.search__list_category .list_cate>.on .link_cate .inner {
+	border-bottom-color: #fff;
+	border-width: 0 1px 0px 1px;
+	border-color: #ddd;
+	border-style: solid
+}
+
+.search__list_category .list_cate>.on.cate01 .link_cate .inner {
+	border-bottom-color: #fff;
+	border-width: 0 1px 0px 0;
+	border-color: #ddd;
+	border-style: solid
+}
+
+.search__list_category .list_cate .link_cate .num {
+	display: block;
+	font-weight: normal;
+	font-family: tahoma;
+	font-size: 11px;
+	color: #999;
+	line-height: 0;
+	margin-top: -5px;
+}
+
+.search__list_category .list_cate .link_cate:hover {
+	color: #ce1710;
+	background-color: #f9f9f9;
+}
+
+.search__list_category .list_cate .link_cate:focus,
+	.search__list_category .list_cate>.on .link_cate,
+	.search__list_category .list_cate>.on .link_cate .num {
+	color: #ce1710;
+	background-color: #fff;
+}
+
+.search__list_category .list_cate .list_depth_02 {
+	display: none;
+	margin-top: 49px;
+	padding: 8px 0 17px 24px;
+	border-width: 0 0 1px 1px;
+	border-style: solid;
+	border-color: transparent transparent #ddd #ddd;
+	*zoom: 1;
+}
+
+.search__list_category .list_cate>.on .list_depth_02 {
+	display: block;
+}
+
+.search__list_category .list_cate .list_depth_02:after {
+	display: block;
+	clear: both;
+	content: '';
+}
+
+.search__list_category .list_cate .list_depth_02>li {
+	float: left;
+	width: 24.9%;
+	height: 18px;
+	margin-top: 10px;
+}
+
+.search__list_category .list_cate .list_depth_02>li>a {
+	float: left;
+	margin-right: 5px;
+}
+
+.search__list_category .list_cate .list_depth_02 a {
+	color: #666;
+}
+
+.search__list_category .list_cate .list_depth_02 a:hover,
+	.search__list_category .list_cate .list_depth_02 a:focus,
+	.search__list_category .list_cate .list_depth_02 a:hover>.num,
+	.search__list_category .list_cate .list_depth_02 a:focus>.num {
+	color: #ce1710;
+}
+
+.search__list_category .list_cate .list_depth_02 .num {
+	position: relative;
+	top: -1px;
+	font-family: tahoma;
+	font-size: 10px;
+	color: #999;
+}
+
+.search__list_category .list_cate .list_depth_02>.on>a,
+	.search__list_category .list_cate .list_depth_02>.on .num {
+	color: #ce1710;
+}
+
+.search__list_category .list_cate .list_depth_02>li>.btn_more {
+	overflow: hidden;
+	float: left;
+	width: 14px;
+	height: 14px;
+	margin-top: 2px;
+	background:
+		url(//image.wemakeprice.com/images/2013/view/ico_search_result_more.png)
+		no-repeat;
+	text-indent: -9999px;
+}
+
+.search__list_category .list_cate .layer_more_cate {
+	overflow: hidden;
+	position: relative;
+	z-index: 1;
+	min-width: 165px;
+	max-width: 210px;
+	max-height: 115px;
+	height: 0;
+	border: 1px solid #ddd;
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, .1);
+	background-color: #fff;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+}
+
+.search__list_category .list_cate .layer_more_open {
+	overflow-y: auto;
+	height: auto;
+	opacity: 1;
+	filter: alpha(opacity = 100);
+}
+
+.search__list_category .list_cate .layer_more_cate .list_more_cate {
+	padding: 11px 15px 11px;
+}
+
+.search__list_category .list_cate .layer_more_cate .list_more_cate li {
+	margin-top: 2px;
+	padding-left: 8px;
+	background: url(//image.wemakeprice.com/images/2014/search/ico_dot.png)
+		no-repeat 0 7px;
+}
+
+.search__list_category .list_cate .layer_more_cate .list_more_cate a {
+	display: block;
+}
+
+/* 검색페이지 - 가격대별 검색 */
+.search__sort_price {
+	border-width: 0 1px 1px;
+	border-style: solid;
+	border-color: #ddd;
+}
+
+.search__sort_price .list_sort_price {
+	padding: 14px 0 11px 3px;
+	background-color: #fff;
+	line-height: 18px;
+	*zoom: 1;
+}
+
+.search__sort_price .list_sort_price:after {
+	display: block;
+	clear: both;
+	content: '';
+}
+
+.search__sort_price .list_sort_price li {
+	float: left;
+	margin-left: 32px;
+	white-space: nowrap;
+}
+
+.search__sort_price .list_sort_price li:first-child {
+	margin-left: 20px;
+}
+
+.search__sort_price .list_sort_price .lb_check {
+	overflow: hidden;
+	float: left;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.search__sort_price .list_sort_price .lb_check>input[type="checkbox"] {
+	position: absolute;
+	top: 0;
+	left: -9999px;
+}
+
+.search__sort_price .list_sort_price .lb_check>.ico_check {
+	float: left;
+	width: 13px;
+	height: 13px;
+	margin: 2px 4px 0 0;
+	background: url(//image.wemakeprice.com/images/search/ico_checkbox.png)
+		no-repeat 0 0;
+}
+
+.search__sort_price .list_sort_price .on .lb_check>.ico_check {
+	background-position: 0 -20px;
+}
+
+.search__sort_price .list_sort_price .lb_check>.txt {
+	color: #666;
+}
+
+.search__sort_price .list_sort_price .lb_check>.txt>.txt_num {
+	font-weight: normal;
+	font-family: tahoma;
+	font-size: 10px;
+	color: #999;
+}
+
+/* 검색페이지 - 배송조건 / 정렬조건 */
+.wrap_list_sort {
+	margin-top: 20px;
+	*zoom: 1;
+}
+
+.wrap_list_sort:after {
+	display: block;
+	clear: both;
+	content: '';
+}
+
+.wrap_list_sort .list_sort {
+	*zoom: 1;
+}
+
+.wrap_list_sort .list_sort:before, .wrap_list_sort .list_sort:after {
+	display: table;
+	content: '';
+}
+
+.wrap_list_sort .list_sort:after {
+	clear: both;
+}
+
+/* 검색페이지 - 배송조건 검색 */
+.search__sort-checkbox {
+	float: left;
+	padding-top: 4px;
+}
+
+.search__sort-checkbox ul {
+	*zoom: 1;
+}
+
+.search__sort-checkbox ul:before, .search__sort-checkbox ul:after {
+	display: table;
+	content: '';
+}
+
+.search__sort-checkbox ul:after {
+	clear: both;
+}
+
+.search__sort-checkbox li {
+	float: left;
+	margin-left: 15px;
+	font-size: 11px;
+	line-height: 17px
+}
+
+.search__sort-checkbox li:first-child {
+	margin-left: 0;
+}
+
+.search__sort-checkbox .now-go {
+	margin-left: 1px;
+	padding-top: 2px;
+	padding-left: 32px;
+	background: url(//image.wemakeprice.com/images/search/ico_delivery.png)
+		no-repeat;
+	color: #5c6dc3;
+}
+
+.search__sort-checkbox .disabled .now-go {
+	background-position: 0 -30px;
+	color: #aaa;
+}
+
+.search__sort-checkbox .wrap-question {
+	float: left;
+	position: relative;
+	margin: 2px 0 0 5px;
+}
+
+.search__sort-checkbox .wrap-question .ico-question {
+	display: block;
+	overflow: hidden;
+	width: 13px;
+	height: 13px;
+	background-position: 0 0;
+	text-indent: -9999px;
+}
+
+.search__sort-checkbox .wrap-question .layer-question {
+	display: none;
+	position: absolute;
+	top: -17px;
+	left: 100%;
+	margin-left: 9px;
+	padding: 9px 10px 7px;
+	border: 1px solid #bebebe;
+	background-color: #fff;
+	font-size: 11px;
+	line-height: 14px;
+	color: #666;
+	white-space: nowrap;
+}
+
+.search__sort-checkbox .wrap-question .txt-now-go {
+	color: #5d6dc4;
+}
+
+.search__sort-checkbox .wrap-question:hover .layer-question {
+	display: block;
+}
+
+.search__sort-checkbox .wrap-question .layer-question .ico-arr {
+	position: absolute;
+	top: 50%;
+	left: -5px;
+	width: 5px;
+	height: 7px;
+	margin-top: -4px;
+	background-position: 0 -25px;
+}
+
+.search__sort-checkbox .lb_check {
+	float: left;
+	min-height: 17px;
+	color: #333;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.search__sort-checkbox .lb_check>input[type="checkbox"] {
+	position: absolute;
+	top: 0;
+	left: -9999px;
+}
+
+.search__sort-checkbox .lb_check>.ico_check {
+	float: left;
+	width: 13px;
+	height: 13px;
+	margin: 1px 4px 0 0;
+	background: url(//image.wemakeprice.com/images/search/ico_checkbox.png)
+		no-repeat 0 0;
+}
+
+.search__sort-checkbox .on .lb_check>.ico_check {
+	background-position: 0 -20px;
+}
+
+.search__sort-checkbox .disabled {
+	color: #aaa;
+	cursor: default;
+}
+
+.search__sort-checkbox .disabled .ico_check {
+	background-position: 0 -40px;
+}
+
+.search__sort-checkbox .disabled .text-primary {
+	color: #aaa;
+}
+
+/* 검색페이지 - 정렬조건 검색 */
+.search__sort-sortview {
+	float: right;
+	border-width: 1px 1px 0 1px;
+	border-style: solid;
+	border-color: #ddd;
+}
+
+.search__sort-sortview li {
+	float: left;
+	width: 69px;
+	border-left: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	font-size: 11px;
+	line-height: 17px;
+	text-align: center;
+}
+
+.search__sort-sortview li:first-child {
+	border-left: 0;
+}
+
+.search__sort-sortview a {
+	display: block;
+	padding: 3px 2px;
+	color: #333;
+}
+
+.search__sort-sortview a:hover, .search__sort-sortview a:focus,
+	.search__sort-sortview .selected a {
+	color: #ffffff;
+	margin: -1px 0 -1px 0;
+	padding-top: 4px;
+	border-bottom: 1px solid #666;
+	background-color: #666;
+}

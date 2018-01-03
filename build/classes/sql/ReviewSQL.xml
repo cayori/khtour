@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN'
+'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+
+<sqlMap>
+
+	<!-- 후기게시판 -->
+	<typeAlias alias="review" type="review.ReviewVO" />
+
+
+	<resultMap id="reviewRes" class="review">
+		<result property="review_no" column="review_no" /> <!--시컨스 고유값 -->
+		<result property="id" column="id" />
+		<result property="subject" column="subject" />
+		<result property="pw" column="pw" />
+		<result property="content" column="content" />
+		<result property="image1" column="image1" />
+		<result property="image2" column="image2" />
+		<result property="image3" column="image3" />
+		<result property="reg_date" column="reg_date"/>
+		<result property="readcount" column="readcount"  nullValue="0"/>
+	</resultMap>
+
+
+	<select id="selectReviewList" resultMap="reviewRes"
+		parameterClass="review">
+		SELECT * FROM REVIEWVO ORDER BY REVIEW_NO DESC
+	</select>
+
+	<select id="selectReviewOne" resultMap="reviewRes"
+		parameterClass="int">
+		SELECT * FROM REVIEWVO WHERE REVIEW_NO = #REVIEW_NO#
+	</select>
+
+	<insert id="insertReview" parameterClass="review">
+		INSERT INTO
+		REVIEWVO(REVIEW_NO,ID,SUBJECT,PW,CONTENT,IMAGE1,IMAGE2,IMAGE3,READCOUNT,REG_DATE)
+		VALUES
+		(SEQ_REVIEWVO.NEXTVAL,
+		#id#
+		,#subject#,
+		#pw#,
+		#content#,
+		#image1#,
+		#image2#,
+		#image3#,
+		#readcount#,
+		SYSDATE)
+	</insert>
+
+	<delete id="deleteReview" parameterClass="int">
+		DELETE FROM REVIEWVO
+		WHERE REVIEW_NO = #review_no#
+	</delete>
+	<update id="updateReview" parameterClass="review">
+		UPDATE REVIEWVO SET PW
+		=#pw#,CONTENT= #content#,SUBJECT =#subject#,IMAGE1 =
+		#image1#,IMAGE2=#image2#,IMAGE3=#image3# WHERE REVIEW_NO = #review_no#
+	</update>
+	
+	<update id="updatereadcount"  parameterClass="int">
+	UPDATE REVIEWVO SET READCOUNT = READCOUNT+1 
+	WHERE REVIEW_NO = #review_no#
+	</update>
+	
+	
+	<!--후기게시판 코멘트 -->
+	<typeAlias alias="reviewCO" type="review.ReviewCO" />
+	<resultMap id="reviewCORes" class="reviewCO">
+		<result property="review_no" column="review_no" /> <!--시컨스 고유값 -->
+		<result property="no" column="no" />
+		<result property="id" column="id" />
+		<result property="reg_date" column="reg_date" />
+		<result property="pw" column="pw" />
+		<result property="content" column="content" />
+	</resultMap>
+
+	<select id="selectReviewCOList" resultMap="reviewCORes"
+		parameterClass="int">
+		SELECT * FROM REVIEWCO WHERE REVIEW_NO = #review_no# ORDER BY NO DESC
+	</select>
+
+	<insert id="insertReviewCO" parameterClass="reviewCO">
+		INSERT INTO REVIEWCO(REVIEW_NO,NO,ID,REG_DATE,PW,CONTENT)
+		VALUES(#review_no#,SEQ_REVIEWCO.NEXTVAL,#id#,SYSDATE,#pw#,#content#)
+	</insert>
+
+	<delete id="deleteReviewCO" parameterClass="int">
+		delete from REVIEWCO WHERE no = #no#
+	</delete>
+<delete id="deleteAllReviewCO" parameterClass="int">
+		delete from REVIEWCO WHERE REVIEW_NO = #review_no#
+	</delete>
+
+
+
+</sqlMap>

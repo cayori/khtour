@@ -1,0 +1,307 @@
+$(document).ready(function(){
+	/* gnb */
+	var $win = $(window);
+	var $gnb = $("#gnb");
+	var $lnb = $("#subWrap .lnb");
+	var $pageDesc = $(".pageDesc");
+	var $footer = $("#footer");
+	var $goTop = $(".goTop");
+
+	var $deapth1 = $("#gnb .deapth1");
+	var $deapth2 = $("#gnb .deapth2");
+	var $gnbBg = $("#gnb .bg");
+
+	$gnb.on({
+		mouseleave : function(e) {
+			$gnb.removeClass("on");
+		}
+	});
+
+	$deapth1.on({
+		mouseenter : function() {
+			$gnb.addClass("on");
+		}
+	});
+	/* //gnb */
+
+	//스크롤 시 고정영역 제어하기
+
+
+	if (!!$lnb .offset()) {
+		var $lnbTop = $lnb.offset().top;
+
+		function lnbCheck() {
+			var $winTop = $win.scrollTop()+108;//gnb+pageDesc height값 더해줌
+
+			if ($lnbTop < $winTop) {
+				$lnb.addClass("fixed")
+			} else {
+				$lnb.removeClass("fixed");
+			}
+
+			//푸터 전에 LNB 동작
+			if($win.height() - $footer.height() - $gnb.height() - $pageDesc.height() < $lnb.height()+58) {
+				var s = ($footer.offset().top - ($win.height()+$footer.height()+$gnb.height()+$pageDesc.height())) < $winTop;
+				if(s) {
+					$lnb.addClass("absolute");
+				}
+			}
+
+			if($lnb.hasClass("absolute")) {
+				if($lnb.offset().top > $winTop) {
+					$lnb.removeClass("absolute");
+				}
+			}
+		}
+		lnbCheck();
+
+		$win.scroll(function() {
+			lnbCheck();
+		});
+	}
+
+	//푸터 전에 top버튼 멈추기
+	$win.scroll(function() {
+		var $winTop = $(window).scrollTop();
+		if(($("#footer").offset().top-910) <= $winTop) {
+			$(".goTop").css("bottom", $("#footer").height()+40);
+		} else {
+			$(".goTop").css("bottom", 40);
+		}
+	});
+
+	//여행 도시 전체보기
+	$("#viewCityListLayerBtn, #viewCityListLayerBtn2").on('click',function(e){
+		e.stopPropagation();
+		e.preventDefault();
+		$(this).toggleClass("cur");
+		$(".pageDesc .cityListLayer").slideToggle("fast");
+	});
+
+	//상단 언어 변경
+	$(".choiceLanguage").on("click", function() {
+		$(this).toggleClass("on");
+	});
+
+	// 사용자 정보 클릭시 레이어 띄우기
+	// .load_user_info_a 는 닉네임.
+	// .load_user_info 프로필 사진.
+	$(document).on('click','.load_user_info, .load_user_info_a',function(){
+		u = $(this).attr('u');
+		if(u=='' || typeof(u)=='undefinded'){ return false; }
+		loadUserInfoLayer(u);
+	});
+
+	$(".myInfo .myPage").on("click", function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		$(".selectMypage").toggle();
+	});
+
+	//빈요소 클릭시 제어
+	$('body').click(function(e) {
+		if($(e.target).parents('.pageDesc').length < 1) {
+			$(".pageDesc .cityListLayer").slideUp("fast");
+			$("#viewCityListLayerBtn").removeClass("cur");
+		}
+		if($(e.target).parents('.choiceLanguage').length < 1) {
+			$(".choiceLanguage").removeClass("on");
+		}
+		if($(e.target).parents('.selectMypage').length < 1) {
+			$(".selectMypage").hide();
+		}
+	});
+
+
+	//기존에 사용하던 UI 구성을 위한 스크립트
+	var select_root = $('div.select');
+	var select_value = $('.myValue');
+	var select_a = $('div.select>ul>li>a');
+	var select_input = $('div.select>ul>li>input[type=radio]');
+	var select_label = $('div.select>ul>li>label');
+	var select_ctrl = $('div.select .ctrl_small');
+    select_ctrl.click(show_option);
+	// Radio Default Value
+	$('div.myValue').each(function(){
+		var default_value = $(this).next('.iList').find('input[checked]').next('label').text();
+		$(this).append(default_value);
+	});
+
+	// Line
+	select_value.bind('focusin',function(){$(this).addClass('outLine');});
+	select_value.bind('focusout',function(){$(this).removeClass('outLine');});
+	select_input.bind('focusin',function(){$(this).parents('div.select').children('div.myValue').addClass('outLine');});
+	select_input.bind('focusout',function(){$(this).parents('div.select').children('div.myValue').removeClass('outLine');});
+
+	// Anchor Focus Out
+	$('*:not("div.select a")').focus(function(){
+		$('.aList').parent('.select').removeClass('open');
+	});
+
+	select_value.click(show_option);
+	select_root.find('ul').css('position','absolute');
+	select_root.removeClass('open');
+	select_root.mouseleave(function(){$(this).removeClass('open');});
+	select_a.click(set_anchor).click(hide_option).focus(i_hover).hover(i_hover);
+	select_input.change(set_label).focus(set_label);
+	select_label.hover(i_hover).click(hide_option);
+
+	var iText = $('.item>.iLabel').next('.iText'); //고객센터 관련 검색어를 입력하세요.label
+	iText
+		.focus(function(){
+			$(this).prev('.iLabel').css('visibility','hidden');
+		})
+		.blur(function(){
+			if($(this).val() == ''){
+				$(this).prev('.iLabel').css('visibility','visible');
+			} else {
+				$(this).prev('.iLabel').css('visibility','hidden');
+			}
+		})
+		.change(function(){
+			if($(this).val() == ''){
+				$(this).prev('.iLabel').css('visibility','visible');
+			} else {
+				$(this).prev('.iLabel').css('visibility','hidden');
+			}
+		})
+		.blur();
+
+})
+
+/* 프린트 관련 */
+/*
+function printPage(){
+	var initBody;
+	window.onbeforeprint = function(){
+		initBody = document.body.innerHTML;
+		document.body.innerHTML =  document.getElementById('real_spotContent').innerHTML;
+	};
+	window.onafterprint = function(){
+		document.body.innerHTML = initBody;
+	};
+	window.print();
+	return false;
+}*/
+/* IE 버그 픽스 */
+function printPage(){
+	var initBody;
+
+	window.print();
+
+    var beforePrint = function() {
+       initBody = document.body.innerHTML;
+		document.body.innerHTML =  document.getElementById('real_spotContent').innerHTML;
+    };
+
+    var afterPrint = function() {
+        document.body.innerHTML = initBody;
+	};
+
+    if (window.matchMedia) {
+        var mediaQueryList = window.matchMedia('print');
+        mediaQueryList.addListener(function(mql) {
+            if (mql.matches) {
+                beforePrint();
+            } else {
+                afterPrint();
+            }
+        });
+    }
+
+    window.onbeforeprint = beforePrint;
+    window.onafterprint = afterPrint;
+
+	//return false;
+}
+
+//image resize
+function thumbLoaded(obj) {
+	var w = $(obj).parent().width();
+	var h = $(obj).parent().height();
+	var imgW = $(obj).width();
+	var imgH = $(obj).height();
+
+	if(imgW < w || imgH < h) {
+		$(obj).css({'width':w, 'height':h});
+	} else {
+		$(obj).css({'margin-top':'-'+((imgH-h)/2)+'px'});
+	}
+}
+
+/**
+ * 기존에 사용했던 UI제어 스크립트
+ */
+// Show
+function show_option(){
+	$(this).parents('div.select:first').toggleClass('open');
+	var t = $(this);
+    if (t.next().find('.hover').text() != t.text()){
+        var t_li = t.next().find('li');
+        for (x = 0; x < t_li.length; x++){
+            if (t_li.eq(x).find('label').text() == t.text()) t_li.eq(x).addClass('hover');
+            else t_li.eq(x).removeClass('hover');
+        }
+    }
+}
+
+// Hover
+function i_hover(){
+	$(this).parents('ul:first').children('li').removeClass('hover');
+	$(this).parents('li:first').toggleClass('hover');
+}
+
+// Hide
+function hide_option(){
+	var t = $(this);
+	setTimeout(function(){
+		t.parents('div.select:first').removeClass('open');
+	}, 1);
+}
+
+// Set Input
+function set_label(){
+	var v = $(this).next('label').text();
+	$(this).parents('ul:first').prev('.myValue').text('').append(v);
+	$(this).parents('ul:first').prev('.myValue').addClass('selected');
+}
+
+// Set Anchor
+function set_anchor(){
+	var v = $(this).text();
+	$(this).parents('ul:first').prev('.myValue').text('').append(v);
+	$(this).parents('ul:first').prev('.myValue').addClass('selected');
+}
+
+/**
+ * 유저 정보 레이어 팝업 노출 함수
+ *
+ * @param string u user_usn
+ */
+function loadUserInfoLayer(u){
+	if(u=='' || typeof(u)=="undefinded")return false;
+	$('.userinfo_pop_wrap').remove();
+	$.ajax({
+		url : "/ap/common/userinfo/",
+		data : "u="+u,
+		type : "post",
+		dataType :"json",
+		success : function(data){
+			if(data[0]<1){
+				alert("탈퇴한 회원입니다.");
+				return false;
+			}
+
+			$('body').append(data[1]);
+			var w, h;
+			layer = $(".userinfo_pop_wrap");
+			w = ( $(window).scrollLeft() + ($(window).width() - layer.width()) / 2 );
+			if(layer.height() > $(window).height()-108) {
+				h = $(window).scrollTop() + 120;
+			} else {
+				h = ( $(window).scrollTop() + ($(window).height() - layer.height()) / 2 );
+			}
+			layer.css({'left':w+'px', 'top':h+'px'}).show();
+		}
+	});
+}

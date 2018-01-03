@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+<sqlMap>
+
+	<typeAlias alias="AirVO" type="air.AirVO" />
+
+	<resultMap id="AirVO_RES" class="AirVO">
+		<result property="name" column="name" />
+		<result property="no" column="no" />
+		<result property="price" column="price" />
+		<result property="content" column="content" />
+		<result property="country" column="country" />
+		<result property="region" column="region" />
+		<result property="readcount" column="readcount" />
+		<result property="image1" column="image1" />
+		<result property="image2" column="image2" />
+		<result property="image3" column="image3" />
+		<result property="reg_date" column="reg_date" />
+		<result property="kinds" column="kinds" />
+		<result property="ad" column="ad" />
+		<result property="dd" column="dd" />
+		<result property="amount" column="amount" />
+		<result property="grade" column="grade" />
+		<result property="id" column="id" />
+		<result property="seat" column="seat" />
+		<result property="cocount" column="cocount" />
+		<result property="air" column="air" />
+	</resultMap>
+	
+	
+	
+	<sql id="select-allA"> <!--공통사용-->
+  	SELECT * FROM AIRVO
+  	</sql>
+  	
+  	<sql id="where-noA">
+  	where no = #no#
+  	</sql> 
+  	
+  	
+  	<select id="selectAllA" resultMap="AirVO_RES" parameterClass="int">
+  	<include refid="select-allA"/> 
+  	ORDER BY reg_date DESC
+  	</select>
+  	
+  	<select id="selectOneA" resultMap="AirVO_RES">
+    <![CDATA[ select * from (select * from airvo order by grade DESC) WHERE ROWNUM = 1 ]]>
+  	</select>
+  	
+  	<select id="selectNoA" resultMap="AirVO_RES" parameterClass="int">
+  	<include refid="select-allA"/>
+  	<include refid="where-noA"/>
+  	</select>
+
+
+	<!-- AIRVO에 있는 모든 칼럼 꺼내오겠다. -->
+
+	 <!-- 여행 목록 가져오기 and 카테고리별 상품 정렬 -->
+	<select id="listAir" resultMap="AirVO_RES" parameterClass="AirVO">
+		SELECT * FROM (SELECT * FROM airvo WHERE name like '%'||#search#||'%' or content like '%'||#search#||'%' or region like '%'||#search#||'%')
+		<isNotEqual property="price" compareValue="0"> WHERE price like '% %' 
+		</isNotEqual>
+		<isEqual property="price" compareValue="100000"> <![CDATA[or price >= 0 and price <= 100000]]>
+		</isEqual>
+		<isEqual property="price" compareValue="200000"> <![CDATA[or price >= 100000 and price <= 200000]]>
+		</isEqual>
+		<isEqual property="price" compareValue="300000"> <![CDATA[or price >= 200000 and price <= 300000]]>
+		</isEqual>
+		<isEqual property="price" compareValue="400000"> <![CDATA[or price >= 300000 and price <= 400000]]>
+		</isEqual>
+		<isEqual property="price" compareValue="500000"> <![CDATA[or price >= 400000 and price <= 500000]]>
+		</isEqual>
+		<isEqual property="price" compareValue="600000"> <![CDATA[or price >= 500000 and price <= 600000]]>
+		</isEqual>
+		<isEqual property="price" compareValue="700000"> <![CDATA[or price >= 600000]]>
+		</isEqual>
+		 ORDER BY 
+		<isEqual property="searchn" compareValue="ltprice"> price ASC,
+		</isEqual>
+		<isEqual property="searchn" compareValue="price"> price DESC,
+		</isEqual>
+		<isEqual property="searchn" compareValue="grade"> grade DESC,
+		</isEqual>
+		 reg_date DESC
+	</select>
+
+
+	<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ상품 등록 및 수정 및 삭제ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+	<insert id="insertair" parameterClass="AirVO">
+		INSERT INTO airvo (no, name, price, content, country, region, readcount,
+		image1, image2, image3, reg_date, amount, grade, cocount, air)
+		VALUES (seq_postnum.NEXTVAL, #name#, #price#, #content#, #country#,
+		#region#, #readcount#, #image1#, #image2#, #image3#, SYSDATE,
+		#amount#, #grade#, #cocount#, #air#)
+	</insert>
+
+	<!-- 수정 시 해당 상품의 정보 꺼내오기 -->
+	<select id="modifyair" resultMap="AirVO_RES" parameterClass="AirVO">
+		SELECT * FROM airvo WHERE no = #no#
+	</select>
+
+	<!-- 해당 상품 정보 수정 -->
+	<update id="updateair" parameterClass="AirVO">
+		UPDATE airvo SET name = #name#, price = #price#, content = #content#,
+		country = #country#, region = #region#,
+		readcount = #readcount#, amount = #amount#, grade = #grade#, cocount =
+		#cocount#, air = #air#
+		<isNotNull property="image1">
+			, image1 = #image1#
+		</isNotNull>
+		<isNotNull property="image2">
+			, image2 = #image2#
+		</isNotNull>
+		<isNotNull property="image3">
+			, image3 = #image3# 
+		</isNotNull>
+		WHERE no = #no#
+	</update>
+	
+	<!-- 항공 상품 삭제 -->
+	<delete id="deleteair" parameterClass="AirVO">
+	DELETE FROM airvo WHERE no = #no#
+	</delete>
+	
+	<!-- 항공 상품 삭제할 때 관련 코멘트까지 삭제 -->
+	<delete id="deletecoa" parameterClass="AirVO">
+	DELETE FROM contentcoa WHERE seq_no = #no#
+	</delete>
+	
+	<!--장바구니-->
+	<select id="selectair" resultMap="AirVO_RES" parameterClass="AirVO">
+		SELECT * FROM airvo WHERE no = #no#
+	</select>
+
+
+
+	<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 코멘트 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+
+
+<typeAlias alias="contentcoa" type="item.ContentCOA"/><!--항공권 코멘트  -->
+	<resultMap id="contentcoaRes" class="contentcoa">
+		<result property="seq_no" column="seq_no"/>
+		<result property="c_no" column="c_no"/>
+		<result property="c_id" column="c_id"/>	
+		<result property="c_reg_date" column="c_reg_date"/>
+		<result property="c_content" column="c_content"/>
+		<result property="c_grade" column="c_grade"/>
+	</resultMap>
+	
+	<sql id="select-allCCA"> <!--공통사용-->
+  	SELECT * FROM CONTENTCOA
+  	</sql>
+  	
+  	<sql id="select-noCCA"> <!--공통사용-->
+  	where seq_no = #no#
+  	</sql>
+  	
+  	<select id="selectOneCCA" resultMap="contentcoaRes" parameterClass="int">
+  	<include refid="select-allCCA"/>
+  	<include refid="select-noCCA"/>
+  	ORDER BY c_no DESC
+  	</select>
+  	
+  	<insert id="insertCommentA" parameterClass="contentcoa">
+  	INSERT INTO CONTENTCOA(SEQ_NO, C_NO, C_ID, C_REG_DATE, C_CONTENT, C_GRADE)
+  	VALUES
+  	(#seq_no#, seq_contentco.NEXTVAL, #c_id#, SYSDATE, #c_content#, #c_grade#)
+  	</insert>
+  	
+  	<update id="updateGrade_air" parameterClass="contentcoa">
+		UPDATE airvo SET grade = (SELECT AVG(c_grade) FROM contentcoa WHERE seq_no = #seq_no#) 
+		WHERE no = #seq_no#
+	</update>
+  
+  	
+  	<delete id="deleteOneCA"  parameterClass="int">
+  	 DELETE FROM CONTENTCOA
+  	where c_no = #c_no#
+  	</delete>
+
+
+
+
+
+
+</sqlMap>

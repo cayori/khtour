@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+
+
+	<package name="MEMBER" extends="struts-default, tiles-default">
+
+
+		<interceptors>
+			<interceptor name="logincheck" class="member.LoginCheck" />
+			<interceptor name="cc" class="member.ConfirmLogin" />
+		</interceptors>
+
+		<global-results>
+			<result name="error" type="chain">LoginForm</result>
+		</global-results>
+
+
+		<!-- 메인 -->
+		<action name="Main" class="main.Main">
+			<result type="tiles">Main</result>
+		</action>
+		
+		<!-- 동일계정으로 중복 로그인 시도가 있었는지 체크 -->
+		<action name="ConfirmCheck" class="member.LoginMember" method="subcc">
+			<interceptor-ref name="cc" />
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="params" />
+			<result name="input" type="chain">CC</result>
+		</action>
+		
+		<action name="CC" class="member.LoginMember" method="cc"/><!--중복 로그인 체크 흐름 받아주는 메소드 -->
+		
+		<action name="AppOut" class="member.AppOut" method="appout"/><!-- 세션만료시 로그아웃처리 -->
+		
+
+		<!-- 메인에서 로그인버튼누르면 로그인폼으로 이동 -->
+		<action name="LoginForm" class="member.LoginMember" method="form">
+			<result type="tiles">LoginForm</result>
+		</action>
+
+
+		<!-- 회원 로그인 -->
+		<action name="LoginMember" class="member.LoginMember">
+			<result type="chain">Main</result>
+			<result name="login" type="tiles">LoginForm</result>
+		</action>
+
+
+		<!-- 회원 가입 폼 이동 -->
+		<action name="JoinForm" class="member.JoinMember" method="form">
+			<result type="tiles">Join</result>
+		</action>
+
+
+		<!-- 아이디 중복 체크 -->
+		<action name="ConfirmId" class="member.JoinMember" method="confirmId">
+			<result>/member/IdCheck.jsp</result>
+		</action>
+
+
+		<!-- 가입하는 회원의 입력한 정보를 DB에 넣고 메인으로 이동 -->
+		<action name="ConfirmEmail" class="member.JoinMember" method="confirmEmail">
+			<result type="redirect-action">
+				<param name="actionName">EmailJoin</param>
+			</result>
+		</action>
+
+		<action name="EmailJoin" class="member.JoinMember" method="emailform">
+			<result type="tiles">Email</result>
+		</action>
+
+
+		<!-- 가입하는 회원의 입력한 정보를 DB에 넣고 메인으로 이동 -->
+		<action name="JoinMember" class="member.JoinMember">
+			<result type="redirect-action">
+				<param name="actionName">Main</param>
+			</result>
+		</action>
+
+
+		<!-- 로그아웃 -->
+		<action name="LogoutMember" class="member.LoginMember" method="logout">
+			<result type="redirect-action">
+				<param name="actionName">Main</param>
+			</result>
+		</action>
+
+
+		<!-- 회원 탈퇴시 비밀번호 체크화면 이동 -->
+		<action name="DeleteMemberCheck" class="member.LoginMember"
+			method="DeleteMemberCheck">
+			<result type="tiles">DeleteMemberCheck</result>
+		</action>
+
+
+		<!-- 회원 탈퇴 -->
+		<action name="DeleteMember" class="member.LoginMember" method="delete">
+			<result type="redirect-action">
+				<param name="actionName">Main</param>
+			</result>
+			<result name="login" type="chain">DeleteMemberCheck</result>
+		</action>
+
+
+		<!-- 마이페이지 폼 이동 -->
+		<action name="MyPageForm" class="member.MemberService" method="mypageForm">
+			<interceptor-ref name="logincheck" />
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="params" />
+			<result type="tiles">MyPageForm</result>
+		</action>
+
+
+		<!-- 내정보관리 폼 이동 -->
+		<action name="MemberManageForm" class="member.MemberService"
+			method="MemberManageForm">
+			<result type="tiles">MemberManageForm</result>
+		</action>
+
+
+		<!-- 아이디/비밀번호 찾기 폼 이동 -->
+		<action name="FindIdPw" class="member.MemberService" method="FindForm">
+			<result type="tiles">FindForm</result>
+		</action>
+
+
+		<!-- 아이디 찾기 및 찾은 후 Id보여주는 페이지 이동 -->
+		<action name="FindId" class="member.MemberService">
+			<result type="tiles">Id</result>
+			<result type="tiles" name="login">FindForm</result>
+		</action>
+
+
+		<!-- 비빌번호 찾은 후 임시비밀번호를 발급하고 발급했다는 문구를 보여주는 페이지로 이동 -->
+		<action name="FindPw" class="member.MemberService" method="findPw">
+			<result type="tiles">FindPw</result>
+			<result type="tiles" name="login">FindForm</result>
+		</action>
+
+
+		<!-- 회원정보 수정시 비밀번호 체크화면 이동 -->
+		<action name="ModifyMemberCheck" class="member.LoginMember"
+			method="ModifyMemberCheck">
+			<result type="tiles">ModifyMemberCheck</result>
+		</action>
+
+
+		<!-- 회원정보 수정 폼 이동 -->
+		<action name="ModifyMemberForm" class="member.LoginMember"
+			method="ModifyMemberForm">
+			<result type="tiles">ModifyMemberForm</result>
+			<result name="login" type="chain">ModifyMemberCheck</result>
+		</action>
+
+
+		<!-- 회원정보 수정 -->
+		<action name="ModifyMember" class="member.MemberService"
+			method="modifyMember">
+			<result type="redirect-action">
+				<param name="actionName">Main</param>
+			</result>
+		</action>
+
+
+
+	</package>
+
+</struts>

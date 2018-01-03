@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+
+<!-- 타일즈 초안구성. 각자 파트의 추가할 타일즈가 있으면 최하단부의 절취선 아래로 추가하고 주석으로 작성자 이름 달아서 단락구분하고 
+	용도설명을 달아줭 ex) 언구, 여행게시판 ~~~ 타일즈 -->
+
+<!-- 주석을 다 풀고 실행하면 무조건 오류나기때문에 자기 담당 파트만 주석풀고 사용해줭 -->
+
+
+<tiles-definitions>
+
+
+	<!-- 비로그인 메인 --><!-- 회원헤더와 관리자헤더는 Header.jsp에서 조건문으로 로그인 아닐 때, 회원일 때, 관리자일 때 로 구분해서 따로 나오도록 
+		구현 -->
+	<definition name="Main" template="/main/Layout.jsp">
+		<put-attribute name="header" value="/main/Header.jsp" />
+		<put-attribute name="body" value="/main/Main.jsp" />
+		<put-attribute name="footer" value="/main/Footer.jsp" />
+	</definition>
+
+
+	<!-- 로그인 폼 -->
+	<definition name="LoginForm" extends="Main">
+		<put-attribute name="body" value="/member/LoginForm.jsp" />
+	</definition>
+
+
+	<!-- 회원 가입 폼 이동 -->
+	<definition name="Join" extends="Main">
+		<put-attribute name="body" value="/member/JoinForm.jsp" />
+	</definition>
+	
+
+	<!-- 이메일 인증 안내 화면 이동 -->
+	<definition name="Email" extends="Main">
+		<put-attribute name="body" value="/member/EmailJoin.jsp" />
+	</definition>
+
+
+	<!-- 아이디/비밀번호 찾기 폼 이동 -->
+	<definition name="FindForm" extends="Main">
+		<put-attribute name="body" value="/member/FindIdPw.jsp" />
+	</definition>
+
+	<!-- 찾은 아이디 보여주는 폼 이동 -->
+	<definition name="Id" extends="Main">
+		<put-attribute name="body" value="/member/Id.jsp" />
+	</definition>
+
+	<!-- 임시비밀번호를 이메일로 전송헀다고 알려주는 폼 이동 -->
+	<definition name="FindPw" extends="Main">
+		<put-attribute name="body" value="/member/Pw.jsp" />
+	</definition>
+
+	<!-- 회원정보수정 폼 이동 -->
+	<definition name="ModifyMemberForm" extends="Main">
+		<put-attribute name="body" value="/member/ModifyForm.jsp" />
+	</definition>
+
+	<!-- 마이페이지 폼 이동 -->
+	<definition name="MyPageForm" extends="Main">
+		<put-attribute name="body" value="/mypage/MyPage.jsp" />
+	</definition>
+
+	<!-- 마이페이지 주문내역 불러오기 -->
+	<definition name="OrderList" extends="Main">
+		<put-attribute name="body" value="/mypage/OrderList.jsp" />
+	</definition>
+
+	<!-- 내정보관리 폼 이동 -->
+	<definition name="MemberManageForm" extends="Main">
+		<put-attribute name="body" value="/mypage/MemberManage.jsp" />
+	</definition>
+
+	<!-- 회원이 회원정보 수정시 비밀번호 입력 체크 -->
+	<definition name="ModifyMemberCheck" extends="Main">
+		<put-attribute name="body" value="/member/ModifyMemberCheck.jsp" />
+	</definition>
+
+	<!-- 회원이 회원탈퇴 시 비밀번호 입력 체크 -->
+	<definition name="DeleteMemberCheck" extends="Main">
+		<put-attribute name="body" value="/member/DeleteMemberCheck.jsp" />
+	</definition>
+
+	<!-- 장바구니 -->
+	<definition name="Basket" extends="Main">
+		<put-attribute name="body" value="/mypage/Basket.jsp" />
+	</definition>
+
+
+	<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ고객 센터 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+
+	<!-- 고객센터 메인 -->
+	<definition name="ServiceForm" extends="Main">
+		<put-attribute name="body" value="/service/ServiceForm.jsp" />
+	</definition>
+
+	<!-- notice -->
+	<!-- 공지사항 글쓰기 폼, 액션 -->
+	<definition name="AdminWriteNotice" extends="Main">
+		<put-attribute name="body"
+			value="/admin/adminservice/AdminWriteNotice.jsp" />
+	</definition>
+
+	<!-- 공지사항 리스트(관리자에게만 글쓰기 버튼이 나오도록 조건문 추가) -->
+	<definition name="ListNotice" extends="Main">
+		<put-attribute name="body" value="/service/ListNotice.jsp" />
+	</definition>
+
+	<!-- 공지사항 상세보기(관리자에게만 수정, 삭제 버튼이 나오도록 조건문 추가) -->
+	<definition name="NoticeContent" extends="Main">
+		<put-attribute name="body" value="/service/NoticeContent.jsp" />
+	</definition>
+
+	<!-- 공지사항 수정하기 폼, 액션 -->
+	<definition name="AdminModifyNotice" extends="Main">
+		<put-attribute name="body"
+			value="/admin/adminservice/AdminModifyNotice.jsp" />
+	</definition>
+
+	<!-- question -->
+	<!-- 상담 게시판 글쓰기 폼, 액션 -->
+	<definition name="WriteQuestion" extends="Main">
+		<put-attribute name="body" value="/service/WriteQuestion.jsp" />
+	</definition>
+
+	<!-- 상담 게시판 리스트(관리자일때는 글쓰기 버튼이 나오지 않도록 구현) -->
+	<definition name="ListQuestion" extends="Main">
+		<put-attribute name="body" value="/service/ListQuestion.jsp" />
+	</definition>
+
+	<!-- 상담 게시판 상세보기(회원일 때는 댓글 보기만 가능하도록 조건문 추가) -->
+	<definition name="QuestionContent" extends="Main">
+		<put-attribute name="body" value="/service/QuestionContent.jsp" />
+	</definition>
+
+	<!-- 상담 게시판 수정 폼, 액션 -->
+	<definition name="ModifyQuestion" extends="Main">
+		<put-attribute name="body" value="/service/ModifyQuestion.jsp" />
+	</definition>
+
+	<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ여행 상품ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+
+	<!-- 여행패키지 목록 -->
+	<definition name="ListItem" extends="Main">
+		<put-attribute name="body" value="/item/ListItem.jsp" />
+	</definition>
+
+
+	<!-- 여행상품 상세보기 -->
+	<definition name="ItemContent" extends="Main">
+		<put-attribute name="body" value="/item/ItemContent.jsp" />
+	</definition>
+	
+	<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ호텔 상품ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+
+	<definition name="ListHotel" extends="Main">
+		<put-attribute name="body" value="/hotel/ListHotel.jsp" />
+	</definition>
+
+	<definition name="HotelContent" extends="Main">
+		<put-attribute name="body" value="/hotel/HotelContent.jsp" />
+	</definition>
+
+
+	<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ ㅡㅡ항공 상품ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+	
+	<definition name="ListAir" extends="Main">
+		<put-attribute name="body" value="/air/ListAir.jsp" />
+	</definition>
+	
+	
+	<!-- 항공권 상세보기 -->
+	<definition name="AirContent" extends="Main">
+		<put-attribute name="body" value="/air/AirContent.jsp" />
+	</definition>
+
+
+	<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ관리자ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+
+	<!-- 관리자(상품등록) 폼 이동 -->
+	<definition name="AdminForm" extends="Main">
+		<put-attribute name="body" value="/admin/adminmember/AdminForm.jsp" />
+	</definition>
+
+	<!-- 회원목록 이동 -->
+	<definition name="AdminMemberList" extends="Main">
+		<put-attribute name="body"
+			value="/admin/adminmember/AdminMemberList.jsp" />
+	</definition>
+
+	<!-- 회원정보 수정 (관리자) -->
+	<definition name="AdminMemberModifyForm" extends="Main">
+		<put-attribute name="body"
+			value="/admin/adminmember/AdminMemberModify.jsp" />
+	</definition>
+
+	<!--ㅡㅡㅡㅡㅡ 상품등록ㅡㅡㅡㅡㅡ -->
+	<!-- 여행 상품 등록 폼 이동 -->
+	<definition name="AdminItemWriteForm" extends="Main">
+		<put-attribute name="body"
+			value="/admin/adminitem/AdminItemWrite.jsp" />
+	</definition>
+
+	<!-- 항공 상품 등록 폼 이동 -->
+	<definition name="AdminAirWriteForm" extends="Main">
+		<put-attribute name="body" value="/admin/adminair/AdminAirWrite.jsp" />
+	</definition>
+
+	<!-- 호텔 상품 등록 폼 이동 -->
+	<definition name="AdminHotelWriteForm" extends="Main">
+		<put-attribute name="body"
+			value="/admin/adminhotel/AdminHotelWrite.jsp" />
+	</definition>
+
+	<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ상품 수정ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+	<!-- 여행 상품 수정 폼 -->
+	<definition name="ModifyItemForm" extends="Main">
+		<put-attribute name="body"
+			value="/admin/adminitem/AdminItemModify.jsp" />
+	</definition>
+
+	<!-- 호텔 상품 수정 폼 -->
+	<definition name="ModifyHotelForm" extends="Main">
+		<put-attribute name="body"
+			value="/admin/adminhotel/AdminHotelModify.jsp" />
+	</definition>
+
+	<!-- 항공 상품 수정 폼 -->
+	<definition name="ModifyAirForm" extends="Main">
+		<put-attribute name="body" value="/admin/adminair/AdminAirModify.jsp" />
+	</definition>
+
+
+	<!--ㅡㅡㅡ 결제 ㅡㅡㅡ -->
+	<!-- 구매할 상품의 정보를 가지고 이동 -->
+	<definition name="Pay" extends="Main">
+		<put-attribute name="body" value="/pay/Pay.jsp" />
+	</definition>
+
+
+	<!-- 결제 완료창(화면의 확인을 누르거나 meta refresh태그를 이용해 일정시간이 지나면 자동으로 메인으로 이동하도록 PayResult.jsp에 
+		경로 설정) -->
+	<definition name="PayResult" extends="Main">
+		<put-attribute name="body" value="/pay/PayResult.jsp" />
+	</definition>
+
+	<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 후기 게시판 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+	<!-- 리뷰 게시판 리스트(관리자는 글쓰기 버튼 나타나지 않도록 조건문 추가) -->
+	<definition name="ListReview" extends="Main">
+		<put-attribute name="body" value="/review/ListReview.jsp" />
+	</definition>
+
+
+	<!-- 리뷰 게시판 글쓰기 -->
+	<definition name="WriteReview" extends="Main">
+		<put-attribute name="body" value="/review/WriteReview.jsp" />
+	</definition>
+
+
+	<!-- 리뷰 게시판 수정하기 -->
+	<definition name="ModifyReview" extends="Main">
+		<put-attribute name="body" value="/review/ModifyReview.jsp" />
+	</definition>
+	
+	<!-- 리뷰 게시판 상세보기(글을 작성한 회원과 관리자에게만 수정 삭제버튼이 나오도록 조건문 추가) -->
+	<definition name="ReviewContent" extends="Main">
+		<put-attribute name="body" value="/review/ContentReview.jsp" />
+	</definition>
+	
+	<!-- 회사소개 -->
+	<definition name="CompanyIntro" extends="Main">
+		<put-attribute name="body" value="/company/introduction.jsp" />
+	</definition>
+	
+
+</tiles-definitions>

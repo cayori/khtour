@@ -1,0 +1,27 @@
+*{margin:0 auto; padding:0;}
+li{list-style: none;}
+a{text-decoration: none;}
+
+*{margin:0 auto; padding:0;}
+li{list-style: none;}
+a{text-decoration: none;}
+
+.wrap{position: relative; width:100%; height:auto;}
+.wrap .contents{ position: relative;  margin: 0 auto; width:1000px; height:auto; }
+.wrap .contents h1{position: relative; float:left; width:100%; height:50px; line-height: 50px; font-size: 16pt; color:#666; }
+.wrap .contents h2{position: relative; float:left; margin-top:30px; width:100%; height:50px; line-height: 50px; font-size: 12pt; color:#fff; background:#e9871f; text-align: center; }
+.wrap .contents h2 span{font-size: 14pt; }
+
+.wrap .contents .content_info{position: relative; float:left; margin-top:20px; width:100%; float:left; height:auto; border-bottom: 2px solid #e9871f;}
+.wrap .contents .content_info li{position: relative;}
+.wrap .contents .content_info .content_name{position: relative; float:left; width:100%; height:30px; line-height: 30px; font-weight: bold; color:#666;border-bottom: 2px solid #e9871f; }
+.wrap .contents .content_info .content_info_1{position: relative;  width:100%; font-weight: bold; color:#666; }
+.wrap .contents .content_info .content_info_1 ul li{position: relative; float:left; margin:5px 0 5px; height:40px; line-height: 40px; }
+.wrap .contents .content_info .content_info_1 ul li:nth-child(1){width:20%; background:#e9871f; color:#fff; font-size: 10pt; font-weight: normal; text-align: center;}
+.wrap .contents .content_info .content_info_1 ul li:nth-child(2){width:79%; font-size: 10pt;}
+.wrap .contents .content_info .content_info_1 ul li:nth-child(2) input{margin-left:20px; width: 150px; height:20px; text-align: center; }
+.wrap .contents .content_info .content_info_1 ul li:nth-child(2) select{margin-left:20px; width: 150px; height:25px; text-align: center; color:#256ba9; }
+
+.btn_wrap{position: relative; float:right; margin-top:30px; width:400px; height:50px;}
+.btn_wrap a{display: block; float:right;  width:100px; height:40px; background:none; margin-top:10px; margin-left: 20px; text-align: center; line-height: 40px; border:1px solid #e9871f; color:#666;}
+.btn_wrap a:hover{transition:0.3s; background:#256ba9; color:#fff;}

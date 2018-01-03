@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+<sqlMap>
+
+	<!-- 공지사항 게시판 테이블 -->
+	<typeAlias alias="notice" type="service.NoticeVO" />
+
+	<typeAlias alias="question" type="service.QuestionVO" />
+
+	<typeAlias alias="questionco" type="admin.QuestionCO" />
+
+	<!-- 공지사항 -->
+	<resultMap id="noticeRes" class="notice">
+		<result property="notice_no" column="notice_no" />
+		<result property="subject" column="subject" />
+		<result property="content" column="content" />
+		<result property="image1" column="image1" />
+		<result property="image2" column="image2" />
+		<result property="image3" column="image3" />
+		<result property="reg_date" column="reg_date" />
+		<result property="readcount" column="readcount" />
+	</resultMap>
+
+	<!-- 문의게시판 -->
+	<resultMap id="questionRes" class="question">
+		<result property="question_no" column="question_no" />
+		<result property="id" column="id" />
+		<result property="subject" column="subject" />
+		<result property="pw" column="pw" />
+		<result property="content" column="content" />
+		<result property="image1" column="image1" />
+		<result property="image2" column="image2" />
+		<result property="image3" column="image3" />
+		<result property="reg_date" column="reg_date" />
+		<result property="readcount" column="readcount" />
+		<result property="cocount" column="cocount" />
+	</resultMap>
+
+	<!-- 문의게시판 -->
+	<resultMap id="questioncoRes" class="questionco">
+		<result property="question_no" column="question_no" />
+		<result property="no" column="no" />
+		<result property="id" column="id" />
+		<result property="reg_date" column="reg_date" />
+		<result property="pw" column="pw" />
+		<result property="content" column="content" />
+	</resultMap>
+
+	<!-- 공통으로 사용할 select 절 정의 -->
+	<sql id="select-all_notice">
+		SELECT * FROM NOTICEVO
+	</sql>
+
+	<!-- 공통으로 사용할 where-no 절 정의 -->
+	<sql id="where-no_notice">
+		WHERE notice_no = #notice_no#
+	</sql>
+
+
+	<!-- select 쿼리문 정의 -->
+	<select id="selectAll_notice" resultMap="noticeRes"
+		parameterClass="int">
+		SELECT * FROM NOTICEVO
+		ORDER BY notice_no DESC
+	</select>
+
+	<select id="selectOne_notice" resultMap="noticeRes"
+		parameterClass="int">
+		SELECT * FROM NOTICEVO
+		WHERE notice_no = #notice_no#
+	</select>
+
+	<select id="selectLastNo_notice" resultClass="notice"
+		parameterClass="int">
+		SELECT max(notice_no) as notice_no FROM NOTICEVO
+	</select>
+
+	<!-- insert 쿼리문 정의 -->
+	<insert id="insertBoard_notice" parameterClass="notice">
+
+		INSERT INTO
+		NOTICEVO (NOTICE_NO,
+		SUBJECT,
+		CONTENT,
+		IMAGE1,
+		IMAGE2,
+		IMAGE3,
+		REG_DATE,
+		READCOUNT
+		)
+		VALUES (SEQ_NOTICEVO.NEXTVAL,
+		#subject#,
+		#content#,
+		#image1#,
+		#image2#,
+		#image3#,
+		#reg_date#,
+		#readcount#
+		)
+	</insert>
+
+
+	<!-- update 쿼리문 정의 -->
+	<update id="updateBoard_notice" parameterClass="notice">
+		UPDATE NOTICEVO SET SUBJECT = #subject#,
+		CONTENT = #content#
+		<include refid="where-no_notice" />
+	</update>
+
+	<update id="updateReadCount_notice" parameterClass="notice">
+		UPDATE NOTICEVO SET READCOUNT = READCOUNT + 1
+		<include refid="where-no_notice" />
+	</update>
+
+	<!-- delete 쿼리문 정의 -->
+	<delete id="deleteBoard_notice" parameterClass="notice">
+		DELETE FROM NOTICEVO
+		<include refid="where-no_notice" />
+	</delete>
+
+
+	<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ문의게시판ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+
+	<!-- 공통으로 사용할 select 절 정의 -->
+	<sql id="select-all_question">
+		SELECT * FROM QUESTIONVO
+	</sql>
+
+	<!-- 공통으로 사용할 where-no 절 정의 -->
+	<sql id="where-no_question">
+		WHERE question_no = #question_no#
+	</sql>
+
+
+	<!-- select 쿼리문 정의 -->
+	<select id="selectAll_question" resultMap="questionRes"
+		parameterClass="int">
+		SELECT * FROM QUESTIONVO
+		ORDER BY question_no DESC
+	</select>
+
+	<select id="selectOne_question" resultMap="questionRes"
+		parameterClass="int">
+		SELECT * FROM QUESTIONVO
+		WHERE question_no = #question_no#
+	</select>
+
+	<select id="selectLastNo_question" resultClass="question"
+		parameterClass="int">
+		SELECT max(question_no) as question_no FROM QUESTIONVO
+	</select>
+
+	<!-- insert 쿼리문 정의 -->
+	<insert id="insertBoard_question" parameterClass="question">
+
+		INSERT INTO QUESTIONVO (QUESTION_NO,
+		ID,
+		SUBJECT,
+		PW,
+		CONTENT,
+		IMAGE1,
+		IMAGE2,
+		IMAGE3,
+		REG_DATE,
+		READCOUNT,
+		COCOUNT
+		)
+		VALUES (SEQ_QUESTIONVO.NEXTVAL,
+		#id#,
+		#subject#,
+		#pw#,
+		#content#,
+		#image1#,
+		#image2#,
+		#image3#,
+		#reg_date#,
+		#readcount#,
+		0
+		)
+	</insert>
+
+	<!-- update 쿼리문 정의 -->
+	<update id="updateBoard_question" parameterClass="question">
+		UPDATE QUESTIONVO SET SUBJECT = #subject#,
+		CONTENT = #content#
+		<include refid="where-no_question" />
+	</update>
+
+	<update id="updateReadCount_question" parameterClass="question">
+		UPDATE QUESTIONVO SET READCOUNT = READCOUNT + 1
+		<include refid="where-no_question" />
+	</update>
+
+	<update id="updateCocount_questionco" parameterClass="int">
+		UPDATE QUESTIONVO SET COCOUNT = COCOUNT + 1
+		<include refid="where-no_question" />
+	</update>
+
+	<update id="updateCocountDown_questionco" parameterClass="int">
+		UPDATE QUESTIONVO SET COCOUNT = COCOUNT - 1
+		<include refid="where-no_question" />
+	</update>
+
+	<!-- delete 쿼리문 정의 -->
+	<delete id="deleteBoard_question" parameterClass="question">
+		DELETE FROM QUESTIONVO
+		<include refid="where-no_question" />
+	</delete>
+
+	<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ문의게시판코멘트ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+
+	<!-- 공통으로 사용할 select 절 정의 -->
+	<sql id="select-all_questionco">
+		SELECT * FROM QUESTIONCO
+	</sql>
+
+	<!-- 공통으로 사용할 where-no 절 정의 -->
+	<sql id="where-no_questionco">
+		WHERE no = #no#
+	</sql>
+
+
+	<!-- select 쿼리문 정의 -->
+	<select id="selectAll_questionco" resultMap="questioncoRes"
+		parameterClass="int">
+		SELECT * FROM QUESTIONCO
+		ORDER BY no DESC
+	</select>
+
+	<select id="selectAll2_questionco" resultMap="questioncoRes"
+		parameterClass="int">
+		SELECT * FROM QUESTIONCO WHERE QUESTION_NO = #question_no#
+		ORDER BY no DESC
+	</select>
+
+	<select id="selectOne_questionco" resultMap="questioncoRes"
+		parameterClass="int">
+		SELECT * FROM QUESTIONCO
+		WHERE no = #no#
+	</select>
+
+	<select id="selectLastNo_questionco" resultClass="questionco"
+		parameterClass="int">
+		SELECT max(no) as no FROM QUESTIONCO
+	</select>
+
+	<!-- insert 쿼리문 정의 -->
+	<insert id="insertBoard_questionco" parameterClass="questionco">
+
+		INSERT INTO QUESTIONCO (QUESTION_NO,
+		NO,
+		ID,
+		REG_DATE,
+		PW,
+		CONTENT
+		)
+		VALUES (#question_no#,
+		SEQ_QUESTIONCO.NEXTVAL,
+		#id#,
+		#reg_date#,
+		#pw#,
+		#content#
+		)
+	</insert>
+
+	<!-- delete 쿼리문 정의 -->
+	<delete id="deleteBoard_questionco" parameterClass="questionco">
+		DELETE FROM QUESTIONCO
+		<include refid="where-no_questionco" />
+	</delete>
+
+
+
+	<delete id="deleteBoard_Allquestionco" parameterClass="int">
+	DELETE FROM QUESTIONCO
+	where question_no = #question_no#
+	</delete>
+
+
+	<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ상세보기에서 문의글 가져오기 -->
+
+
+	<sql id="select-allQuestion"> <!--공통사용 -->
+		SELECT * FROM QUESTIONVO
+	</sql>
+
+
+
+	<select id="selectAllQuestion" resultMap="questionRes"
+		parameterClass="question">
+		<include refid="select-allQuestion" />
+		ORDER BY question_no DESC
+	</select>
+
+</sqlMap>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- 액션 초안구성. 각자 파트의 추가할 액션이 있으면 최하단부의 절취선 아래로 추가하고 주석으로 작성자 이름 달아서 단락구분하고 
+	용도설명을 달아줭 ex) 언구, 여행게시판 ~~~ 구현 액션 -->
+
+<!-- 주석을 다 풀고 실행하면 무조건 오류나기때문에 자기 담당 파트만 주석풀고 사용해줭 -->
+
+<!-- <result type="tiles"> 이동할 타일즈의 name을 입력하면 해당 name을 가진 타일즈의 value에 명시되어 
+	있는 jsp로 이동 </result> -->
+
+
+
+
+<struts>
+
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.multipart.maxSize" value="10485760" />
+	<constant name="struts.multipartparser" value="Jakarta" />
+	<constant name="struts.multipart.saveDir" value="c:\\temp" />
+
+
+
+	<package name="KHTOUR" extends="struts-default, tiles-default">
+
+		<interceptors>
+			<interceptor name="logincheck" class="member.LoginCheck" />
+		</interceptors>
+
+		<global-results>
+			<result name="error" type="chain">LoginForm</result>
+		</global-results>
+
+
+	</package>
+
+	<!-- 회원 -->
+	<include file="/xml/Member.xml" />
+
+	<!-- 고객센터 -->
+	<include file="/xml/Service.xml" />
+
+	<!-- 여행 -->
+	<include file="/xml/Item.xml" />
+
+	<!-- 관리자 -->
+	<include file="/xml/Admin.xml" />
+
+	<!-- 장바구니 -->
+	<include file="/xml/Basket.xml" />
+
+	<!-- 항공 -->
+	<include file="/xml/Air.xml" />
+
+	<!-- 결제 -->
+	<include file="/xml/Pay.xml" />
+
+	<!-- 후기 -->
+	<include file="/xml/Review.xml" />
+
+	<!-- 호텔 -->
+	<include file="/xml/Hotel.xml" />
+
+	<!-- 회사소개 -->
+	<include file="/xml/Company.xml" />
+
+
+
+</struts>

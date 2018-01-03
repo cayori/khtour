@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN'
+'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+<sqlMap>
+
+	<typeAlias alias="order" type="order.OrderVO" />
+
+	<resultMap id="orderRes" class="order">
+		<result property="seq_no" column="seq_no" />
+		<result property="name" column="name" />
+		<result property="price" column="price" />
+		<result property="content" column="content" />
+		<result property="day" column="day" />
+		<result property="country" column="country" />
+		<result property="region" column="region" />
+		<result property="readcount" column="readcount" />
+		<result property="image1" column="image1" />
+		<result property="image2" column="image2" />
+		<result property="image3" column="image3" />
+		<result property="reg_date" column="reg_date" />
+		<result property="amount" column="amount" />
+		<result property="tel" column="tel" />
+		<result property="kinds" column="kinds" />
+		<result property="checkin" column="checkin" />
+		<result property="checkout" column="checkout" />
+		<result property="ad" column="ad" />
+		<result property="dd" column="dd" />
+		<result property="id" column="id" />
+		<result property="hai" column="hai" />
+	</resultMap>
+	<!--구메 테이블에 널기 -->
+	<insert id="insertorder" parameterClass="order">
+		INSERT INTO ORDERVO(NO,SEQ_NO, NAME, PRICE, CONTENT,DAY,
+		COUNTRY,REGION,READCOUNT,IMAGE1,IMAGE2,IMAGE3,
+		REG_DATE,AMOUNT,TEL,KINDS,CHECKIN,CHECKOUT,AD,DD,ID,HAI)
+		VALUES(seq_ordervo.NEXTVAL,#seq_no#,#name#,#price#,#content#,#day#,#country#,#region#,#readcount#
+		,#image1#,#image2#,#image3#,SYSDATE,#amount#,#tel#,#kinds#,#checkin#,#checkout#,
+		#ad#,#dd#,#id#,#hai#)
+	</insert>
+	
+	<!--구매내역 -->
+	<select id="selectorder" resultMap="orderRes" parameterClass="String">
+		SELECT * FROM ORDERVO
+		WHERE ID = #id#
+	</select>
+	
+	<!--구매내역에서 최종결제로 넘어갈때 연락처만 업데이트 시켜준다. -->
+	<update id="updateorder" parameterClass="order">
+		UPDATE ORDERVO SET tel = #tel# WHERE ID = #id# and seq_no = #seq_no#
+	</update>
+	
+	<!-- 여행 패키지 상품 판매 인기순 실시간 갱신에 사용할 itemvo의 cocount(구매 횟수)를 구매할 떄마다 1씩 증가시킨다. -->
+	<update id="addcocount" parameterClass="int">
+	UPDATE itemvo SET cocount = cocount + 1 WHERE no = #seq_no#
+	</update>
+	
+	<!-- 구매내역삭제 그리고 최종결제전 사용자 정보입력시 취소할 때 사용 -->
+	<delete id="deleteorder" parameterClass="order">
+		DELETE FROM ORDERVO WHERE ID= #id# AND SEQ_NO = #seq_no# <!-- AND NAME = #name# -->
+	</delete>
+	
+	<delete id="deleteallorder" parameterClass="order">
+	DELETE FROM ORDERVO WHERE id = #id#
+	</delete>
+
+
+</sqlMap>

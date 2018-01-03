@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<!-- 액션 초안구성. 각자 파트의 추가할 액션이 있으면 최하단부의 절취선 아래로 추가하고 주석으로 작성자 이름 달아서 단락구분하고 
+	용도설명을 달아줭 ex) 언구, 여행게시판 ~~~ 구현 액션 -->
+
+<!-- 주석을 다 풀고 실행하면 무조건 오류나기때문에 자기 담당 파트만 주석풀고 사용해줭 -->
+
+<!-- <result type="tiles"> 이동할 타일즈의 name을 입력하면 해당 name을 가진 타일즈의 value에 명시되어 
+	있는 jsp로 이동 </result> -->
+
+
+
+<struts>
+
+	<constant name="struts.i18n.encoding" value="EUC-KR" />
+	<constant name="struts.multipart.maxSize" value="104857600" />
+
+	<package name="KHTOUR" extends="struts-default, tiles-default">
+		<!-- <global-results> <result name="error">/error/pageError.jsp</result> 
+			</global-results> <global-exception-mappings> <exception-mapping result="error" 
+			exception="java.lang.Exception" /> </global-exception-mappings> -->
+
+
+		<!-- 메인화면 -->
+		<!-- <action name="main" class="main.Main">
+			<result type="tiles"></result>
+		</action> -->
+
+
+		<!-- 회원 로그인 -->
+		<!-- <action name="LoginMember" class="member.LoginMember"> <result type="tiles"></result> 
+			</action> -->
+
+
+		<!-- 로그아웃
+		<action name="LogoutMember" class="member.LoginMember" method="logout">
+			<result type="tiles"></result>
+		</action> -->
+
+
+		<!-- 회원탈퇴 -->
+		<!-- <action name="DeleteMember" class="member.MemberService"
+			method="delete">
+			<result type="tiles"></result>
+		</action> -->
+
+
+		<!-- 비밀번호변경 (회원정보 수정때 같이 처리) -->
+		<action name="ChangePw" class="member.MemberService" method="changePw">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 회원정보수정 (세션ID값과 동일한 ID를 가진 DB정보 한 줄을 꺼내오는 로직 )(관리자, 회원 동일) -->
+		<action name="ModifyMember" class="member.MemberService"
+			method="modify">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 아이디찾기 -->
+		<action name="FindId" class="member.MemberService">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 비밀번호 찾기 -->
+		<action name="FindPw" class="member.MemberService" method="findPw">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 회원가입 -->
+		<!-- <action name="JoinMember" class="member.JoinMember"> <result type="tiles"></result> 
+			</action> -->
+
+
+		<!-- 아이디 중복 확인 -->
+		<action name="ConfirmId" class="member.JoinMember" method="idConfirm">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 구매내역 -->
+		<action name="OrderList" class="order.OrderList">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 장바구니 담기 -->
+		<action name="Basket" class="order.Basket">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 장바구니에서 뺴기 -->
+		<action name="Cancel" class="order.Basket" method="delete">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 고객센터 -->
+		<!-- 공지사항 목록 -->
+		<action name="ListNotice" class="service.ListNotice">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 공지사항 상세보기 -->
+		<action name="SelectNotice" class="service.ListNotice" method="selectNotice">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 공지사항 작성(관리자) -->
+		<action name="AdminWriteNotice" class="admin.AdminWriteNotice">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 공지사항 삭제(관리자) -->
+		<action name="AdminDeleteNotice" class="admin.AdminWriteNotice"
+			method="delete">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 공지사항 수정 화면(관리자) -->
+		<action name="AdminModifyNotice" class="admin.AdminWriteNotice"
+			method="modify">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 상담문의 목록 -->
+		<action name="ListQuestion" class="service.ListQuestion">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 상담문의글 상세보기 -->
+		<action name="SelectQuestion" class="service.ListQuestion"
+			method="selectQuestion">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 회원은 자신이 쓴 글만 수정 삭제가 가능하도록 구현, 관리자는 제한없이 수정 삭제 가능하게 -->
+		<!-- 상담문의글 수정 -->
+		<action name="ModifyQuestion" class="service.WriteQuestion"
+			method="modify">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 상담문의글 삭제 -->
+		<action name="DeleteQuestion" class="service.WriteQuestion"
+			method="delete">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 상담문의글 작성 -->
+		<action name="WriteQuestion" class="service.WriteQuestion">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 관리자가 댓글을 작성하면 해당 글의 상세보기로 이동 -->
+		<action name="AdminReplyQuestion" class="service.AdminReply">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 여행상품목록 (관리자는 각 게시글마다 수정, 삭제 버튼이 보이게 구현) -->
+		<action name="ListItem" class="item.ListItem">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 항공권상품목록 -->
+		<action name="ListAir" class="air.ListAir">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 호텔상품목록 -->
+		<action name="ListHotel" class="hotel.ListHotel">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 후기 게시판 -->
+		<action name="ListReview" class="review.ListReview">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 후기 상세보기 (회원은 자신이 쓴 후기만 수정,삭제가 가능하도록 구현) (관리자는 제한 없음) -->
+		<action name="SelectReview" class="review.SelectReview">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 후기 수정 -->
+		<action name="ModifyReview" class="review.WriteReview" method="modify">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 후기 삭제 -->
+		<action name="DeleteReview" class="review.WriteReview" method="delete">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 후기 작성 -->
+		<action name="WriteReview" class="review.WriteReview">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 후기 댓글 기능 (회원은 자신이 쓴 댓글만 삭제가 가능하도록 구현) (관리자는 제한 없음) -->
+		<action name="WriteCommentReview" class="review.WriteReview"
+			method="modify">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 후기 댓글 삭제 -->
+		<action name="DeleteCommentReview" class="review.WriteReview"
+			method="deleteComment">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 여행 상품 상세보기 (회원은 각 상품의 자신이 쓴 댓글만 삭제가 가능하도록 조건문 추가해서 구현) (관리자는 제한 없음) -->
+		<action name="SelectItem" class="item.SelectItem">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 호텔 상품 상세보기 -->
+		<action name="SelectHotel" class="hotel.SelectHotel">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 항공권 상품 상세보기 -->
+		<action name="SelectAir" class="air.SelectAir">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 상품 상세보기의 댓글 작성 -->
+		<action name="WriteItemC" class="item.WriteItemComment">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 상품 상세보기의 댓글 삭제 -->
+		<action name="WriteItemCD" class="item.WriteItemComment"
+			method="deleteComment">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 구매할 상품의 정보를 불러오기 -->
+		<action name="Pay" class="pay.Pay">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 결제완료후 해당 회원의 구매내역으로 구매한 상품 정보를 등록하고 결제완료창(명세표 등)으로 이동 -->
+		<action name="PayResult" class="pay.PayResult">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 회원 목록(관리자용) -->
+		<action name="AdminMemberList" class="admin.AdminMemberList">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 회원 정보 수정(수정은 수정폼에서, 회원가입 화면 X) -->
+		<action name="AdminMemberModify" class="admin.AdminMemberService">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 회원의 세션정보와 Member테이블에 존재하는 해당 회원 정보 삭제 -->
+		<action name="AdminMemberDelete" class="admin.AdminMemberService"
+			method="delete">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- (상품등록, 수정시 쓰기폼과 수정폼을 하나씩만 만들어서 HAI값을 구분해줘서 한번에 처리 or 쓰기폼을 각각 상품별로 
+			3개로 나눠서 구현 ) -->
+		<!-- 상품등록 -->
+		<action name="AdminItemWrite" class="admin.AdminItemWrite">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 상품 정보 삭제 (해당 상품의 테이블에서 상품정보 삭제하는 로직 구현) -->
+		<action name="AdminItemDelete" class="admin.AdminItemWrite"
+			method="delete">
+			<result type="tiles"></result>
+		</action>
+
+
+		<!-- 해당 상품 글내용 수정 -->
+		<action name="AdminItemModify" class="admin.AdminItemWrite"
+			method="modify">
+			<result type="tiles"></result>
+		</action>
+
+
+
+		<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ절취선ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+
+		<!-- 고객센터 메인목록 불러오기(진주) -->
+		<action name="ServiceForm" class="service.ServiceForm">
+			<result type="tiles">ServiceForm</result>
+		</action>
+
+
+
+
+
+	</package>
+
+
+</struts>
