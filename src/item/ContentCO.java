@@ -1,11 +1,11 @@
 package item;
 import java.util.Date;
 public class ContentCO {
-		private int seq_no; // »óÇ° ¹øÈ£
-		private int c_no; //ÄÚ¸àÆ® ¹øÈ£
-		private String c_id;//Ä¿¸àÆ®´Ü »ç¿ëÀÚ id
-		private Date c_reg_date; //µî·Ï ³¯Â¥
-		private String c_content; //ÄÚ¸àÆ® ³»¿ë
+		private int seq_no; // ìƒí’ˆ ë²ˆí˜¸
+		private int c_no; //ì½”ë©˜íŠ¸ ë²ˆí˜¸
+		private String c_id;//ì»¤ë©˜íŠ¸ë‹¨ ì‚¬ìš©ì id
+		private Date c_reg_date; //ë“±ë¡ ë‚ ì§œ
+		private String c_content; //ì½”ë©˜íŠ¸ ë‚´ìš©
 		private int c_grade;
 		
 	

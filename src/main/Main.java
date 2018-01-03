@@ -39,8 +39,8 @@ public class Main extends ActionSupport {
 	public String execute() throws Exception {
 
 		hotel = (HotelVO) sqlMapper.queryForObject("selectOneH");
-		item = (ItemVO) sqlMapper.queryForObject("selectOneI");// ÃÖ½Å¿©Çà»óÇ° ºó¿¡ ¼ÂÆÃ
-		air = (AirVO) sqlMapper.queryForObject("selectOneA");// ÃÖ½ÅÇ×°ø±Ç ºó¿¡ ¼ÂÆÃ
+		item = (ItemVO) sqlMapper.queryForObject("selectOneI");// ìµœì‹ ì—¬í–‰ìƒí’ˆ ë¹ˆì— ì…‹íŒ…
+		air = (AirVO) sqlMapper.queryForObject("selectOneA");// ìµœì‹ í•­ê³µê¶Œ ë¹ˆì— ì…‹íŒ…
 		
 		return SUCCESS;
 	}

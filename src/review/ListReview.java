@@ -20,10 +20,10 @@ public class ListReview extends ActionSupport{
 		
 		private ReviewVO review = new ReviewVO();
 		private List<ReviewVO> reviewList = new ArrayList();
-		private int currentPage = 1; //ÇöÀç ÆäÀÌÁö ÁöÁ¤
+		private int currentPage = 1; //í˜„ì¬ í˜ì´ì§€ ì§€ì •
 		private int totalCount;
-		private int blockCount = 4; //ÇÑ ÆäÀÌÁö¿¡ ÀÖ´Â ±ÛÀÇ ¼ö 
-		private int blockPage = 5; //ÆäÀÌÂ¡ ¼ö 
+		private int blockCount = 4; //í•œ í˜ì´ì§€ì— ìˆëŠ” ê¸€ì˜ ìˆ˜ 
+		private int blockPage = 5; //í˜ì´ì§• ìˆ˜ 
 		private String pagingHtml;
 		private PagingActionReview page;
 		

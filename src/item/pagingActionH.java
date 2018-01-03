@@ -46,7 +46,7 @@ public class pagingActionH {
 		if (currentPage > blockPage) {
 			pagingHtml.append("<a href=SelectHotel.action?no="+no+"&currentPage="
 					+ (startPage - 1) + ">");
-			pagingHtml.append("[ÀÌÀü]");
+			pagingHtml.append("[ì´ì „]");
 			pagingHtml.append("</a>");
 		}
 
@@ -62,7 +62,7 @@ public class pagingActionH {
 		if (totalPage - startPage >= blockPage) {
 			pagingHtml.append("<a href=SelectHotel.action?no="+no+"&currentPage="
 					+ (endPage + 1) + ">");
-			pagingHtml.append("[´ÙÀ½]");
+			pagingHtml.append("[ë‹¤ìŒ]");
 			pagingHtml.append("</a>");
 		}
 	}

@@ -2,13 +2,13 @@ package item;
 import java.util.Date;
 public class ItemQuestionVO {
 
-	private int seq_no; //»óÇ° ¹øÈ£
-	private int q_no; //q&a ¹øÈ£
-	private String q_id; //q&a¿¡ ´Ü »ç¿ëÀÚ ¾ÆÀÌµğ
-	private String q_subject; //Á¦¸ñ
-	private String q_pw; //ÆĞ½º¿öµå
-	private String q_content; //³»¿ë
-	private Date q_reg_date; //µî·Ï³¯Â¥
+	private int seq_no; //ìƒí’ˆ ë²ˆí˜¸
+	private int q_no; //q&a ë²ˆí˜¸
+	private String q_id; //q&aì— ë‹¨ ì‚¬ìš©ì ì•„ì´ë””
+	private String q_subject; //ì œëª©
+	private String q_pw; //íŒ¨ìŠ¤ì›Œë“œ
+	private String q_content; //ë‚´ìš©
+	private Date q_reg_date; //ë“±ë¡ë‚ ì§œ
 	
 	
 	public int getSeq_no() {

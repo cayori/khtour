@@ -60,7 +60,7 @@ public class JoinMember extends ActionSupport {
 
 	public String execute() throws Exception {
 		
-		//¸ŞÀÏÀÎÁõÀ» ÅëÇØ admin°ªÀÌ 5·Î Àü´ŞµÈ´Ù¸é È¸¿ø°¡ÀÔÆû¿¡¼­ ÀÔ·ÂÇß´ø Á¤º¸¸¦ µ¥ÀÌÅÍº£ÀÌ½º¿¡ ÀúÀå
+		//ë©”ì¼ì¸ì¦ì„ í†µí•´ adminê°’ì´ 5ë¡œ ì „ë‹¬ëœë‹¤ë©´ íšŒì›ê°€ì…í¼ì—ì„œ ì…ë ¥í–ˆë˜ ì •ë³´ë¥¼ ë°ì´í„°ë² ì´ìŠ¤ì— ì €ì¥
 		if (admin == 5) {
 
 			mvo.setId(id);
@@ -86,36 +86,36 @@ public class JoinMember extends ActionSupport {
 
 		String confirmid = (String) sqlMapper.queryForObject("confirmid", mvo);
 
-		if (confirmid == null) {//Áßº¹È®ÀÎÀ» Åë°úÇß´Ù¸é Áßº¹Ã¼Å©°ªÀ» yes·Î
+		if (confirmid == null) {//ì¤‘ë³µí™•ì¸ì„ í†µê³¼í–ˆë‹¤ë©´ ì¤‘ë³µì²´í¬ê°’ì„ yesë¡œ
 			confirmidcheck = "yes";
-		} else {//Áßº¹È®ÀÎÀ» Åë°úÇÏÁö ¸øÇß´Ù¸é Áßº¹Ã¼Å©°ªÀ» no·Î
+		} else {//ì¤‘ë³µí™•ì¸ì„ í†µê³¼í•˜ì§€ ëª»í–ˆë‹¤ë©´ ì¤‘ë³µì²´í¬ê°’ì„ noë¡œ
 			confirmidcheck = "no";
 		}
 		return SUCCESS;
 	}
 
-	public String confirmEmail() throws Exception {//È¸¿ø°¡ÀÔ ÀÌ¸ŞÀÏ ÀÎÁõ
+	public String confirmEmail() throws Exception {//íšŒì›ê°€ì… ì´ë©”ì¼ ì¸ì¦
 		HttpServletResponse response = ServletActionContext.getResponse();
 
 		email = email + "@" + email2;
 
 		mvo.setEmail(email);
 
-		//È¸¿ø°¡ÀÔ Á¤º¸ ÀÔ·Â½Ã ÀÔ·ÂÇÑ ÀÌ¸ŞÀÏ°ú µ¿ÀÏÇÑ ÀÌ¸ŞÀÏÀÌ µ¥ÀÌÅÍº£ÀÌ½º¿¡ Á¸ÀçÇÏ´ÂÁö È®ÀÎ
+		//íšŒì›ê°€ì… ì •ë³´ ì…ë ¥ì‹œ ì…ë ¥í•œ ì´ë©”ì¼ê³¼ ë™ì¼í•œ ì´ë©”ì¼ì´ ë°ì´í„°ë² ì´ìŠ¤ì— ì¡´ì¬í•˜ëŠ”ì§€ í™•ì¸
 		confirmemail = (String) sqlMapper.queryForObject("confirmemail", mvo);
 
-		if (confirmemail != null) {//µ¿ÀÏÇÑ ÀÌ¸ŞÀÏÀÌ Á¸ÀçÇÑ´Ù¸é °¡ÀÔºÒ°¡
+		if (confirmemail != null) {//ë™ì¼í•œ ì´ë©”ì¼ì´ ì¡´ì¬í•œë‹¤ë©´ ê°€ì…ë¶ˆê°€
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('µ¿ÀÏÇÑ ÀÌ¸ŞÀÏÀÌ Á¸ÀçÇÕ´Ï´Ù.');");
+			out.println("alert('ë™ì¼í•œ ì´ë©”ì¼ì´ ì¡´ì¬í•©ë‹ˆë‹¤.');");
 			out.println("history.go(-1);");
 			out.println("</script>");
 			out.close();
 			return LOGIN;
 		}
 		
-		//µ¿ÀÏÇÑ ÀÌ¸ŞÀÏÀÌ ¾ø´Ù¸é È¸¿ø°¡ÀÔÀÎÁõ¿ë ¸ŞÀÏ ¹ß¼Û
+		//ë™ì¼í•œ ì´ë©”ì¼ì´ ì—†ë‹¤ë©´ íšŒì›ê°€ì…ì¸ì¦ìš© ë©”ì¼ ë°œì†¡
 		Properties props = new Properties();
 		props.setProperty("mail.transport.protocol", "smtp");
 		props.setProperty("mail.smtp.host", "smtp.gmail.com");
@@ -129,7 +129,7 @@ public class JoinMember extends ActionSupport {
 
 		Authenticator auth = new Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("khtour8282@gmail.com", "");//¹ß½ÅÀÚ ÀÌ¸ŞÀÏ°ú ºñ¹Ğ¹øÈ£ ÀÔ·Â
+				return new PasswordAuthentication("khtour8282@gmail.com", "");//ë°œì‹ ì ì´ë©”ì¼ê³¼ ë¹„ë°€ë²ˆí˜¸ ì…ë ¥
 			}
 		};
 
@@ -137,14 +137,14 @@ public class JoinMember extends ActionSupport {
 
 		MimeMessage message = new MimeMessage(session);
 		message.setSender(new InternetAddress("khtour8282@gmail.com"));
-		message.setSubject("È¸¿ø°¡ÀÔ ÀÌ¸ŞÀÏ ÀÎÁõ ¸ŞÀÏÀÔ´Ï´Ù.");
+		message.setSubject("íšŒì›ê°€ì… ì´ë©”ì¼ ì¸ì¦ ë©”ì¼ì…ë‹ˆë‹¤.");
 
 		message.setRecipient(Message.RecipientType.TO, new InternetAddress(email));
 		
-		//È¸¿ø°¡ÀÔÆû¿¡¼­ ÀÔ·ÂÇÑ Á¤º¸¸¦ ³ëÃâµÇÁö¾Ê°Ô aÅÂ±×·Î ¹ß¼Û
-		//¿©±â¸¦ ´©¸£¸é ÇØ´ç °ªÀÌ °¡ÀÔ·ÎÁ÷À¸·Î Àü´ŞµÊ
+		//íšŒì›ê°€ì…í¼ì—ì„œ ì…ë ¥í•œ ì •ë³´ë¥¼ ë…¸ì¶œë˜ì§€ì•Šê²Œ aíƒœê·¸ë¡œ ë°œì†¡
+		//ì—¬ê¸°ë¥¼ ëˆ„ë¥´ë©´ í•´ë‹¹ ê°’ì´ ê°€ì…ë¡œì§ìœ¼ë¡œ ì „ë‹¬ë¨
 		String confirmUrl = "<a href='http://localhost:8080/khtour/JoinMember.action?email=" + email + "&id=" + id
-				+ "&password=" + password + "&name=" + name + "" + "&tel=" + tel + "&admin=5'>¿©±â</a>¸¦ ´©¸£½Ã¸é È¸¿ø°¡ÀÔÀÌ ¿Ï·áµË´Ï´Ù.";
+				+ "&password=" + password + "&name=" + name + "" + "&tel=" + tel + "&admin=5'>ì—¬ê¸°</a>ë¥¼ ëˆ„ë¥´ì‹œë©´ íšŒì›ê°€ì…ì´ ì™„ë£Œë©ë‹ˆë‹¤.";
 
 		Multipart mp = new MimeMultipart();
 		MimeBodyPart mbp1 = new MimeBodyPart();

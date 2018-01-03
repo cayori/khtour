@@ -11,26 +11,26 @@ import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ListItem extends ActionSupport {
-	public static Reader reader; // ÆÄÀÏ ½ºÆ®¸²À» À§ÇÑ reader.
-	public static SqlMapClient sqlMapper; // SqlMapClient API¸¦ »ç¿ëÇÏ±â À§ÇÑ sqlMapper
-											// °´Ã¼
+	public static Reader reader; // íŒŒì¼ ìŠ¤íŠ¸ë¦¼ì„ ìœ„í•œ reader.
+	public static SqlMapClient sqlMapper; // SqlMapClient APIë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•œ sqlMapper
+											// ê°ì²´
 
 	private List<ItemVO> Itemlist = new ArrayList<ItemVO>();
 	private ItemVO ivo = new ItemVO();
 
-	private int currentPage = 1; // ÇöÀç ÆäÀÌÁö
-	private int totalCount; // ÃÑ °Ô½Ã¹°ÀÇ ¼ö
-	private int blockCount = 9; // ÇÑ ÆäÀÌÁöÀÇ °Ô½Ã¹°ÀÇ ¼ö
-	private int blockPage = 5; // ÇÑ È­¸é¿¡ º¸¿©ÁÙ ÆäÀÌÁö ¼ö
-	private String pagingHtml; // ÆäÀÌÂ¡À» ±¸ÇöÇÑ HTML
-	private ItempagingAction page; // ÆäÀÌÂ¡ Å¬·¡½º
-	private String search;// regionÄ®·³,content ¿¡ ³Ö¾î¼­ ºñ±³, ³»¿ë
+	private int currentPage = 1; // í˜„ì¬ í˜ì´ì§€
+	private int totalCount; // ì´ ê²Œì‹œë¬¼ì˜ ìˆ˜
+	private int blockCount = 9; // í•œ í˜ì´ì§€ì˜ ê²Œì‹œë¬¼ì˜ ìˆ˜
+	private int blockPage = 5; // í•œ í™”ë©´ì— ë³´ì—¬ì¤„ í˜ì´ì§€ ìˆ˜
+	private String pagingHtml; // í˜ì´ì§•ì„ êµ¬í˜„í•œ HTML
+	private ItempagingAction page; // í˜ì´ì§• í´ë˜ìŠ¤
+	private String search;// regionì¹¼ëŸ¼,content ì— ë„£ì–´ì„œ ë¹„êµ, ë‚´ìš©
 	private String n;
 	private String[] kind = { "reg_date", "ltprice", "price", "grade" };
 	
 	private int r;
 	
-	private String[] area = { "", "¼­¿ï", "ºÎ»ê", "ÀüÁÖ", "°æÁÖ", "Á¦ÁÖ", "°­¿ø" };
+	private String[] area = { "", "ì„œìš¸", "ë¶€ì‚°", "ì „ì£¼", "ê²½ì£¼", "ì œì£¼", "ê°•ì›" };
 
 	private List lately = new ArrayList();
 	private List latelyno = new ArrayList();
@@ -46,10 +46,10 @@ public class ListItem extends ActionSupport {
 	private String name2;
 	private String name3;
 
-	// »ı¼ºÀÚ
+	// ìƒì„±ì
 	public ListItem() throws IOException {
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
-		// ÁöÁ¤µÈ ¸®´õ¸¦ »ç¿ëÇÏ¿© SqlMapClient¸¦ ºôµåÇÕ´Ï´Ù.
+		// ì§€ì •ëœ ë¦¬ë”ë¥¼ ì‚¬ìš©í•˜ì—¬ SqlMapClientë¥¼ ë¹Œë“œí•©ë‹ˆë‹¤.
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
 	}

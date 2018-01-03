@@ -30,13 +30,13 @@ public class AdminItemDelete extends ActionSupport{
 	}
 	
 	
-	//¿©Çà »óÇ° »èÁ¦
+	//ì—¬í–‰ ìƒí’ˆ ì‚­ì œ
 	public String execute() throws Exception{
 		ivo.setNo(no);
 		
-		sqlMapper.delete("deletecoi", ivo);//ÇØ´ç °Ô½Ã±ÛÀÇ ÄÚ¸àÆ® »èÁ¦
+		sqlMapper.delete("deletecoi", ivo);//í•´ë‹¹ ê²Œì‹œê¸€ì˜ ì½”ë©˜íŠ¸ ì‚­ì œ
 		
-		sqlMapper.delete("deleteitem", ivo);//ÇØ´ç °Ô½Ã±Û »èÁ¦
+		sqlMapper.delete("deleteitem", ivo);//í•´ë‹¹ ê²Œì‹œê¸€ ì‚­ì œ
 		
 		sqlMapper.update("commit");
 		
@@ -44,7 +44,7 @@ public class AdminItemDelete extends ActionSupport{
 	}
 	
 	
-	//È£ÅÚ »óÇ° »èÁ¦
+	//í˜¸í…” ìƒí’ˆ ì‚­ì œ
 	public String deletehotel() throws Exception{
 		hvo.setNo(no);
 		
@@ -58,7 +58,7 @@ public class AdminItemDelete extends ActionSupport{
 	}
 	
 	
-	//Ç×°ø »óÇ° »èÁ¦
+	//í•­ê³µ ìƒí’ˆ ì‚­ì œ
 	public String deleteair() throws Exception{
 		avo.setNo(no);
 		

@@ -12,8 +12,8 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class ListAir extends ActionSupport {
 
-	public static Reader reader; // ÆÄÀÏ ½ºÆ®¸²À» À§ÇÑ reader.
-	public static SqlMapClient sqlMapper; // SqlMapClient API¸¦ »ç¿ëÇÏ±â À§ÇÑ sqlMapper °´Ã¼
+	public static Reader reader; // íŒŒì¼ ìŠ¤íŠ¸ë¦¼ì„ ìœ„í•œ reader.
+	public static SqlMapClient sqlMapper; // SqlMapClient APIë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•œ sqlMapper ê°ì²´
 
 	private List<AirVO> alist = new ArrayList<AirVO>();
 	private AirVO avo = new AirVO();
@@ -21,27 +21,27 @@ public class ListAir extends ActionSupport {
 	private int price;
 	private int no;
 
-	private int currentPage = 1; // ÇöÀç ÆäÀÌÁö
-	private int totalCount; // ÃÑ °Ô½Ã¹°ÀÇ ¼ö
-	private int blockCount = 9; // ÇÑ ÆäÀÌÁöÀÇ °Ô½Ã¹°ÀÇ ¼ö
-	private int blockPage = 5; // ÇÑ È­¸é¿¡ º¸¿©ÁÙ ÆäÀÌÁö ¼ö
-	private String pagingHtml; // ÆäÀÌÂ¡À» ±¸ÇöÇÑ HTML
-	private AirpagingAction page; // ÆäÀÌÂ¡ Å¬·¡½º
+	private int currentPage = 1; // í˜„ì¬ í˜ì´ì§€
+	private int totalCount; // ì´ ê²Œì‹œë¬¼ì˜ ìˆ˜
+	private int blockCount = 9; // í•œ í˜ì´ì§€ì˜ ê²Œì‹œë¬¼ì˜ ìˆ˜
+	private int blockPage = 5; // í•œ í™”ë©´ì— ë³´ì—¬ì¤„ í˜ì´ì§€ ìˆ˜
+	private String pagingHtml; // í˜ì´ì§•ì„ êµ¬í˜„í•œ HTML
+	private AirpagingAction page; // í˜ì´ì§• í´ë˜ìŠ¤
 	private String search;
 	private String n;
 	private String[] kind = {"reg_date", "grade", "ltprice", "price" };
 
-	// »ı¼ºÀÚ
+	// ìƒì„±ì
 	public ListAir() throws IOException {
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
-		// ÁöÁ¤µÈ ¸®´õ¸¦ »ç¿ëÇÏ¿© SqlMapClient¸¦ ºôµåÇÕ´Ï´Ù.
+		// ì§€ì •ëœ ë¦¬ë”ë¥¼ ì‚¬ìš©í•˜ì—¬ SqlMapClientë¥¼ ë¹Œë“œí•©ë‹ˆë‹¤.
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
 	}
 
 	public String execute() throws Exception {
 		if (search == null) { search = ""; }
-		if (n == null) { n = "0"; }//Ä«Å×°í¸®º° Á¤·Ä
+		if (n == null) { n = "0"; }//ì¹´í…Œê³ ë¦¬ë³„ ì •ë ¬
 			avo.setPrice(price);
 		    avo.setSearch(getSearch());
 		    avo.setSearchn(kind[Integer.parseInt(getN())]);
@@ -59,7 +59,7 @@ public class ListAir extends ActionSupport {
 		if (page.getEndCount() < totalCount)
 			lastCount = page.getEndCount() + 1;
 
-		alist = alist.subList(page.getStartCount(), lastCount);// page.getStartCount()ÀÇ
+		alist = alist.subList(page.getStartCount(), lastCount);// page.getStartCount()ì˜
 
 		return SUCCESS;
 	}

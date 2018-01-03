@@ -11,7 +11,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class SessionManager extends ActionSupport implements HttpSessionListener {//¼¼¼ÇÀÇ »ı¼º°ú ¸¸·á½Ã±â¸¦ °¨ÁöÇÏ´Â Å¬·¡½º
+public class SessionManager extends ActionSupport implements HttpSessionListener {//ì„¸ì…˜ì˜ ìƒì„±ê³¼ ë§Œë£Œì‹œê¸°ë¥¼ ê°ì§€í•˜ëŠ” í´ë˜ìŠ¤
 
 	private static Reader reader;
 	private static SqlMapClient sqlMapper;
@@ -27,9 +27,9 @@ public class SessionManager extends ActionSupport implements HttpSessionListener
 
 	@Override
 	public void sessionDestroyed(HttpSessionEvent arg0) {
-		// ¼¼¼Ç ¸¸·á µÉ ¶§ ·Î±×¾Æ¿ô Ã³¸®
+		// ì„¸ì…˜ ë§Œë£Œ ë  ë•Œ ë¡œê·¸ì•„ì›ƒ ì²˜ë¦¬
 		try {
-			// ¸¸·áµÈ ¼¼¼Ç¾ÆÀÌµğ¸¦ ÆÄ¶ó¹ÌÅÍÅ¬·¡½º·Î ÇÏ¿© ch°ªÀ» 2·Î ¾÷µ¥ÀÌÆ®
+			// ë§Œë£Œëœ ì„¸ì…˜ì•„ì´ë””ë¥¼ íŒŒë¼ë¯¸í„°í´ë˜ìŠ¤ë¡œ í•˜ì—¬ chê°’ì„ 2ë¡œ ì—…ë°ì´íŠ¸
 			sqlMapper.update("updatechoff", arg0.getSession().getAttribute("id"));
 
 		} catch (Exception e) {

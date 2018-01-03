@@ -68,7 +68,7 @@ public class AdminItemModify extends ActionSupport {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('»óÇ° Á¤º¸¸¦ ¸ğµÎ ÀÔ·ÂÇÏ¼¼¿ä.');");
+			out.println("alert('ìƒí’ˆ ì •ë³´ë¥¼ ëª¨ë‘ ì…ë ¥í•˜ì„¸ìš”.');");
 			out.println("history.go(-1);");
 			out.println("</script>");
 			out.close();
@@ -88,7 +88,7 @@ public class AdminItemModify extends ActionSupport {
 
 		ivo.setHai(hai);
 		
-		//¼öÁ¤½Ã ÀÌ¹ÌÁö¸¦ ¼±ÅÃÀûÀ¸·Î ¾÷µ¥ÀÌÆ®
+		//ìˆ˜ì •ì‹œ ì´ë¯¸ì§€ë¥¼ ì„ íƒì ìœ¼ë¡œ ì—…ë°ì´íŠ¸
 		if (image1 != null) {
 			destFile = new File(fileUploadPath + image1FileName);
 			FileUtils.copyFile(image1, destFile);
@@ -120,7 +120,7 @@ public class AdminItemModify extends ActionSupport {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('»óÇ° Á¤º¸¸¦ ¸ğµÎ ÀÔ·ÂÇÏ¼¼¿ä.');");
+			out.println("alert('ìƒí’ˆ ì •ë³´ë¥¼ ëª¨ë‘ ì…ë ¥í•˜ì„¸ìš”.');");
 			out.println("history.go(-1);");
 			out.println("</script>");
 			out.close();
@@ -170,7 +170,7 @@ public class AdminItemModify extends ActionSupport {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('»óÇ° Á¤º¸¸¦ ¸ğµÎ ÀÔ·ÂÇÏ¼¼¿ä.');");
+			out.println("alert('ìƒí’ˆ ì •ë³´ë¥¼ ëª¨ë‘ ì…ë ¥í•˜ì„¸ìš”.');");
 			out.println("history.go(-1);");
 			out.println("</script>");
 			out.close();

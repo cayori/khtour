@@ -20,12 +20,12 @@ public class BasketList extends ActionSupport {
 
 	private String id;
 
-	private int currentPage = 1; // ÇöÀç ÆäÀÌÁö
-	private int totalCount; // ÃÑ °Ô½Ã¹°ÀÇ ¼ö
-	private int blockCount = 3; // ÇÑ ÆäÀÌÁöÀÇ °Ô½Ã¹°ÀÇ ¼ö
-	private int blockPage = 5; // ÇÑ È­¸é¿¡ º¸¿©ÁÙ ÆäÀÌÁö ¼ö
-	private String pagingHtml; // ÆäÀÌÂ¡À» ±¸ÇöÇÑ HTML
-	private MypagingAction page; // ÆäÀÌÂ¡ Å¬·¡½º
+	private int currentPage = 1; // í˜„ì¬ í˜ì´ì§€
+	private int totalCount; // ì´ ê²Œì‹œë¬¼ì˜ ìˆ˜
+	private int blockCount = 3; // í•œ í˜ì´ì§€ì˜ ê²Œì‹œë¬¼ì˜ ìˆ˜
+	private int blockPage = 5; // í•œ í™”ë©´ì— ë³´ì—¬ì¤„ í˜ì´ì§€ ìˆ˜
+	private String pagingHtml; // í˜ì´ì§•ì„ êµ¬í˜„í•œ HTML
+	private MypagingAction page; // í˜ì´ì§• í´ë˜ìŠ¤
 
 	public BasketList() throws IOException {
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml");

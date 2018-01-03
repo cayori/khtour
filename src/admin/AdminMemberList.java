@@ -14,19 +14,19 @@ import member.MemberVO;
 
 public class AdminMemberList extends ActionSupport{
 	
-	private static Reader reader; // ÆÄÀÏ ½ºÆ®¸²À» À§ÇÑ reader.
-	private static SqlMapClient sqlMapper; // SqlMapClient API¸¦ »ç¿ëÇÏ±â À§ÇÑ sqlMapper °´Ã¼
+	private static Reader reader; // íŒŒì¼ ìŠ¤íŠ¸ë¦¼ì„ ìœ„í•œ reader.
+	private static SqlMapClient sqlMapper; // SqlMapClient APIë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•œ sqlMapper ê°ì²´
 	
 	private List adminmemberlist = new ArrayList();
 	
 	private MemberVO mvo = new MemberVO();
 	
-	private int currentPage = 1; // ÇöÀç ÆäÀÌÁö
-	private int totalCount; // ÃÑ °Ô½Ã¹°ÀÇ ¼ö
-	private int blockCount = 10; // ÇÑ ÆäÀÌÁöÀÇ °Ô½Ã¹°ÀÇ ¼ö
-	private int blockPage = 5; // ÇÑ È­¸é¿¡ º¸¿©ÁÙ ÆäÀÌÁö ¼ö
-	private String pagingHtml; // ÆäÀÌÂ¡À» ±¸ÇöÇÑ HTML
-	private AdminMemberpagingAction page; // ÆäÀÌÂ¡ Å¬·¡½º
+	private int currentPage = 1; // í˜„ì¬ í˜ì´ì§€
+	private int totalCount; // ì´ ê²Œì‹œë¬¼ì˜ ìˆ˜
+	private int blockCount = 10; // í•œ í˜ì´ì§€ì˜ ê²Œì‹œë¬¼ì˜ ìˆ˜
+	private int blockPage = 5; // í•œ í™”ë©´ì— ë³´ì—¬ì¤„ í˜ì´ì§€ ìˆ˜
+	private String pagingHtml; // í˜ì´ì§•ì„ êµ¬í˜„í•œ HTML
+	private AdminMemberpagingAction page; // í˜ì´ì§• í´ë˜ìŠ¤
 	private String search;
 	private String n;
 	private String[] kind = { "id", "name", "email", "tel" };
@@ -36,16 +36,16 @@ public class AdminMemberList extends ActionSupport{
 	
 	public AdminMemberList() throws IOException {
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
-		// ÁöÁ¤µÈ ¸®´õ¸¦ »ç¿ëÇÏ¿© SqlMapClient¸¦ ºôµåÇÕ´Ï´Ù.
+		// ì§€ì •ëœ ë¦¬ë”ë¥¼ ì‚¬ìš©í•˜ì—¬ SqlMapClientë¥¼ ë¹Œë“œí•©ë‹ˆë‹¤.
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
 	}
 	
 	
 	public String execute() throws Exception{
-		if (search == null) { search = ""; }//°Ë»ö¾î
-		if (n == null) { n = "0"; }//°Ë»ö ¼¿·ºÆ®¹® 
-		if (ch == null) { ch = "-1"; }//Á¢¼Ó, ºñÁ¢¼Ó ±¸ºĞ
+		if (search == null) { search = ""; }//ê²€ìƒ‰ì–´
+		if (n == null) { n = "0"; }//ê²€ìƒ‰ ì…€ë ‰íŠ¸ë¬¸ 
+		if (ch == null) { ch = "-1"; }//ì ‘ì†, ë¹„ì ‘ì† êµ¬ë¶„
 		
 		mvo.setSearch(getSearch());
 		mvo.setSearchn(kind[Integer.parseInt(getN())]);
@@ -63,7 +63,7 @@ public class AdminMemberList extends ActionSupport{
 		if (page.getEndCount() < totalCount)
 			lastCount = page.getEndCount() + 1;
 
-		adminmemberlist = adminmemberlist.subList(page.getStartCount(), lastCount);// page.getStartCount()ÀÇ
+		adminmemberlist = adminmemberlist.subList(page.getStartCount(), lastCount);// page.getStartCount()ì˜
 
 		return SUCCESS;
 	}

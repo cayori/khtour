@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  
 @Component
 
-//Å©·Î½ºµµ¸ŞÀÎ (½ºÇÁ¸µ ÇÁ·¹ÀÓ¿öÅ©)
+//í¬ë¡œìŠ¤ë„ë©”ì¸ (ìŠ¤í”„ë§ í”„ë ˆì„ì›Œí¬)
 public class SimpleCORSFilter implements Filter {
  
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {

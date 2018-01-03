@@ -52,7 +52,7 @@ public class MemberService extends ActionSupport {
 		reader.close();
 	}
 
-	//¾ÆÀÌµğ Ã£±â
+	//ì•„ì´ë”” ì°¾ê¸°
 	public String execute() throws Exception {
 		HttpServletResponse response = ServletActionContext.getResponse();
 		
@@ -66,7 +66,7 @@ public class MemberService extends ActionSupport {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('ÀÔ·ÂÇÏ½Å Á¤º¸¿Í ÀÏÄ¡ÇÏ´Â °èÁ¤ÀÌ ¾ø½À´Ï´Ù.');");
+			out.println("alert('ì…ë ¥í•˜ì‹  ì •ë³´ì™€ ì¼ì¹˜í•˜ëŠ” ê³„ì •ì´ ì—†ìŠµë‹ˆë‹¤.');");
 			out.println("history.go(-1);");
 			out.println("</script>");
 			out.close();
@@ -76,7 +76,7 @@ public class MemberService extends ActionSupport {
 		return SUCCESS;
 	}
 
-	//ºñ¹Ğ¹øÈ£ Ã£±â
+	//ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°
 	public String findPw() throws Exception {
 		HttpServletResponse response = ServletActionContext.getResponse();
 		
@@ -91,25 +91,25 @@ public class MemberService extends ActionSupport {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('ÀÔ·ÂÇÏ½Å Á¤º¸¿Í ÀÏÄ¡ÇÏ´Â °èÁ¤ÀÌ ¾ø½À´Ï´Ù.');");
+			out.println("alert('ì…ë ¥í•˜ì‹  ì •ë³´ì™€ ì¼ì¹˜í•˜ëŠ” ê³„ì •ì´ ì—†ìŠµë‹ˆë‹¤.');");
 			out.println("history.go(-1);");
 			out.println("</script>");
 			out.close();
 			return LOGIN;
 		}
 		
-		//ÀÓ½Ãºñ¹Ğ¹øÈ£ÀÎ 8ÀÚ¸® ³­¼ö »ı¼º(¿µ´ë¼Ò¹®ÀÚ + ¼ıÀÚ)
+		//ì„ì‹œë¹„ë°€ë²ˆí˜¸ì¸ 8ìë¦¬ ë‚œìˆ˜ ìƒì„±(ì˜ëŒ€ì†Œë¬¸ì + ìˆ«ì)
 		String pw = RandomStringUtils.random(8,"abcdefchijklmnopqrstuvwxyz0123456789");
 
-		//È¸¿øÀÇ ºñ¹Ğ¹øÈ£¸¦ »ı¼ºÇÑ ÀÓ½Ãºñ¹Ğ¹øÈ£·Î º¯°æ
+		//íšŒì›ì˜ ë¹„ë°€ë²ˆí˜¸ë¥¼ ìƒì„±í•œ ì„ì‹œë¹„ë°€ë²ˆí˜¸ë¡œ ë³€ê²½
 		mvo.setPassword(pw);
 		sqlMapper.update("updatePw", mvo);
 		
 
-		// »ı¼ºÇÑ ÀÓ½Ãºñ¹Ğ¹øÈ£¸¦ ÇØ´ç È¸¿øÀÇ email·Î Àü¼Û
+		// ìƒì„±í•œ ì„ì‹œë¹„ë°€ë²ˆí˜¸ë¥¼ í•´ë‹¹ íšŒì›ì˜ emailë¡œ ì „ì†¡
 		Properties props = new Properties();
 		props.setProperty("mail.transport.protocol", "smtp");
-		props.setProperty("mail.smtp.host", "smtp.gmail.com");//smtpÈ£½ºÆ®¸¦ gmail·Î ¼³Á¤
+		props.setProperty("mail.smtp.host", "smtp.gmail.com");//smtpí˜¸ìŠ¤íŠ¸ë¥¼ gmailë¡œ ì„¤ì •
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.port", "465");
 		props.put("mail.smtp.debug", "true");
@@ -120,23 +120,23 @@ public class MemberService extends ActionSupport {
 
 		Authenticator auth = new Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("khtour8282@gmail.com", "");//¹ß¼ÛÀÎÀÇ ¾ÆÀÌµğ¿Í ºñ¹Ğ¹øÈ£
+				return new PasswordAuthentication("khtour8282@gmail.com", "");//ë°œì†¡ì¸ì˜ ì•„ì´ë””ì™€ ë¹„ë°€ë²ˆí˜¸
 			}
 		};
 
 		Session session = Session.getDefaultInstance(props, auth);
 
 		MimeMessage message = new MimeMessage(session);
-		message.setSender(new InternetAddress("khtour8282@gmail.com"));//¹ß½ÅÀÚ¼³Á¤
-		message.setSubject(id+" È¸¿ø´ÔÀÇ ÀÓ½Ãºñ¹Ğ¹øÈ£ ¹ß±Ş ¸ŞÀÏÀÔ´Ï´Ù.");//¹ß½ÅÁ¦¸ñ
+		message.setSender(new InternetAddress("khtour8282@gmail.com"));//ë°œì‹ ìì„¤ì •
+		message.setSubject(id+" íšŒì›ë‹˜ì˜ ì„ì‹œë¹„ë°€ë²ˆí˜¸ ë°œê¸‰ ë©”ì¼ì…ë‹ˆë‹¤.");//ë°œì‹ ì œëª©
 
 		
 		message.setRecipient(Message.RecipientType.TO, new InternetAddress(email));
 
 		Multipart mp = new MimeMultipart();
 		MimeBodyPart mbp1 = new MimeBodyPart();
-		mbp1.setText("È¸¿ø´ÔÀÇ ÀÓ½Ãºñ¹Ğ¹øÈ£´Â "+pw+" ÀÔ´Ï´Ù.\n\nºñ¹Ğ¹øÈ£¸¦ Áï½Ã º¯°æÇÏ½Ã±â ¹Ù¶ø´Ï´Ù.\n\n"
-				+ "http://localhost:8080/khtour/LoginForm.action (KHÅõ¾î ·Î±×ÀÎÈ­¸éÀ¸·Î ÀÌµ¿)");
+		mbp1.setText("íšŒì›ë‹˜ì˜ ì„ì‹œë¹„ë°€ë²ˆí˜¸ëŠ” "+pw+" ì…ë‹ˆë‹¤.\n\në¹„ë°€ë²ˆí˜¸ë¥¼ ì¦‰ì‹œ ë³€ê²½í•˜ì‹œê¸° ë°”ëë‹ˆë‹¤.\n\n"
+				+ "http://localhost:8080/khtour/LoginForm.action (KHíˆ¬ì–´ ë¡œê·¸ì¸í™”ë©´ìœ¼ë¡œ ì´ë™)");
 		mp.addBodyPart(mbp1);
 
 		MailcapCommandMap mc = (MailcapCommandMap) CommandMap.getDefaultCommandMap();
@@ -157,7 +157,7 @@ public class MemberService extends ActionSupport {
 	
 	public String modifyMember() throws Exception {
 		mvo.setId(id);
-		//»õºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇß´Ù¸é ºñ¹Ğ¹øÈ£ º¯°æ, ÀÔ·ÂÇÏÁö ¾ÊÀ¸¸é ºñ¹Ğ¹øÈ£ ¿ÜÀÇ Á¤º¸¸¸ ¼öÁ¤
+		//ìƒˆë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í–ˆë‹¤ë©´ ë¹„ë°€ë²ˆí˜¸ ë³€ê²½, ì…ë ¥í•˜ì§€ ì•Šìœ¼ë©´ ë¹„ë°€ë²ˆí˜¸ ì™¸ì˜ ì •ë³´ë§Œ ìˆ˜ì •
 		if(newpassword != null || newpassword != ""){
 			mvo.setNewpassword(newpassword);
 		}
@@ -176,7 +176,7 @@ public class MemberService extends ActionSupport {
 		return SUCCESS;
 	}
 
-	//ÆäÀÌÁö ÀÌµ¿ ¸Ş¼Òµå
+	//í˜ì´ì§€ ì´ë™ ë©”ì†Œë“œ
 	public String mypageForm() throws Exception {
 		return SUCCESS;
 	}

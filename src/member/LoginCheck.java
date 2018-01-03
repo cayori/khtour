@@ -21,7 +21,7 @@ public class LoginCheck implements Interceptor {
 		 ActionContext context = invocation.getInvocationContext();
 	        Map session = context.getSession();
 	        
-	        if (session.get("id") == null) {//·Î±×ÀÎÀ» ½ÃµµÇÑ ¾ÆÀÌµğ¿Í µ¿ÀÏÇÑ ¾ÆÀÌµğ·Î Á¢¼ÓÁßÀÎÁö È®ÀÎÇÏ´Â ÀÎÅÍ¼ÁÅÍ
+	        if (session.get("id") == null) {//ë¡œê·¸ì¸ì„ ì‹œë„í•œ ì•„ì´ë””ì™€ ë™ì¼í•œ ì•„ì´ë””ë¡œ ì ‘ì†ì¤‘ì¸ì§€ í™•ì¸í•˜ëŠ” ì¸í„°ì…‰í„°
 	            return Action.ERROR;
 	        }
 	        return invocation.invoke();

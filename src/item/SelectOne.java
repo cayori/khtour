@@ -31,11 +31,11 @@ public class SelectOne extends ActionSupport {
 	private List<ContentCOI> contentCOI = new ArrayList<ContentCOI>();
 	private List<QuestionVO> itemQ = new ArrayList<QuestionVO>();
 
-	private int currentPage = 1; // ÇöÀç ÆäÀÌÁö ÁöÁ¤
+	private int currentPage = 1; // í˜„ì¬ í˜ì´ì§€ ì§€ì •
 	private int totalCount;
 	private int totalCountQ;
-	private int blockCount = 4; // ÇÑ ÆäÀÌÁö¿¡ ÀÖ´Â ±ÛÀÇ ¼ö
-	private int blockPage = 5; // ÆäÀÌÂ¡ ¼ö
+	private int blockCount = 4; // í•œ í˜ì´ì§€ì— ìˆëŠ” ê¸€ì˜ ìˆ˜
+	private int blockPage = 5; // í˜ì´ì§• ìˆ˜
 	private String pagingHtml;
 	private String pagingHtmlQ;
 	private pagingActionH page;
@@ -52,7 +52,7 @@ public class SelectOne extends ActionSupport {
 		reader.close();
 	}
 
-	public String execute() throws Exception {// È£ÅÚ»ó¼¼º¸±â ºÒ·¯¿À±â
+	public String execute() throws Exception {// í˜¸í…”ìƒì„¸ë³´ê¸° ë¶ˆëŸ¬ì˜¤ê¸°
 	
 		hotel = (HotelVO) sqlMapper.queryForObject("selectNoH", getNo());
 		contentCO = sqlMapper.queryForList("selectOneCC", getNo());
@@ -82,7 +82,7 @@ public class SelectOne extends ActionSupport {
 		return SUCCESS;
 	}
 
-	public String executeI() throws Exception {// ¿©Çà»óÇ°»ó¼¼º¸±â
+	public String executeI() throws Exception {// ì—¬í–‰ìƒí’ˆìƒì„¸ë³´ê¸°
 		item = (ItemVO) sqlMapper.queryForObject("selectNoI", getNo());
 		contentCOI = sqlMapper.queryForList("selectOneCCI", getNo());
 		itemQ = sqlMapper.queryForList("selectAllQuestion");
@@ -104,7 +104,7 @@ public class SelectOne extends ActionSupport {
 		return SUCCESS;
 	}
 
-	public String executeA() throws Exception {// Ç×°ø±Ç»ó¼¼º¸±â
+	public String executeA() throws Exception {// í•­ê³µê¶Œìƒì„¸ë³´ê¸°
 
 		avo = (AirVO) sqlMapper.queryForObject("selectNoA", getNo());
 		contentCOA = sqlMapper.queryForList("selectOneCCA", getNo());

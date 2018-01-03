@@ -1,19 +1,19 @@
 package service;
 
 public class pagingActionQuestionCo {
-	private int currentPageCo; // ÇöÀçÆäÀÌÁö
-	private int totalCountCo; // ÀüÃ¼ °Ô½Ã¹° ¼ö
-	private int totalPageCo; // ÀüÃ¼ ÆäÀÌÁö ¼ö
-	private int blockCountCo; // ÇÑ ÆäÀÌÁöÀÇ °Ô½Ã¹°ÀÇ ¼ö
-	private int blockPageCo; // ÇÑ È­¸é¿¡ º¸¿©ÁÙ ÆäÀÌÁö ¼ö
-	private int startCountCo; // ÇÑ ÆäÀÌÁö¿¡¼­ º¸¿©ÁÙ °Ô½Ã±ÛÀÇ ½ÃÀÛ ¹øÈ£
-	private int endCountCo; // ÇÑ ÆäÀÌÁö¿¡¼­ º¸¿©ÁÙ °Ô½Ã±ÛÀÇ ³¡ ¹øÈ£
-	private int startPageCo; // ½ÃÀÛ ÆäÀÌÁö
-	private int endPageCo; // ¸¶Áö¸· ÆäÀÌÁö
+	private int currentPageCo; // í˜„ì¬í˜ì´ì§€
+	private int totalCountCo; // ì „ì²´ ê²Œì‹œë¬¼ ìˆ˜
+	private int totalPageCo; // ì „ì²´ í˜ì´ì§€ ìˆ˜
+	private int blockCountCo; // í•œ í˜ì´ì§€ì˜ ê²Œì‹œë¬¼ì˜ ìˆ˜
+	private int blockPageCo; // í•œ í™”ë©´ì— ë³´ì—¬ì¤„ í˜ì´ì§€ ìˆ˜
+	private int startCountCo; // í•œ í˜ì´ì§€ì—ì„œ ë³´ì—¬ì¤„ ê²Œì‹œê¸€ì˜ ì‹œì‘ ë²ˆí˜¸
+	private int endCountCo; // í•œ í˜ì´ì§€ì—ì„œ ë³´ì—¬ì¤„ ê²Œì‹œê¸€ì˜ ë ë²ˆí˜¸
+	private int startPageCo; // ì‹œì‘ í˜ì´ì§€
+	private int endPageCo; // ë§ˆì§€ë§‰ í˜ì´ì§€
 
 	private StringBuffer pagingHtmlCo;
 
-	// ÆäÀÌÂ¡ »ı¼ºÀÚ
+	// í˜ì´ì§• ìƒì„±ì
 	public pagingActionQuestionCo(int currentPageCo, int totalCountCo, int blockCountCo, int blockPageCo, int cupage,
 			int quno) {
 
@@ -22,42 +22,42 @@ public class pagingActionQuestionCo {
 		this.currentPageCo = currentPageCo;
 		this.totalCountCo = totalCountCo;
 
-		// ÀüÃ¼ ÆäÀÌÁö ¼ö
+		// ì „ì²´ í˜ì´ì§€ ìˆ˜
 		totalPageCo = (int) Math.ceil((double) totalCountCo / blockCountCo);
 		if (totalPageCo == 0) {
 			totalPageCo = 1;
 		}
 
-		// ÇöÀç ÆäÀÌÁö°¡ ÀüÃ¼ ÆäÀÌÁö ¼öº¸´Ù Å©¸é ÀüÃ¼ ÆäÀÌÁö ¼ö·Î ¼³Á¤
+		// í˜„ì¬ í˜ì´ì§€ê°€ ì „ì²´ í˜ì´ì§€ ìˆ˜ë³´ë‹¤ í¬ë©´ ì „ì²´ í˜ì´ì§€ ìˆ˜ë¡œ ì„¤ì •
 		if (currentPageCo > totalPageCo) {
 			currentPageCo = totalPageCo;
 		}
 
-		// ÇöÀç ÆäÀÌÁöÀÇ Ã³À½°ú ¸¶Áö¸· ±ÛÀÇ ¹øÈ£ °¡Á®¿À±â.
+		// í˜„ì¬ í˜ì´ì§€ì˜ ì²˜ìŒê³¼ ë§ˆì§€ë§‰ ê¸€ì˜ ë²ˆí˜¸ ê°€ì ¸ì˜¤ê¸°.
 		startCountCo = (currentPageCo - 1) * blockCountCo;
 		endCountCo = startCountCo + blockCountCo - 1;
 
-		// ½ÃÀÛ ÆäÀÌÁö¿Í ¸¶Áö¸· ÆäÀÌÁö °ª ±¸ÇÏ±â.
+		// ì‹œì‘ í˜ì´ì§€ì™€ ë§ˆì§€ë§‰ í˜ì´ì§€ ê°’ êµ¬í•˜ê¸°.
 		startPageCo = (int) ((currentPageCo - 1) / blockPageCo) * blockPageCo + 1;
 		endPageCo = startPageCo + blockPageCo - 1;
 
-		// ¸¶Áö¸· ÆäÀÌÁö°¡ ÀüÃ¼ ÆäÀÌÁö ¼öº¸´Ù Å©¸é ÀüÃ¼ ÆäÀÌÁö ¼ö·Î ¼³Á¤
+		// ë§ˆì§€ë§‰ í˜ì´ì§€ê°€ ì „ì²´ í˜ì´ì§€ ìˆ˜ë³´ë‹¤ í¬ë©´ ì „ì²´ í˜ì´ì§€ ìˆ˜ë¡œ ì„¤ì •
 		if (endPageCo > totalPageCo) {
 			endPageCo = totalPageCo;
 		}
 
-		// ÀÌÀü block ÆäÀÌÁö
+		// ì´ì „ block í˜ì´ì§€
 		pagingHtmlCo = new StringBuffer();
 		if (currentPageCo > blockPageCo) {
 			pagingHtmlCo.append("<a href=SelectQuestion.action?question_no=" + (quno) + "&currentPage=" + (cupage)
 					+ "&currentPageCo=" + (startPageCo - 1) + ">");
-			pagingHtmlCo.append("ÀÌÀü");
+			pagingHtmlCo.append("ì´ì „");
 			pagingHtmlCo.append("</a>");
 		}
 
 		pagingHtmlCo.append("&nbsp;|&nbsp;");
 
-		// ÆäÀÌÁö ¹øÈ£.ÇöÀç ÆäÀÌÁö´Â »¡°£»öÀ¸·Î °­Á¶ÇÏ°í ¸µÅ©¸¦ Á¦°Å.
+		// í˜ì´ì§€ ë²ˆí˜¸.í˜„ì¬ í˜ì´ì§€ëŠ” ë¹¨ê°„ìƒ‰ìœ¼ë¡œ ê°•ì¡°í•˜ê³  ë§í¬ë¥¼ ì œê±°.
 		for (int i = startPageCo; i <= endPageCo; i++) {
 			if (i > totalPageCo) {
 				break;
@@ -80,11 +80,11 @@ public class pagingActionQuestionCo {
 
 		pagingHtmlCo.append("&nbsp;&nbsp;|&nbsp;&nbsp;");
 
-		// ´ÙÀ½ block ÆäÀÌÁö
+		// ë‹¤ìŒ block í˜ì´ì§€
 		if (totalPageCo - startPageCo >= blockPageCo) {
 			pagingHtmlCo.append("<a href=SelectQuestion.action?question_no=" + (quno) + "&currentPage=" + (cupage)
 					+ "&currentPageCo=" + (endPageCo + 1) + ">");
-			pagingHtmlCo.append("´ÙÀ½");
+			pagingHtmlCo.append("ë‹¤ìŒ");
 			pagingHtmlCo.append("</a>");
 		}
 	}

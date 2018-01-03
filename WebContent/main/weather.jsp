@@ -4,8 +4,8 @@
 <body>
 <div id="check">
 <script src="jquery.xdomainajax.js"></script>
-	<script>//±â»óÃ»¿¡¼­ rssÆÄÀÏÀ» xml·Î ÆÄ½ÌÇØ¼­ ³¯¾¾Á¤º¸¸¦ ¹Ş¾Æ¿Â´Ù.
-		// ÆÄ¶ó¹ÌÅÍ·Î Áö¿ª °ªÀ» ¹ŞÀº ÈÄ Ã³¸®ÇÏ´Â ÇÔ¼ö
+	<script>//ê¸°ìƒì²­ì—ì„œ rssíŒŒì¼ì„ xmlë¡œ íŒŒì‹±í•´ì„œ ë‚ ì”¨ì •ë³´ë¥¼ ë°›ì•„ì˜¨ë‹¤.
+		// íŒŒë¼ë¯¸í„°ë¡œ ì§€ì—­ ê°’ì„ ë°›ì€ í›„ ì²˜ë¦¬í•˜ëŠ” í•¨ìˆ˜
 		function getQuerystring(key, default_) {
 			if (default_ == null)
 				default_ = "";
@@ -21,7 +21,7 @@
 		var xx = getQuerystring('xx');
 		var yy = getQuerystring('yy');
 
-		// ±âº»°ªÀº ¼­¿ï/°æ±â.
+		// ê¸°ë³¸ê°’ì€ ì„œìš¸/ê²½ê¸°.
 		if (xx == '' && yy == '') {
 			xx = "59";
 			yy = "123";
@@ -32,43 +32,43 @@
 			if (frm.sel.value == "01") {
 				var xx = "59";
 				var yy = "123";
-			} // ¼­¿ï/°æ±â(°æ±â ¾È¾ç ±âÁØ)
+			} // ì„œìš¸/ê²½ê¸°(ê²½ê¸° ì•ˆì–‘ ê¸°ì¤€)
 			if (frm.sel.value == "02") {
 				var xx = "75";
 				var yy = "115";
-			} // ÃæºÏ(ÃæºÏ ÃæÁÖ ±âÁØ)
+			} // ì¶©ë¶(ì¶©ë¶ ì¶©ì£¼ ê¸°ì¤€)
 			if (frm.sel.value == "03") {
 				var xx = "59";
 				var yy = "110";
-			} // Ãæ³²(Ãæ³² ¾Æ»ê ±âÁØ)
+			} // ì¶©ë‚¨(ì¶©ë‚¨ ì•„ì‚° ê¸°ì¤€)
 			if (frm.sel.value == "04") {
 				var xx = "105";
 				var yy = "94";
-			} // °æºÏ(°æºÏ Æ÷Ç× ±âÁØ)
+			} // ê²½ë¶(ê²½ë¶ í¬í•­ ê¸°ì¤€)
 			if (frm.sel.value == "05") {
 				var xx = "80";
 				var yy = "73";
-			} // °æ³²(°æ³² »çÃµ ±âÁØ)
+			} // ê²½ë‚¨(ê²½ë‚¨ ì‚¬ì²œ ê¸°ì¤€)
 			if (frm.sel.value == "06") {
 				var xx = "67";
 				var yy = "80";
-			} // ÀüºÏ(ÀüºÏ ³²¿ø ±âÁØ)
+			} // ì „ë¶(ì „ë¶ ë‚¨ì› ê¸°ì¤€)
 			if (frm.sel.value == "07") {
 				var xx = "74";
 				var yy = "70";
-			} // Àü³²(Àü³² ±¤¾ç ±âÁØ)
+			} // ì „ë‚¨(ì „ë‚¨ ê´‘ì–‘ ê¸°ì¤€)
 			if (frm.sel.value == "08") {
 				var xx = "72";
 				var yy = "133";
-			} // °­¿ø(°­¿ø ÃáÃµ ±âÁØ)
+			} // ê°•ì›(ê°•ì› ì¶˜ì²œ ê¸°ì¤€)
 			if (frm.sel.value == "09") {
 				var xx = "53";
 				var yy = "38";
-			} // Á¦ÁÖ(Á¦ÁÖ Á¦ÁÖ ±âÁØ)
+			} // ì œì£¼(ì œì£¼ ì œì£¼ ê¸°ì¤€)
 			if (frm.sel.value == "10") {
 				var xx = "127";
 				var yy = "127";
-			} // ¿ï¸ª(°æºÏ ¿ï¸ª ±âÁØ)
+			} // ìš¸ë¦‰(ê²½ë¶ ìš¸ë¦‰ ê¸°ì¤€)
 
 			frm.action = "Weather.action?xx=" + xx + "&yy=" + yy;
 			frm.submit();
@@ -77,58 +77,58 @@
 		document.write("<form name='frm' method='post'>");
 		document.write("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name='sel'>");
 		if (xx == "59" && yy == "123") {
-			document.write("<option value='01' selected>¼­¿ï/°æ±â</option>");
+			document.write("<option value='01' selected>ì„œìš¸/ê²½ê¸°</option>");
 		} else {
-			document.write("<option value='01'>¼­¿ï/°æ±â</option>");
+			document.write("<option value='01'>ì„œìš¸/ê²½ê¸°</option>");
 		}
 		if (xx == "75" && yy == "115") {
-			document.write("<option value='02' selected>ÃæÃ»ºÏµµ</option>");
+			document.write("<option value='02' selected>ì¶©ì²­ë¶ë„</option>");
 		} else {
-			document.write("<option value='02'>ÃæÃ»ºÏµµ</option>");
+			document.write("<option value='02'>ì¶©ì²­ë¶ë„</option>");
 		}
 		if (xx == "59" && yy == "110") {
-			document.write("<option value='03' selected>ÃæÃ»³²µµ</option>");
+			document.write("<option value='03' selected>ì¶©ì²­ë‚¨ë„</option>");
 		} else {
-			document.write("<option value='03'>ÃæÃ»³²µµ</option>");
+			document.write("<option value='03'>ì¶©ì²­ë‚¨ë„</option>");
 		}
 		if (xx == "105" && yy == "94") {
-			document.write("<option value='04' selected>°æ»óºÏµµ</option>");
+			document.write("<option value='04' selected>ê²½ìƒë¶ë„</option>");
 		} else {
-			document.write("<option value='04'>°æ»óºÏµµ</option>");
+			document.write("<option value='04'>ê²½ìƒë¶ë„</option>");
 		}
 		if (xx == "80" && yy == "73") {
-			document.write("<option value='05' selected>°æ»ó³²µµ</option>");
+			document.write("<option value='05' selected>ê²½ìƒë‚¨ë„</option>");
 		} else {
-			document.write("<option value='05'>°æ»ó³²µµ</option>");
+			document.write("<option value='05'>ê²½ìƒë‚¨ë„</option>");
 		}
 		if (xx == "67" && yy == "80") {
-			document.write("<option value='06' selected>Àü¶óºÏµµ</option>");
+			document.write("<option value='06' selected>ì „ë¼ë¶ë„</option>");
 		} else {
-			document.write("<option value='06'>Àü¶óºÏµµ</option>");
+			document.write("<option value='06'>ì „ë¼ë¶ë„</option>");
 		}
 		if (xx == "74" && yy == "70") {
-			document.write("<option value='07' selected>Àü¶ó³²µµ</option>");
+			document.write("<option value='07' selected>ì „ë¼ë‚¨ë„</option>");
 		} else {
-			document.write("<option value='07'>Àü¶ó³²µµ</option>");
+			document.write("<option value='07'>ì „ë¼ë‚¨ë„</option>");
 		}
 		if (xx == "72" && yy == "133") {
-			document.write("<option value='08' selected>°­¿øµµ</option>");
+			document.write("<option value='08' selected>ê°•ì›ë„</option>");
 		} else {
-			document.write("<option value='08'>°­¿øµµ</option>");
+			document.write("<option value='08'>ê°•ì›ë„</option>");
 		}
 		if (xx == "53" && yy == "38") {
-			document.write("<option value='09' selected>Á¦ÁÖµµ</option>");
+			document.write("<option value='09' selected>ì œì£¼ë„</option>");
 		} else {
-			document.write("<option value='09'>Á¦ÁÖµµ</option>");
+			document.write("<option value='09'>ì œì£¼ë„</option>");
 		}
 		if (xx == "127" && yy == "127") {
-			document.write("<option value='10' selected>¿ï¸ªµµ</option>");
+			document.write("<option value='10' selected>ìš¸ë¦‰ë„</option>");
 		} else {
-			document.write("<option value='10'>¿ï¸ªµµ</option>");
+			document.write("<option value='10'>ìš¸ë¦‰ë„</option>");
 		}
 		document.write("</select>");
 		document
-				.write("&nbsp;<input type='submit' value='È®ÀÎ' onclick='pass_go()'>");
+				.write("&nbsp;<input type='submit' value='í™•ì¸' onclick='pass_go()'>");
 		document.write("</form>");
 	</script>
 
@@ -139,7 +139,7 @@
 			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 		}
 
-		// ÆÄ¶ó¹ÌÅÍ·Î ¹ŞÀº Áö¿ª°ª¿¡ µû¶ó ±â»óÃ» Áö¿ª¿¹º¸¸¦ °¡Á®¿È.
+		// íŒŒë¼ë¯¸í„°ë¡œ ë°›ì€ ì§€ì—­ê°’ì— ë”°ë¼ ê¸°ìƒì²­ ì§€ì—­ì˜ˆë³´ë¥¼ ê°€ì ¸ì˜´.
 		xmlhttp.open("GET", "http://www.kma.go.kr/wid/queryDFS.jsp?gridx=" + xx	+ "&gridy=" + yy + "", false);
 		xmlhttp.send();
 		
@@ -148,7 +148,7 @@
 		xmlDoc = xmlhttp.responseXML;
 		var now = new Date();
 		var hour = now.getHours();
-		// ±â»óÃ» xmlÀº 3½Ã°£ ´ÜÀ§·Î ¿¹º¸¸¦ º¸¿©ÁÜ. ÇöÀç½Ã°£ ±âÁØÀ¸·Î ¾î¶² ¿¹º¸¸¦ °¡Á®¿Ã °ÍÀÎÁö Á¤ÇÔ.
+		// ê¸°ìƒì²­ xmlì€ 3ì‹œê°„ ë‹¨ìœ„ë¡œ ì˜ˆë³´ë¥¼ ë³´ì—¬ì¤Œ. í˜„ì¬ì‹œê°„ ê¸°ì¤€ìœ¼ë¡œ ì–´ë–¤ ì˜ˆë³´ë¥¼ ê°€ì ¸ì˜¬ ê²ƒì¸ì§€ ì •í•¨.
 		if (hour == 24 || hour == 0 || hour == 1 || hour == 2) {
 			var hourGubun = 3;
 		} else if (hour == 3 || hour == 4 || hour == 5) {
@@ -179,14 +179,14 @@
 				
 				
 				if (x[i].getElementsByTagName("day")[0].childNodes[0].nodeValue == "0" && x[i].getElementsByTagName("hour")[0].childNodes[0].nodeValue == (hourGubun + 3)) {
-					document.write("¿À´Ã")
+					document.write("ì˜¤ëŠ˜")
 				}
 				if (x[i].getElementsByTagName("day")[0].childNodes[0].nodeValue == "1" && x[i].getElementsByTagName("hour")[0].childNodes[0].nodeValue == hourGubun) {
-					document.write("³»ÀÏ")
+					document.write("ë‚´ì¼")
 
 				}
 				if (x[i].getElementsByTagName("day")[0].childNodes[0].nodeValue == "2" && x[i].getElementsByTagName("hour")[0].childNodes[0].nodeValue == (hourGubun - 9)) {
-					document.write("¸ğ·¹")
+					document.write("ëª¨ë ˆ")
 				}
 
 				document.write("</td>");
@@ -200,24 +200,24 @@
 				document.write("<td align='center'>");
 				
 				if (x[i].getElementsByTagName("day")[0].childNodes[0].nodeValue == "0" && x[i].getElementsByTagName("hour")[0].childNodes[0].nodeValue == (hourGubun + 3)) {
-					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "¸¼À½") {
-						document.write("<img src='/khtour/img/sn.png' alt='¸¼À½'>")
+					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "ë§‘ìŒ") {
+						document.write("<img src='/khtour/img/sn.png' alt='ë§‘ìŒ'>")
 					}
-					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "±¸¸§ ¸¹À½") {
+					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "êµ¬ë¦„ ë§ìŒ") {
 						document
-								.write("<img src='/khtour/img/cb.png' alt='±¸¸§ ¸¹À½'>")
+								.write("<img src='/khtour/img/cb.png' alt='êµ¬ë¦„ ë§ìŒ'>")
 					}
-					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "±¸¸§ Á¶±İ") {
+					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "êµ¬ë¦„ ì¡°ê¸ˆ") {
 						document
-								.write("<img src='/khtour/img/cl.png' alt='±¸¸§ Á¶±İ'>")
+								.write("<img src='/khtour/img/cl.png' alt='êµ¬ë¦„ ì¡°ê¸ˆ'>")
 					}
-					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "Èå¸®°í ºñ"
-							|| x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "ºñ") {
+					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "íë¦¬ê³  ë¹„"
+							|| x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "ë¹„") {
 						document
-								.write("<img src='/khtour/img/hr.png' alt='Èå¸®°í ºñ'>")
+								.write("<img src='/khtour/img/hr.png' alt='íë¦¬ê³  ë¹„'>")
 					}
-					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "´«/ºñ") {
-						document.write("<img src='/khtour/img/sr.png' alt='´«/ºñ'>")
+					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "ëˆˆ/ë¹„") {
+						document.write("<img src='/khtour/img/sr.png' alt='ëˆˆ/ë¹„'>")
 					}
 
 					document.write("<br>")
@@ -229,24 +229,24 @@
 					document.write("</font>");
 				} 
 				if(x[i].getElementsByTagName("day")[0].childNodes[0].nodeValue == "1" && x[i].getElementsByTagName("hour")[0].childNodes[0].nodeValue == hourGubun){
-					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "¸¼À½") {
-						document.write("<img src='/khtour/img/sn.png' alt='¸¼À½'>")
+					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "ë§‘ìŒ") {
+						document.write("<img src='/khtour/img/sn.png' alt='ë§‘ìŒ'>")
 					}
-					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "±¸¸§ ¸¹À½") {
+					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "êµ¬ë¦„ ë§ìŒ") {
 						document
-								.write("<img src='/khtour/img/cb.png' alt='±¸¸§ ¸¹À½'>")
+								.write("<img src='/khtour/img/cb.png' alt='êµ¬ë¦„ ë§ìŒ'>")
 					}
-					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "±¸¸§ Á¶±İ") {
+					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "êµ¬ë¦„ ì¡°ê¸ˆ") {
 						document
-								.write("<img src='/khtour/img/cl.png' alt='±¸¸§ Á¶±İ'>")
+								.write("<img src='/khtour/img/cl.png' alt='êµ¬ë¦„ ì¡°ê¸ˆ'>")
 					}
-					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "Èå¸®°í ºñ"
-							|| x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "ºñ") {
+					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "íë¦¬ê³  ë¹„"
+							|| x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "ë¹„") {
 						document
-								.write("<img src='/khtour/img/hr.png' alt='Èå¸®°í ºñ'>")
+								.write("<img src='/khtour/img/hr.png' alt='íë¦¬ê³  ë¹„'>")
 					}
-					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "´«/ºñ") {
-						document.write("<img src='/khtour/img/sr.png' alt='´«/ºñ'>")
+					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "ëˆˆ/ë¹„") {
+						document.write("<img src='/khtour/img/sr.png' alt='ëˆˆ/ë¹„'>")
 					}
 
 					document.write("<br>")
@@ -258,24 +258,24 @@
 					document.write("</font>");
 				}
 				if(x[i].getElementsByTagName("day")[0].childNodes[0].nodeValue == "2" && x[i].getElementsByTagName("hour")[0].childNodes[0].nodeValue == (hourGubun - 9)){
-					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "¸¼À½") {
-						document.write("<img src='/khtour/img/sn.png' alt='¸¼À½'>")
+					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "ë§‘ìŒ") {
+						document.write("<img src='/khtour/img/sn.png' alt='ë§‘ìŒ'>")
 					}
-					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "±¸¸§ ¸¹À½") {
+					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "êµ¬ë¦„ ë§ìŒ") {
 						document
-								.write("<img src='/khtour/img/cb.png' alt='±¸¸§ ¸¹À½'>")
+								.write("<img src='/khtour/img/cb.png' alt='êµ¬ë¦„ ë§ìŒ'>")
 					}
-					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "±¸¸§ Á¶±İ") {
+					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "êµ¬ë¦„ ì¡°ê¸ˆ") {
 						document
-								.write("<img src='/khtour/img/cl.png' alt='±¸¸§ Á¶±İ'>")
+								.write("<img src='/khtour/img/cl.png' alt='êµ¬ë¦„ ì¡°ê¸ˆ'>")
 					}
-					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "Èå¸®°í ºñ"
-							|| x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "ºñ") {
+					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "íë¦¬ê³  ë¹„"
+							|| x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "ë¹„") {
 						document
-								.write("<img src='/khtour/img/hr.png' alt='Èå¸®°í ºñ'>")
+								.write("<img src='/khtour/img/hr.png' alt='íë¦¬ê³  ë¹„'>")
 					}
-					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "´«/ºñ") {
-						document.write("<img src='/khtour/img/sr.png' alt='´«/ºñ'>")
+					if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "ëˆˆ/ë¹„") {
+						document.write("<img src='/khtour/img/sr.png' alt='ëˆˆ/ë¹„'>")
 					}
 
 					document.write("<br>")

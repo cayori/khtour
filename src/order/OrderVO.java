@@ -3,28 +3,28 @@ package order;
 import java.util.Date;
 
 public class OrderVO {
-	private int seq_no; // °íÀ¯°ª
-	private String name; // »óÇ°ÀÌ¸§
-	private int price; // °¡°İ
-	private String content; // ³»¿ë
-	private String day; // ¼÷¹Ú ³¯Â¥
-	private String country; // ±¹°¡
-	private String region; // Áö¿ª
-	private int readcount; // Á¶È¸¼ö
-	private String image1; // ÀÌ¹ÌÁö1
-	private String image2; // ÀÌ¹ÌÁö2
-	private String image3; // ÀÌ¹ÌÁö3
-	private Date reg_date; // µî·Ï³¯Â¥
-	private int amount; // °¹¼ö
-	private String tel; // ¿¬¶ôÃ³
-	private String hai; // ¿©Çà Àå¹Ù±¸´Ï¿¡ ´ãÀ» ¶§ ±¸ºĞÀÚ
+	private int seq_no; // ê³ ìœ ê°’
+	private String name; // ìƒí’ˆì´ë¦„
+	private int price; // ê°€ê²©
+	private String content; // ë‚´ìš©
+	private String day; // ìˆ™ë°• ë‚ ì§œ
+	private String country; // êµ­ê°€
+	private String region; // ì§€ì—­
+	private int readcount; // ì¡°íšŒìˆ˜
+	private String image1; // ì´ë¯¸ì§€1
+	private String image2; // ì´ë¯¸ì§€2
+	private String image3; // ì´ë¯¸ì§€3
+	private Date reg_date; // ë“±ë¡ë‚ ì§œ
+	private int amount; // ê°¯ìˆ˜
+	private String tel; // ì—°ë½ì²˜
+	private String hai; // ì—¬í–‰ ì¥ë°”êµ¬ë‹ˆì— ë‹´ì„ ë•Œ êµ¬ë¶„ì
 
-	private String kinds; // Á¾·ù
-	private String checkin; // Ã¼Å©ÀÎ³¯Â¥
-	private String checkout; // Ã¼Å©¾Æ¿ô ³¯Â¥
-	private String ad; // Ãâ±¹³¯Â¥/
-	private String dd; // ±Í±¹³¯Â¥
-	private String id;// »ç¿ëÀÚ¾ÆÀÌµğ
+	private String kinds; // ì¢…ë¥˜
+	private String checkin; // ì²´í¬ì¸ë‚ ì§œ
+	private String checkout; // ì²´í¬ì•„ì›ƒ ë‚ ì§œ
+	private String ad; // ì¶œêµ­ë‚ ì§œ/
+	private String dd; // ê·€êµ­ë‚ ì§œ
+	private String id;// ì‚¬ìš©ìì•„ì´ë””
 
 	public int getSeq_no() {
 		return seq_no;

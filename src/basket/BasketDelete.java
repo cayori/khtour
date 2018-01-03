@@ -15,8 +15,8 @@ public class BasketDelete extends ActionSupport {
 
 	BasketVO bvo = new BasketVO();
 
-	private String id;// ¼¼¼Ç ¾ÆÀÌµğ°ª ¹Ş±â
-	private int[] deleteCheck;// Ã¼Å©ÇÑ½ÃÄÁ½º¹øÈ£
+	private String id;// ì„¸ì…˜ ì•„ì´ë””ê°’ ë°›ê¸°
+	private int[] deleteCheck;// ì²´í¬í•œì‹œì»¨ìŠ¤ë²ˆí˜¸
 
 	public BasketDelete() throws IOException {
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml");

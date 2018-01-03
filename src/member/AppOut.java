@@ -26,22 +26,22 @@ public class AppOut extends ActionSupport {
 		reader.close();
 	}
 
-	public void appout() throws Exception {//ÁÖ±âÀûÀ¸·Î ¼¼¼ÇÀÌ ¸¸·áµÈ ¾ÆÀÌµğ°¡ ÀÖ´ÂÁö °¨Áö
+	public void appout() throws Exception {//ì£¼ê¸°ì ìœ¼ë¡œ ì„¸ì…˜ì´ ë§Œë£Œëœ ì•„ì´ë””ê°€ ìˆëŠ”ì§€ ê°ì§€
 		ActionContext context = ActionContext.getContext();
 		Map<String, String> app = context.getApplication();
 		
 		
 
-		List id = sqlMapper.queryForList("outid");//¼¼¼ÇÀÌ ¸¸·áµÈ ¾ÆÀÌµğ¸¦ ²¨³»¿È
+		List id = sqlMapper.queryForList("outid");//ì„¸ì…˜ì´ ë§Œë£Œëœ ì•„ì´ë””ë¥¼ êº¼ë‚´ì˜´
 		
-		if(id!=null){//¼¼¼ÇÀÌ ¸¸·áµÈ ¾ÆÀÌµğ°¡ ÀÖ´Ù¸é
+		if(id!=null){//ì„¸ì…˜ì´ ë§Œë£Œëœ ì•„ì´ë””ê°€ ìˆë‹¤ë©´
 			Iterator i = id.iterator();
 			while(i.hasNext()){
 				String a = (String)i.next();
 				app.remove(a);
 				sqlMapper.update("chout", a);
 				app.remove("error");
-			}//chÄ®·³À» ºñ·Î±×ÀÎ»óÅÂ·Î °»½ÅÇÑ´Ù
+			}//chì¹¼ëŸ¼ì„ ë¹„ë¡œê·¸ì¸ìƒíƒœë¡œ ê°±ì‹ í•œë‹¤
 		}
 
 		}

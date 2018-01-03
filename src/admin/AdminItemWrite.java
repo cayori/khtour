@@ -21,13 +21,13 @@ import item.ItemVO;
 
 public class AdminItemWrite extends ActionSupport {
 
-	private static Reader reader; // ÆÄÀÏ ½ºÆ®¸²À» À§ÇÑ reader.
-	private static SqlMapClient sqlMapper; // SqlMapClient API¸¦ »ç¿ëÇÏ±â À§ÇÑ
+	private static Reader reader; // íŒŒì¼ ìŠ¤íŠ¸ë¦¼ì„ ìœ„í•œ reader.
+	private static SqlMapClient sqlMapper; // SqlMapClient APIë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•œ
 
 	private File[] image1;
 	private String[] image1FileName;
 	private String fileUploadPath = "C:\\Users\\JeongEonGoo\\workspace\\khtour\\WebContent\\img2\\";
-	//°æ·Î¸¦ ÀÌÅ¬¸³½ºÆú´õÀÇ img·Î ¼³Á¤ÇØ¼­ ¾÷·Îµå
+	//ê²½ë¡œë¥¼ ì´í´ë¦½ìŠ¤í´ë”ì˜ imgë¡œ ì„¤ì •í•´ì„œ ì—…ë¡œë“œ
 
 	ItemVO ivo = new ItemVO();
 	HotelVO hvo = new HotelVO();
@@ -52,12 +52,12 @@ public class AdminItemWrite extends ActionSupport {
 
 	public AdminItemWrite() throws IOException {
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
-		// ÁöÁ¤µÈ ¸®´õ¸¦ »ç¿ëÇÏ¿© SqlMapClient¸¦ ºôµåÇÕ´Ï´Ù.
+		// ì§€ì •ëœ ë¦¬ë”ë¥¼ ì‚¬ìš©í•˜ì—¬ SqlMapClientë¥¼ ë¹Œë“œí•©ë‹ˆë‹¤.
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
 	}
 
-	// »óÇ°µî·Ï
+	// ìƒí’ˆë“±ë¡
 	public String execute() throws Exception {
 		
 		HttpServletResponse response = ServletActionContext.getResponse();
@@ -65,7 +65,7 @@ public class AdminItemWrite extends ActionSupport {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('»óÇ° Á¤º¸¸¦ ¸ğµÎ ÀÔ·ÂÇÏ¼¼¿ä.');");
+			out.println("alert('ìƒí’ˆ ì •ë³´ë¥¼ ëª¨ë‘ ì…ë ¥í•˜ì„¸ìš”.');");
 			out.println("history.go(-1);");
 			out.println("</script>");
 			out.close();
@@ -84,7 +84,7 @@ public class AdminItemWrite extends ActionSupport {
 		ivo.setGrade(grade);
 		ivo.setCocount(cocount);
 
-		if (image1 != null) {//´ÙÁß¾÷·Îµå
+		if (image1 != null) {//ë‹¤ì¤‘ì—…ë¡œë“œ
 			for (int i = 0; i < image1.length; i++) {
 				destFile = new File(fileUploadPath + image1FileName[i]);
 				FileUtils.copyFile(image1[i], destFile);
@@ -113,7 +113,7 @@ public class AdminItemWrite extends ActionSupport {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('»óÇ° Á¤º¸¸¦ ¸ğµÎ ÀÔ·ÂÇÏ¼¼¿ä.');");
+			out.println("alert('ìƒí’ˆ ì •ë³´ë¥¼ ëª¨ë‘ ì…ë ¥í•˜ì„¸ìš”.');");
 			out.println("history.go(-1);");
 			out.println("</script>");
 			out.close();
@@ -162,7 +162,7 @@ public class AdminItemWrite extends ActionSupport {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('»óÇ° Á¤º¸¸¦ ¸ğµÎ ÀÔ·ÂÇÏ¼¼¿ä.');");
+			out.println("alert('ìƒí’ˆ ì •ë³´ë¥¼ ëª¨ë‘ ì…ë ¥í•˜ì„¸ìš”.');");
 			out.println("history.go(-1);");
 			out.println("</script>");
 			out.close();

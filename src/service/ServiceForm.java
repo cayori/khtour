@@ -66,7 +66,7 @@ public class ServiceForm extends ActionSupport {
 
 		noticelist = noticelist.subList(npage.getStartCount(), nlastCount);
 
-		/*±¸ºÐ¼±========================*/
+		/*êµ¬ë¶„ì„ ========================*/
 		
 		questionlist = sqlMapper.queryForList("selectAll_question");
 

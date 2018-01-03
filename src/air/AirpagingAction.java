@@ -2,21 +2,21 @@ package air;
 
 public class AirpagingAction {
 
-	private int currentPage; // ÇöÀçÆäÀÌÁö
-	private int totalCount; // ÀüÃ¼ °Ô½Ã¹° ¼ö
-	private int totalPage; // ÀüÃ¼ ÆäÀÌÁö ¼ö
-	private int blockCount; // ÇÑ ÆäÀÌÁöÀÇ °Ô½Ã¹°ÀÇ ¼ö
-	private int blockPage; // ÇÑ È­¸é¿¡ º¸¿©ÁÙ ÆäÀÌÁö ¼ö
-	private int startCount; // ÇÑ ÆäÀÌÁö¿¡¼­ º¸¿©ÁÙ °Ô½Ã±ÛÀÇ ½ÃÀÛ ¹øÈ£
-	private int endCount; // ÇÑ ÆäÀÌÁö¿¡¼­ º¸¿©ÁÙ °Ô½Ã±ÛÀÇ ³¡ ¹øÈ£
-	private int startPage; // ½ÃÀÛ ÆäÀÌÁö
-	private int endPage; // ¸¶Áö¸· ÆäÀÌÁö
+	private int currentPage; // í˜„ì¬í˜ì´ì§€
+	private int totalCount; // ì „ì²´ ê²Œì‹œë¬¼ ìˆ˜
+	private int totalPage; // ì „ì²´ í˜ì´ì§€ ìˆ˜
+	private int blockCount; // í•œ í˜ì´ì§€ì˜ ê²Œì‹œë¬¼ì˜ ìˆ˜
+	private int blockPage; // í•œ í™”ë©´ì— ë³´ì—¬ì¤„ í˜ì´ì§€ ìˆ˜
+	private int startCount; // í•œ í˜ì´ì§€ì—ì„œ ë³´ì—¬ì¤„ ê²Œì‹œê¸€ì˜ ì‹œì‘ ë²ˆí˜¸
+	private int endCount; // í•œ í˜ì´ì§€ì—ì„œ ë³´ì—¬ì¤„ ê²Œì‹œê¸€ì˜ ë ë²ˆí˜¸
+	private int startPage; // ì‹œì‘ í˜ì´ì§€
+	private int endPage; // ë§ˆì§€ë§‰ í˜ì´ì§€
 	private String search;
 	private String n;
 
 	private StringBuffer pagingHtml;
 
-	// ÆäÀÌÂ¡ »ı¼ºÀÚ//°Ë»öÀÏ ¶§
+	// í˜ì´ì§• ìƒì„±ì//ê²€ìƒ‰ì¼ ë•Œ
 	public AirpagingAction(int currentPage, int totalCount, int blockCount, int blockPage, String search, String n) {
 
 		this.blockCount = blockCount;
@@ -47,14 +47,14 @@ public class AirpagingAction {
 
 		pagingHtml = new StringBuffer();
 
-		if (search == "" && n.equals("0")) {//////////////////////////°Ë»öÀ» ¾ÈÇßÀ» ¶§
+		if (search == "" && n.equals("0")) {//////////////////////////ê²€ìƒ‰ì„ ì•ˆí–ˆì„ ë•Œ
 			if (currentPage > blockPage) {
 				pagingHtml.append("<a href=ListAir.action?currentPage=" + (startPage - 1) + ">");
-				pagingHtml.append("ÀÌÀü");
+				pagingHtml.append("ì´ì „");
 				pagingHtml.append("</a>");	}
 
 
-			// ÆäÀÌÁö ¹øÈ£.ÇöÀç ÆäÀÌÁö´Â »¡°£»öÀ¸·Î °­Á¶ÇÏ°í ¸µÅ©¸¦ Á¦°Å.
+			// í˜ì´ì§€ ë²ˆí˜¸.í˜„ì¬ í˜ì´ì§€ëŠ” ë¹¨ê°„ìƒ‰ìœ¼ë¡œ ê°•ì¡°í•˜ê³  ë§í¬ë¥¼ ì œê±°.
 			for (int i = startPage; i <= endPage; i++) {
 				if (i > totalPage) {
 					break; 	}
@@ -72,18 +72,18 @@ public class AirpagingAction {
 				pagingHtml.append("&nbsp;"); 	}
 
 
-			// ´ÙÀ½ block ÆäÀÌÁö
+			// ë‹¤ìŒ block í˜ì´ì§€
 			if (totalPage - startPage >= blockPage) {
 				pagingHtml.append("<a href=ListAir.action?currentPage=" + (endPage + 1) + ">");
-				pagingHtml.append("´ÙÀ½");
+				pagingHtml.append("ë‹¤ìŒ");
 				pagingHtml.append("</a>");	}
 			
-		} else { ///////////////////////////////°Ë»öÇßÀ» ¶§
+		} else { ///////////////////////////////ê²€ìƒ‰í–ˆì„ ë•Œ
 			
 			if (currentPage > blockPage) {
 				pagingHtml.append("<a href='ListAir.action?currentPage=" + (startPage - 1) + "&search=" + search
 						+ "&n=" + n + "'>");
-				pagingHtml.append("ÀÌÀü");
+				pagingHtml.append("ì´ì „");
 				pagingHtml.append("</a>"); }
 
 
@@ -106,7 +106,7 @@ public class AirpagingAction {
 			if (totalPage - startPage >= blockPage) {
 				pagingHtml.append("<a href='ListAir.action?currentPage=" + (endPage + 1) + "&search=" + search
 						+ "&n=" + n + "'>");
-				pagingHtml.append("´ÙÀ½");
+				pagingHtml.append("ë‹¤ìŒ");
 				pagingHtml.append("</a>");
 			}
 		}

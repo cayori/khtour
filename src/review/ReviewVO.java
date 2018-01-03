@@ -2,14 +2,14 @@ package review;
 import java.util.Date;
 public class ReviewVO {
 	private int review_no; 
-	private String id;//¾ÆÀÌµğ(»ç¿ëÀÚ)
-	private String subject; //Á¦¸ñ
-	private String pw; //ÆĞ½º¿öµå
-	private String content; //³»¿ë
-	private String image1; //ÀÌ¹ÌÁö
-	private String image2; //ÀÌ¹ÌÁö 
-	private String image3; //ÀÌ¹ÌÁö
-	private Date reg_date; //µî·Ï³¯Â¥
+	private String id;//ì•„ì´ë””(ì‚¬ìš©ì)
+	private String subject; //ì œëª©
+	private String pw; //íŒ¨ìŠ¤ì›Œë“œ
+	private String content; //ë‚´ìš©
+	private String image1; //ì´ë¯¸ì§€
+	private String image2; //ì´ë¯¸ì§€ 
+	private String image3; //ì´ë¯¸ì§€
+	private Date reg_date; //ë“±ë¡ë‚ ì§œ
 	private int readcount;
 	
 	

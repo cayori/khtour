@@ -41,11 +41,11 @@ public class LoginMember extends ActionSupport{
 
 	private String bpassword;
 
-	// Àå¹Ù±¸´Ï
+	// ì¥ë°”êµ¬ë‹ˆ
 	BasketVO bvo = new BasketVO();
 	OrderVO ovo = new OrderVO();
 
-	// Àå¹Ù±¸´Ï¿¡ ´ã±â À§ÇØ ºÒ·¯¿Ã ¶§ Á¤º¸µéÀ» ÀúÀåÇÒ °¢ »óÇ°ÀÇ ºóµé
+	// ì¥ë°”êµ¬ë‹ˆì— ë‹´ê¸° ìœ„í•´ ë¶ˆëŸ¬ì˜¬ ë•Œ ì •ë³´ë“¤ì„ ì €ì¥í•  ê° ìƒí’ˆì˜ ë¹ˆë“¤
 	ItemVO ivo = new ItemVO();
 	HotelVO hvo = new HotelVO();
 	AirVO avo = new AirVO();
@@ -63,7 +63,7 @@ public class LoginMember extends ActionSupport{
 		reader.close();
 	}
 
-	public String execute() throws Exception {//·Î±×ÀÎ
+	public String execute() throws Exception {//ë¡œê·¸ì¸
 		HttpServletResponse response = ServletActionContext.getResponse();
 
 		ActionContext context = ActionContext.getContext();
@@ -71,41 +71,41 @@ public class LoginMember extends ActionSupport{
 		Map<String, String> app = context.getApplication();
 
 		mvo.setId(id);
-		bpassword = (String) sqlMapper.queryForObject("membercheck", mvo);//·Î±×ÀÎÀ» ½ÃµµÇÑ ¾ÆÀÌµğ°¡ °¡Áø ÆĞ½º¿öµå¸¦ ²¨³»¿È
+		bpassword = (String) sqlMapper.queryForObject("membercheck", mvo);//ë¡œê·¸ì¸ì„ ì‹œë„í•œ ì•„ì´ë””ê°€ ê°€ì§„ íŒ¨ìŠ¤ì›Œë“œë¥¼ êº¼ë‚´ì˜´
 
-		if (bpassword == null) {//²¨³»¿Â ºñ¹Ğ¹øÈ£°¡ ¾ø´Ù¸é
+		if (bpassword == null) {//êº¼ë‚´ì˜¨ ë¹„ë°€ë²ˆí˜¸ê°€ ì—†ë‹¤ë©´
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('ÇØ´ç ¾ÆÀÌµğ°¡ ¾ø½À´Ï´Ù.');");
+			out.println("alert('í•´ë‹¹ ì•„ì´ë””ê°€ ì—†ìŠµë‹ˆë‹¤.');");
 			out.println("history.go(-1);");
 			out.println("</script>");
 			out.close();
 			return LOGIN;
-		} else if (!bpassword.equals(password)) {//ÀÖÁö¸¸ Å¬¶óÀÌ¾ğÆ®°¡ ÀÔ·ÂÇÑ ºñ¹Ğ¹øÈ£°¡ µ¿ÀÏÇÏÁö ¾Ê´Ù¸é
+		} else if (!bpassword.equals(password)) {//ìˆì§€ë§Œ í´ë¼ì´ì–¸íŠ¸ê°€ ì…ë ¥í•œ ë¹„ë°€ë²ˆí˜¸ê°€ ë™ì¼í•˜ì§€ ì•Šë‹¤ë©´
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('ºñ¹Ğ¹øÈ£°¡ ¸ÂÁö ¾Ê½À´Ï´Ù.');");
+			out.println("alert('ë¹„ë°€ë²ˆí˜¸ê°€ ë§ì§€ ì•ŠìŠµë‹ˆë‹¤.');");
 			out.println("history.go(-1);");
 			out.println("</script>");
 			out.close();
 			return LOGIN;
 		}
 
-		String admin = (String) sqlMapper.queryForObject("admincheck", mvo);//ÇØ´ç ¾ÆÀÌµğÀÇ admin°ª ²¨³»¿È
+		String admin = (String) sqlMapper.queryForObject("admincheck", mvo);//í•´ë‹¹ ì•„ì´ë””ì˜ adminê°’ êº¼ë‚´ì˜´
 
 		
 		
-		// ·Î±×ÀÎ ÇÒ ¶§ ¾îÇÃ¸®ÄÉÀÌ¼Ç ¿µ¿ª¿¡ ÀúÀåµÈ ÇØ´ç ¾ÆÀÌµğ¸¦ Å°·Î °®´Â °ªÀ» °¡Á®¿Í¼­
-		// ·Î±×ÀÎÀ» ½ÃµµÇÑ ¾ÆÀÌµğ¿Í ºñ±³ ÈÄ Á¸ÀçÇÑ´Ù¸é ·Î±×ÀÎ ºÒ°¡
+		// ë¡œê·¸ì¸ í•  ë•Œ ì–´í”Œë¦¬ì¼€ì´ì…˜ ì˜ì—­ì— ì €ì¥ëœ í•´ë‹¹ ì•„ì´ë””ë¥¼ í‚¤ë¡œ ê°–ëŠ” ê°’ì„ ê°€ì ¸ì™€ì„œ
+		// ë¡œê·¸ì¸ì„ ì‹œë„í•œ ì•„ì´ë””ì™€ ë¹„êµ í›„ ì¡´ì¬í•œë‹¤ë©´ ë¡œê·¸ì¸ ë¶ˆê°€
 		if (app.get(id) != null) {
 			if (app.get(id).equals(id)) {
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
 				app.put("error", id);
-				out.println("alert('ÇØ´ç °èÁ¤À¸·Î ·Î±×ÀÎ ÁßÀÔ´Ï´Ù.');");
+				out.println("alert('í•´ë‹¹ ê³„ì •ìœ¼ë¡œ ë¡œê·¸ì¸ ì¤‘ì…ë‹ˆë‹¤.');");
 				out.println("location.href='Main.action'");
 				out.println("</script>");
 				out.close();
@@ -114,7 +114,7 @@ public class LoginMember extends ActionSupport{
 		}
 		
 		
-		//·Î±×ÀÎÇÒ ¶§ ¾îÇÃ¸®ÄÉÀÌ¼Ç ¿µ¿ª¿¡ Áßº¹ È®ÀÎ¿ë Å° ÀúÀå, ¼¼¼Ç¿¡ ¾ÆÀÌµğ ÀúÀå, ¼¼¼Ç¿¡ °ü¸®ÀÚ È¸¿ø ±¸ºĞÇÏ±â À§ÇÑ °ª ÀúÀå
+		//ë¡œê·¸ì¸í•  ë•Œ ì–´í”Œë¦¬ì¼€ì´ì…˜ ì˜ì—­ì— ì¤‘ë³µ í™•ì¸ìš© í‚¤ ì €ì¥, ì„¸ì…˜ì— ì•„ì´ë”” ì €ì¥, ì„¸ì…˜ì— ê´€ë¦¬ì íšŒì› êµ¬ë¶„í•˜ê¸° ìœ„í•œ ê°’ ì €ì¥
 		app.put(id, id);
 		session.put("id", id);
 		session.put("admincheck", admin);
@@ -125,12 +125,12 @@ public class LoginMember extends ActionSupport{
 	}
 	
 
-	public String logout() throws Exception {//·Î±×¾Æ¿ô ½Ã¿¡´Â ¼¼¼Ç°ú ¾îÇÃ¸®ÄÉÀÌ¼Ç ¿µ¿ªÀÇ ¾ÆÀÌµğ°ªÀ» Á¦°Å
+	public String logout() throws Exception {//ë¡œê·¸ì•„ì›ƒ ì‹œì—ëŠ” ì„¸ì…˜ê³¼ ì–´í”Œë¦¬ì¼€ì´ì…˜ ì˜ì—­ì˜ ì•„ì´ë””ê°’ì„ ì œê±°
 		ActionContext context = ActionContext.getContext();
 		Map<String, String> session = context.getSession();
 
 		Map<String, String> app = context.getApplication();
-		sqlMapper.update("updatechoff", session.get("id"));//ch°ªÀ» 0(ºñ·Î±×ÀÎ »óÅÂ)·Î °»½Å
+		sqlMapper.update("updatechoff", session.get("id"));//chê°’ì„ 0(ë¹„ë¡œê·¸ì¸ ìƒíƒœ)ë¡œ ê°±ì‹ 
 
 		session.remove("id");
 		session.remove("admincheck");
@@ -142,7 +142,7 @@ public class LoginMember extends ActionSupport{
 		return SUCCESS;
 	}
 	
-	public void cc() throws Exception{//Áßº¹·Î±×ÀÎÀÌ ¹ß»ıÇÏ¸é ½Ç½Ã°£À¸·Î °æ°íÃ¢À» ·Î±×ÀÎÇÑ È¸¿ø¿¡°Ô ¶ç¿öÁÖ´Â ¸Ş¼Òµå
+	public void cc() throws Exception{//ì¤‘ë³µë¡œê·¸ì¸ì´ ë°œìƒí•˜ë©´ ì‹¤ì‹œê°„ìœ¼ë¡œ ê²½ê³ ì°½ì„ ë¡œê·¸ì¸í•œ íšŒì›ì—ê²Œ ë„ì›Œì£¼ëŠ” ë©”ì†Œë“œ
 		HttpServletResponse response = ServletActionContext.getResponse();
 		
 		ActionContext context = ActionContext.getContext();
@@ -152,16 +152,16 @@ public class LoginMember extends ActionSupport{
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
 		app.remove("error");
-		out.println("alert('¡Ø°æ°í¡Ø È¸¿ø´ÔÀÇ °èÁ¤À¸·Î ·Î±×ÀÎÀÌ ½ÃµµµÇ¾ú½À´Ï´Ù.');");
+		out.println("alert('â€»ê²½ê³ â€» íšŒì›ë‹˜ì˜ ê³„ì •ìœ¼ë¡œ ë¡œê·¸ì¸ì´ ì‹œë„ë˜ì—ˆìŠµë‹ˆë‹¤.');");
 		out.println("</script>");
 		out.close();
 	}
 		
 	
-	public void subcc() throws Exception{}//Áßº¹ ·Î±×ÀÎ Ã¼Å© Èå¸§¹Ş¾ÆÁÖ´Â ¸Ş¼Òµå
+	public void subcc() throws Exception{}//ì¤‘ë³µ ë¡œê·¸ì¸ ì²´í¬ íë¦„ë°›ì•„ì£¼ëŠ” ë©”ì†Œë“œ
 
 	
-	// ¼öÁ¤ÆûÀ¸·Î °¥ ¶§ º¸¿©ÁÙ Á¤º¸ °¡Á®°¡±â
+	// ìˆ˜ì •í¼ìœ¼ë¡œ ê°ˆ ë•Œ ë³´ì—¬ì¤„ ì •ë³´ ê°€ì ¸ê°€ê¸°
 	public String ModifyMemberForm() throws Exception {
 		HttpServletResponse response = ServletActionContext.getResponse();
 
@@ -169,12 +169,12 @@ public class LoginMember extends ActionSupport{
 
 		String chpw = (String) sqlMapper.queryForObject("membercheck", mvo);
 
-		// ÀÔ·ÂÇÑ ºñ¹Ğ¹øÈ£¿Í ÇØ´ç È¸¿øÀÇ ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾ÊÀ¸¸é ¼öÁ¤ÇÏÁö ¾ÊÀ½
+		// ì…ë ¥í•œ ë¹„ë°€ë²ˆí˜¸ì™€ í•´ë‹¹ íšŒì›ì˜ ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•Šìœ¼ë©´ ìˆ˜ì •í•˜ì§€ ì•ŠìŒ
 		if (!password.equals(chpw)) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.');");
+			out.println("alert('ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.');");
 			out.println("history.go(-1);");
 			out.println("</script>");
 			out.close();
@@ -208,10 +208,10 @@ public class LoginMember extends ActionSupport{
 
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		// ÀÔ·ÂÇÑ ºñ¹Ğ¹øÈ£¿Í ÇØ´ç È¸¿øÀÇ ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾ÊÀ¸¸é Å»Åğ½ÃÅ°Áö ¾ÊÀ½
+		// ì…ë ¥í•œ ë¹„ë°€ë²ˆí˜¸ì™€ í•´ë‹¹ íšŒì›ì˜ ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•Šìœ¼ë©´ íƒˆí‡´ì‹œí‚¤ì§€ ì•ŠìŒ
 		if (!password.equals(chpw)) {
 			out.println("<script>");
-			out.println("alert('ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.');");
+			out.println("alert('ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.');");
 			out.println("history.go(-1);");
 			out.println("</script>");
 			out.close();
@@ -228,7 +228,7 @@ public class LoginMember extends ActionSupport{
 		context.setSession(session);
 		
 		out.println("<script>");
-		out.println("alert('Á¤»óÀûÀ¸·Î Å»ÅğµÇ¾ú½À´Ï´Ù.');");
+		out.println("alert('ì •ìƒì ìœ¼ë¡œ íƒˆí‡´ë˜ì—ˆìŠµë‹ˆë‹¤.');");
 		out.println("window.location.replace('Main.action');");
 		out.println("</script>");
 		out.close();
@@ -236,31 +236,31 @@ public class LoginMember extends ActionSupport{
 		return SUCCESS;
 	}
 	
-	// ¿øÇÏ´Â »óÇ°À» Àå¹Ù±¸´Ï¿¡ ³ÖÀ» ¶§ ÇØ´ç »óÇ°ÀÇ Å×ÀÌºí¿¡¼­ Àå¹Ù±¸´Ï Å×ÀÌºí·Î Á¤º¸ÀÌµ¿
+	// ì›í•˜ëŠ” ìƒí’ˆì„ ì¥ë°”êµ¬ë‹ˆì— ë„£ì„ ë•Œ í•´ë‹¹ ìƒí’ˆì˜ í…Œì´ë¸”ì—ì„œ ì¥ë°”êµ¬ë‹ˆ í…Œì´ë¸”ë¡œ ì •ë³´ì´ë™
 	public String insertBasket() throws Exception {
 		ActionContext context = ActionContext.getContext();
 		Map<String, String> session = context.getSession();
 
 		InBasket ib = new InBasket();
 
-		if (hai != null) {//haiÄ®·³Àº ¿©Çà»óÇ°¿¡¸¸ Á¸ÀçÇÑ´Ù.
+		if (hai != null) {//haiì¹¼ëŸ¼ì€ ì—¬í–‰ìƒí’ˆì—ë§Œ ì¡´ì¬í•œë‹¤.
 			ivo.setNo(no);
 			ivo = (ItemVO) sqlMapper.queryForObject("selectitem", ivo);
 
 			bvo = ib.itemBasket(ivo);
-		} else if (room != null) {//roomÄ®·³Àº È£ÅÚ»óÇ°¿¡¸¸ Á¸ÀçÇÑ´Ù.
+		} else if (room != null) {//roomì¹¼ëŸ¼ì€ í˜¸í…”ìƒí’ˆì—ë§Œ ì¡´ì¬í•œë‹¤.
 			hvo.setNo(no);
 			hvo = (HotelVO) sqlMapper.queryForObject("selecthotel", hvo);
 
 			bvo = ib.hotelBasket(hvo);
-		} else if (air != null) {//airÄ®·³Àº Ç×°ø»óÇ°¿¡¸¸ Á¸ÀçÇÑ´Ù.
+		} else if (air != null) {//airì¹¼ëŸ¼ì€ í•­ê³µìƒí’ˆì—ë§Œ ì¡´ì¬í•œë‹¤.
 			avo.setNo(no);
 			avo = (AirVO) sqlMapper.queryForObject("selectair", avo);
 
 			bvo = ib.airBasket(avo);
 		}
 
-		bvo.setId(session.get("id"));//È¸¿øº°·Î Àå¹Ù±¸´Ï¸¦ ±¸º°ÇÏ±â À§ÇØ
+		bvo.setId(session.get("id"));//íšŒì›ë³„ë¡œ ì¥ë°”êµ¬ë‹ˆë¥¼ êµ¬ë³„í•˜ê¸° ìœ„í•´
 
 		sqlMapper.insert("putbasket", bvo);
 
@@ -268,8 +268,8 @@ public class LoginMember extends ActionSupport{
 	}
 	
 	
-	// ¾Æ·¡ 4°³ÀÇ ¸Ş¼Òµå´Â ÇÏ³ª·Î ½áµµ ¹«¹æ
-	// ¸ŞÀÎ¿¡¼­ °ğ¹Ù·Î Àå¹Ù±¸´Ï·Î °¥ ¶§ ¼¼¼Ç id°ªÀ» °¡Áö°í BasketList·Î °¨
+	// ì•„ë˜ 4ê°œì˜ ë©”ì†Œë“œëŠ” í•˜ë‚˜ë¡œ ì¨ë„ ë¬´ë°©
+	// ë©”ì¸ì—ì„œ ê³§ë°”ë¡œ ì¥ë°”êµ¬ë‹ˆë¡œ ê°ˆ ë•Œ ì„¸ì…˜ idê°’ì„ ê°€ì§€ê³  BasketListë¡œ ê°
 	public String basketForm() throws Exception {
 		ActionContext context = ActionContext.getContext();
 		Map<String, String> session = context.getSession();
@@ -278,7 +278,7 @@ public class LoginMember extends ActionSupport{
 		return SUCCESS;
 	}
 
-	public String form() throws Exception {// ·Î±×ÀÎÆûÀ¸·Î ÀÌµ¿ÇÒ ¶§ °ÅÄ¡´Â
+	public String form() throws Exception {// ë¡œê·¸ì¸í¼ìœ¼ë¡œ ì´ë™í•  ë•Œ ê±°ì¹˜ëŠ”
 		ActionContext context = ActionContext.getContext();
 		Map<String, String> session = context.getSession();
 		session.remove("id");

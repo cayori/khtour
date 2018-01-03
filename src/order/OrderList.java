@@ -16,20 +16,20 @@ public class OrderList  extends ActionSupport{
 	public static SqlMapClient sqlMapper;	
 	public Reader reader;
 	
-	private int currentPage = 1; //ÇöÀç ÆäÀÌÁö ÁöÁ¤
+	private int currentPage = 1; //í˜„ì¬ í˜ì´ì§€ ì§€ì •
 	private int totalCount;
-	private int blockCount = 4; //ÇÑ ÆäÀÌÁö¿¡ ÀÖ´Â ±ÛÀÇ ¼ö 
-	private int blockPage = 5; //ÆäÀÌÂ¡ ¼ö 
+	private int blockCount = 4; //í•œ í˜ì´ì§€ì— ìˆëŠ” ê¸€ì˜ ìˆ˜ 
+	private int blockPage = 5; //í˜ì´ì§• ìˆ˜ 
 	private String pagingHtml;
 	private pagingActionO page;
 	
 	private OrderVO ord = new OrderVO();
-	//orderList ÆäÀÌÂ¡
+	//orderList í˜ì´ì§•
 	
 	
 	private List<OrderVO> order = new ArrayList<OrderVO>();
-	private String id;//¼¼¼Ç ¾ÆÀÌµğ°ª ¹Ş±â
-	private int[] deleteCheck;//Ã¼Å©ÇÑ½ÃÄÁ½º¹øÈ£
+	private String id;//ì„¸ì…˜ ì•„ì´ë””ê°’ ë°›ê¸°
+	private int[] deleteCheck;//ì²´í¬í•œì‹œì»¨ìŠ¤ë²ˆí˜¸
 	public OrderList() throws IOException{
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
@@ -38,7 +38,7 @@ public class OrderList  extends ActionSupport{
 	}
 
 
-	public String execute() throws Exception { //±¸¸Å³»¿ª ¸®½ºÆ®»Ì±â
+	public String execute() throws Exception { //êµ¬ë§¤ë‚´ì—­ ë¦¬ìŠ¤íŠ¸ë½‘ê¸°
 		
 		order = sqlMapper.queryForList("selectorder",getId());
 		
@@ -52,7 +52,7 @@ public class OrderList  extends ActionSupport{
 		return SUCCESS;
 	}
 
-public String deleteOrder() throws Exception {//±¸¸Å³»¿ª»èÁ¦
+public String deleteOrder() throws Exception {//êµ¬ë§¤ë‚´ì—­ì‚­ì œ
 			ord.setId(getId());
 				for(int i=0;i<deleteCheck.length;i++){
 			         ord.setSeq_no(deleteCheck[i]);	

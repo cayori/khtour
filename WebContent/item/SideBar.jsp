@@ -42,7 +42,7 @@ width: 180px;
 	width: 180px;
 	padding: 20px;
 }
-/* »çÀÌµå¹Ù ½ºÅ¸ÀÏ */
+/* ì‚¬ì´ë“œë°” ìŠ¤íƒ€ì¼ */
 .sidebar-nav {
 	width: 220px;
 	margin: 0;
@@ -72,28 +72,28 @@ width: 180px;
 }
 </style>
 	<div id="page-wrapper">
-		<!-- »çÀÌµå¹Ù -->
+		<!-- ì‚¬ì´ë“œë°” -->
 		<div id="sidebar-wrapper" class="float_sidebar">
 			<ul class="sidebar-nav">
 				<li class="sidebar-brand">
-				<li><a href="ListItem.action">¿©Çà ÆÐÅ°Áö</a></li>
-				<li><a href="ListAir.action">Ç×°ø±Ç </a></li>
-				<li><a href="ListHotel.action">È£ÅÚ/¸®Á¶Æ®</a></li>
-				<li><a href="ListReview.action">ÈÄ±â º¸·¯°¡±â</a></li>
-				<li><a href="MyPageForm.action">¸¶ÀÌÆäÀÌÁö</a></li>
-				<li><a href="ServiceForm.action">°í°´¼¾ÅÍ</a></li>
+				<li><a href="ListItem.action">ì—¬í–‰ íŒ¨í‚¤ì§€</a></li>
+				<li><a href="ListAir.action">í•­ê³µê¶Œ </a></li>
+				<li><a href="ListHotel.action">í˜¸í…”/ë¦¬ì¡°íŠ¸</a></li>
+				<li><a href="ListReview.action">í›„ê¸° ë³´ëŸ¬ê°€ê¸°</a></li>
+				<li><a href="MyPageForm.action">ë§ˆì´íŽ˜ì´ì§€</a></li>
+				<li><a href="ServiceForm.action">ê³ ê°ì„¼í„°</a></li>
 			</ul>
 		</div>
-		<!-- /»çÀÌµå¹Ù -->
+		<!-- /ì‚¬ì´ë“œë°” -->
 
-		<!-- º»¹® -->
+		<!-- ë³¸ë¬¸ -->
 		<div id="page-content-wrapper">
 			<div class="container-fluid">
 				<h1></h1>
 				<p></p>
 			</div>
 		</div>
-		<!-- /º»¹® -->
+		<!-- /ë³¸ë¬¸ -->
 	</div>
 </body>
 </html>

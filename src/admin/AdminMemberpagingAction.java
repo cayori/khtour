@@ -2,21 +2,21 @@ package admin;
 
 public class AdminMemberpagingAction {
 
-	private int currentPage; // ÇöÀçÆäÀÌÁö
-	private int totalCount; // ÀüÃ¼ °Ô½Ã¹° ¼ö
-	private int totalPage; // ÀüÃ¼ ÆäÀÌÁö ¼ö
-	private int blockCount; // ÇÑ ÆäÀÌÁöÀÇ °Ô½Ã¹°ÀÇ ¼ö
-	private int blockPage; // ÇÑ È­¸é¿¡ º¸¿©ÁÙ ÆäÀÌÁö ¼ö
-	private int startCount; // ÇÑ ÆäÀÌÁö¿¡¼­ º¸¿©ÁÙ °Ô½Ã±ÛÀÇ ½ÃÀÛ ¹øÈ£
-	private int endCount; // ÇÑ ÆäÀÌÁö¿¡¼­ º¸¿©ÁÙ °Ô½Ã±ÛÀÇ ³¡ ¹øÈ£
-	private int startPage; // ½ÃÀÛ ÆäÀÌÁö
-	private int endPage; // ¸¶Áö¸· ÆäÀÌÁö
+	private int currentPage; // í˜„ì¬í˜ì´ì§€
+	private int totalCount; // ì „ì²´ ê²Œì‹œë¬¼ ìˆ˜
+	private int totalPage; // ì „ì²´ í˜ì´ì§€ ìˆ˜
+	private int blockCount; // í•œ í˜ì´ì§€ì˜ ê²Œì‹œë¬¼ì˜ ìˆ˜
+	private int blockPage; // í•œ í™”ë©´ì— ë³´ì—¬ì¤„ í˜ì´ì§€ ìˆ˜
+	private int startCount; // í•œ í˜ì´ì§€ì—ì„œ ë³´ì—¬ì¤„ ê²Œì‹œê¸€ì˜ ì‹œì‘ ë²ˆí˜¸
+	private int endCount; // í•œ í˜ì´ì§€ì—ì„œ ë³´ì—¬ì¤„ ê²Œì‹œê¸€ì˜ ë ë²ˆí˜¸
+	private int startPage; // ì‹œì‘ í˜ì´ì§€
+	private int endPage; // ë§ˆì§€ë§‰ í˜ì´ì§€
 	private String search;
 	private int searchn;
 
 	private StringBuffer pagingHtml;
 
-	// ÆäÀÌÂ¡ »ı¼ºÀÚ//°Ë»öÀÏ ¶§
+	// í˜ì´ì§• ìƒì„±ì//ê²€ìƒ‰ì¼ ë•Œ
 	public AdminMemberpagingAction(int currentPage, int totalCount, int blockCount, int blockPage, String search, int searchn) {
 
 		this.blockCount = blockCount;
@@ -47,15 +47,15 @@ public class AdminMemberpagingAction {
 
 		pagingHtml = new StringBuffer();
 
-		if (search == "") {//////////////////////////°Ë»öÀ» ¾ÈÇßÀ» ¶§
+		if (search == "") {//////////////////////////ê²€ìƒ‰ì„ ì•ˆí–ˆì„ ë•Œ
 			if (currentPage > blockPage) {
 				pagingHtml.append("<a href=ListItem.action?currentPage=" + (startPage - 1) + ">");
-				pagingHtml.append("ÀÌÀü");
+				pagingHtml.append("ì´ì „");
 				pagingHtml.append("</a>");	}
 
 			pagingHtml.append("&nbsp;|&nbsp;");
 
-			// ÆäÀÌÁö ¹øÈ£.ÇöÀç ÆäÀÌÁö´Â »¡°£»öÀ¸·Î °­Á¶ÇÏ°í ¸µÅ©¸¦ Á¦°Å.
+			// í˜ì´ì§€ ë²ˆí˜¸.í˜„ì¬ í˜ì´ì§€ëŠ” ë¹¨ê°„ìƒ‰ìœ¼ë¡œ ê°•ì¡°í•˜ê³  ë§í¬ë¥¼ ì œê±°.
 			for (int i = startPage; i <= endPage; i++) {
 				if (i > totalPage) {
 					break; 	}
@@ -74,18 +74,18 @@ public class AdminMemberpagingAction {
 
 			pagingHtml.append("&nbsp;&nbsp;|&nbsp;&nbsp;");
 
-			// ´ÙÀ½ block ÆäÀÌÁö
+			// ë‹¤ìŒ block í˜ì´ì§€
 			if (totalPage - startPage >= blockPage) {
 				pagingHtml.append("<a href=ListItem.action?currentPage=" + (endPage + 1) + ">");
-				pagingHtml.append("´ÙÀ½");
+				pagingHtml.append("ë‹¤ìŒ");
 				pagingHtml.append("</a>");	}
 			
-		} else { ///////////////////////////////°Ë»öÇßÀ» ¶§
+		} else { ///////////////////////////////ê²€ìƒ‰í–ˆì„ ë•Œ
 			
 			if (currentPage > blockPage) {
 				pagingHtml.append("<a href='ListItem.action?currentPage=" + (startPage - 1) + "&search=" + search
 						+ "&n=" + searchn + "'>");
-				pagingHtml.append("ÀÌÀü");
+				pagingHtml.append("ì´ì „");
 				pagingHtml.append("</a>"); }
 
 			pagingHtml.append("&nbsp;|&nbsp;");
@@ -110,7 +110,7 @@ public class AdminMemberpagingAction {
 			if (totalPage - startPage >= blockPage) {
 				pagingHtml.append("<a href='ListItem.action?currentPage=" + (endPage + 1) + "&search=" + search
 						+ "&n=" + searchn + "'>");
-				pagingHtml.append("´ÙÀ½");
+				pagingHtml.append("ë‹¤ìŒ");
 				pagingHtml.append("</a>");
 			}
 		}

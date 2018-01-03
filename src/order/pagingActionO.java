@@ -46,7 +46,7 @@ public class pagingActionO {
 		if (currentPage > blockPage) {
 			pagingHtml.append("<a href=OrderList.action?no="+id+"&currentPage="
 					+ (startPage - 1) + ">");
-			pagingHtml.append("[ÀÌÀü]");
+			pagingHtml.append("[ì´ì „]");
 			pagingHtml.append("</a>");
 		}
 
@@ -62,7 +62,7 @@ public class pagingActionO {
 		if (totalPage - startPage >= blockPage) {
 			pagingHtml.append("<a href=OrderList.action?id="+id+"&currentPage="
 					+ (endPage + 1) + ">");
-			pagingHtml.append("[´ÙÀ½]");
+			pagingHtml.append("[ë‹¤ìŒ]");
 			pagingHtml.append("</a>");
 		}
 	}

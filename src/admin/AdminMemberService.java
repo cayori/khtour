@@ -33,7 +33,7 @@ public class AdminMemberService extends ActionSupport {
 	
 	public AdminMemberService() throws IOException {
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
-		// ÁöÁ¤µÈ ¸®´õ¸¦ »ç¿ëÇÏ¿© SqlMapClient¸¦ ºôµåÇÕ´Ï´Ù.
+		// ì§€ì •ëœ ë¦¬ë”ë¥¼ ì‚¬ìš©í•˜ì—¬ SqlMapClientë¥¼ ë¹Œë“œí•©ë‹ˆë‹¤.
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
 	}
@@ -57,7 +57,7 @@ public class AdminMemberService extends ActionSupport {
 	
 	
 	public String delete() throws Exception{
-		//È¸¿øÅ»Åğ ±¸ÇöÇÏÀÚ (ÀÌ°Ç ¼¼¼Ç ¸®¹«ºê¸¦ ÇÏ¸é ¾ÈµÇ±â ¶§¹®¿¡ µû·Î ±¸ÇöÇÏ´Â °ÍÀÓ)
+		//íšŒì›íƒˆí‡´ êµ¬í˜„í•˜ì (ì´ê±´ ì„¸ì…˜ ë¦¬ë¬´ë¸Œë¥¼ í•˜ë©´ ì•ˆë˜ê¸° ë•Œë¬¸ì— ë”°ë¡œ êµ¬í˜„í•˜ëŠ” ê²ƒì„)
 		HttpServletResponse response = ServletActionContext.getResponse();
 
 		mvo.setId(id);

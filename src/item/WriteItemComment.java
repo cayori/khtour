@@ -29,7 +29,7 @@ public class WriteItemComment extends ActionSupport {
 
 	}
 
-	public String execute() throws Exception { // È£ÅÚ ÄÚ¸àÆ® ¾²±â
+	public String execute() throws Exception { // í˜¸í…” ì½”ë©˜íŠ¸ ì“°ê¸°
 
 		contentCO.setSeq_no(getNo());
 		contentCO.setC_content(getC_content());
@@ -41,7 +41,7 @@ public class WriteItemComment extends ActionSupport {
 		return SUCCESS;
 	}
 
-	public String executeI() throws Exception { // ¾ÆÀÌÅÛ ÄÚ¸àÆ® ¾²±â
+	public String executeI() throws Exception { // ì•„ì´í…œ ì½”ë©˜íŠ¸ ì“°ê¸°
 
 		contentCOI.setSeq_no(getNo());
 		contentCOI.setC_content(getC_content());
@@ -52,7 +52,7 @@ public class WriteItemComment extends ActionSupport {
 		return SUCCESS;
 	}
 
-	public String executeA() throws Exception { // Ç×°ø ÄÚ¸àÆ® ¾²±â
+	public String executeA() throws Exception { // í•­ê³µ ì½”ë©˜íŠ¸ ì“°ê¸°
 
 		contentCOA.setSeq_no(getNo());
 		contentCOA.setC_content(getC_content());
@@ -63,19 +63,19 @@ public class WriteItemComment extends ActionSupport {
 		return SUCCESS;
 	}
 
-	public String deleteH() throws Exception { // È£ÅÚ ÄÚ¸àÆ® »èÁ¦
+	public String deleteH() throws Exception { // í˜¸í…” ì½”ë©˜íŠ¸ ì‚­ì œ
 		sqlMapper.delete("deleteOneCH", getC_no());
 
 		return SUCCESS;
 	}
 
-	public String deleteA() throws Exception { // È£ÅÚ ÄÚ¸àÆ® »èÁ¦
+	public String deleteA() throws Exception { // í˜¸í…” ì½”ë©˜íŠ¸ ì‚­ì œ
 		sqlMapper.delete("deleteOneCA", getC_no());
 
 		return SUCCESS;
 	}
 
-	public String deleteI() throws Exception { // È£ÅÚ ÄÚ¸àÆ® »èÁ¦
+	public String deleteI() throws Exception { // í˜¸í…” ì½”ë©˜íŠ¸ ì‚­ì œ
 		sqlMapper.delete("deleteOneCI", getC_no());
 
 		return SUCCESS;
